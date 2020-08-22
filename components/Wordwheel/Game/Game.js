@@ -1,6 +1,10 @@
+import Line from '../Line';
+
 const Game = () => {
 	return (
-		<div>Game</div>
+		<main>
+			<Line />
+		</main>
 	);
 };
 
