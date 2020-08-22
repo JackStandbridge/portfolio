@@ -1,15 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Letter from './Letter';
 
-import { letterSelector, toggleLetter } from '../../../lib/slices/wordwheel/reducer';
+import { letterSelector, toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/reducer';
 
-const LetterContainer = ({ id, dimensions, spacing }) => {
+const LetterContainer = ({ id, dimensions, spacing, isNarrowScreen }) => {
 
 	const dispatch = useDispatch();
 	const letters = useSelector(letterSelector);
 
-	const handleClick = id => {
+	const handleToggle = id => {
 		dispatch(toggleLetter(id));
+	};
+
+	const handleDeselect = id => {
+		dispatch(deselectLetter(id));
 	};
 
 	const {
@@ -27,9 +31,16 @@ const LetterContainer = ({ id, dimensions, spacing }) => {
 
 	const translateBy = (scale * (9 - numberOfSelectedLetters)) / 2;
 
+	const row = isNarrowScreen ? Math.floor(basePosition / 3) : 0;
+	const col = isNarrowScreen ? basePosition % 3 : basePosition;
+
+	const baseTop = `calc(${ row } * ${ scale }rem)`;
+	const baseLeft = `calc(${ col } * ${ scale }rem)`;
+
 	const backingStyles = {
 		// position backing divs simply in a line
-		left: `calc(${ basePosition } * ${ scale }rem)`,
+		left: baseLeft,
+		top: baseTop,
 		// set the size
 		height: `${ dimensions }rem`,
 		width: `${ dimensions }rem`,
@@ -37,11 +48,11 @@ const LetterContainer = ({ id, dimensions, spacing }) => {
 
 	const buttonStyles = {
 		// get the left position based on the selected raisedPosition order
-		left: `calc(${ selected ? raisedPosition : basePosition } * ${ scale }rem)`,
+		left: selected ? `calc(${ raisedPosition } * ${ scale }rem)` : baseLeft,
 		// transform it towards the middle based on how many are selected to centre
 		transform: selected ? `translateX(${ translateBy }rem)` : undefined,
 		// move it up out of the base row
-		top: selected ? `-${ dimensions + (spacing * 4) }rem` : 0,
+		top: selected ? `-${ dimensions + (spacing * 4) }rem` : baseTop,
 		// set the size
 		height: `${ dimensions }rem`,
 		width: `${ dimensions }rem`,
@@ -53,7 +64,8 @@ const LetterContainer = ({ id, dimensions, spacing }) => {
 			backingStyles={ backingStyles }
 			buttonStyles={ buttonStyles }
 			letter={ letter }
-			handleClick={ handleClick }
+			handleToggle={ handleToggle }
+			handleDeselect={ handleDeselect }
 		/>
 	);
 };

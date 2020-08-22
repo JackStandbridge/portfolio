@@ -5,19 +5,21 @@ const Letter = ({
 	backingStyles,
 	buttonStyles,
 	letter,
-	handleClick
+	handleToggle,
+	handleDeselect,
 }) => (
 	<>
 		<button
 			style={ backingStyles }
 			className={ styles.backing }
+			onClick={ () => handleDeselect(id) }
 		>
 			{ letter }
 		</button>
 
 		<button
 			style={ buttonStyles }
-			onClick={ () => handleClick(id) }
+			onClick={ () => handleToggle(id) }
 			className={ styles.button }
 		>
 			{ letter }

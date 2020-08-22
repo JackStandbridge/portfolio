@@ -9,15 +9,19 @@ const LineContainer = () => {
 
 	const letterIds = useSelector(letterIdsSelector, shallowEqual);
 
-	const [mobileView, setMobileView] = useState(window.innerWidth < 800);
+	const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 800);
 
 	useEffect(() => {
 		const resizeListener = () => {
-			if (mobileView && window.innerWidth >= 800) {
-				setMobileView(false);
-			} else if (!mobileView && window.innerWidth < 800) {
-				setMobileView(true);
-			}
+			setIsNarrowScreen(isNarrowScreen => {
+				if (isNarrowScreen && window.innerWidth >= 800) {
+					return false;
+				} else if (!isNarrowScreen && window.innerWidth < 800) {
+					return true;
+				} else {
+					return isNarrowScreen;
+				}
+			})
 		};
 
 		window.addEventListener('resize', resizeListener);
@@ -25,12 +29,12 @@ const LineContainer = () => {
 		return () => {
 			window.removeEventListener('resize', resizeListener);
 		};
-	}, [setMobileView]);
+	}, [setIsNarrowScreen]);
 
 	return (
 		<Line
 			letterIds={ letterIds }
-			mobileView={ mobileView }
+			isNarrowScreen={ isNarrowScreen }
 		/>
 	);
 };

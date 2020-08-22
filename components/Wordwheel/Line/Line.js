@@ -1,7 +1,7 @@
 import Letter from '../Letter';
 import styles from './Line.module.scss';
 
-const Line = ({ letterIds, mobileView, translateBy }) => {
+const Line = ({ letterIds, isNarrowScreen }) => {
 
 	const dimensions = 5;
 	const spacing = 0.5;
@@ -14,9 +14,8 @@ const Line = ({ letterIds, mobileView, translateBy }) => {
 					key={ id }
 					id={ id }
 					dimensions={ dimensions }
-					mobileView={ mobileView }
+					isNarrowScreen={ isNarrowScreen }
 					spacing={ spacing }
-					translateBy={ translateBy }
 				/>
 			)) }
 
