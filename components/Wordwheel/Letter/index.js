@@ -3,7 +3,7 @@ import Letter from './Letter';
 
 import { letterSelector, toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/reducer';
 
-const LetterContainer = ({ id, dimensions, spacing, isNarrowScreen }) => {
+const LetterContainer = ({ id, dimensions, spacing, isWheelLayout }) => {
 
 	const dispatch = useDispatch();
 	const letters = useSelector(letterSelector);
@@ -31,8 +31,8 @@ const LetterContainer = ({ id, dimensions, spacing, isNarrowScreen }) => {
 
 	const translateBy = (scale * (9 - numberOfSelectedLetters)) / 2;
 
-	const row = isNarrowScreen ? Math.floor(basePosition / 3) : 0;
-	const col = isNarrowScreen ? basePosition % 3 : basePosition;
+	const row = isWheelLayout ? Math.floor(basePosition / 3) : 0;
+	const col = isWheelLayout ? basePosition % 3 : basePosition;
 
 	const baseTop = `calc(${ row } * ${ scale }rem)`;
 	const baseLeft = `calc(${ col } * ${ scale }rem)`;

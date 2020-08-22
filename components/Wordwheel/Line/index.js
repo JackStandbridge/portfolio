@@ -9,17 +9,17 @@ const LineContainer = () => {
 
 	const letterIds = useSelector(letterIdsSelector, shallowEqual);
 
-	const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 800);
+	const [isWheelLayout, setIsWheelLayout] = useState(window.innerWidth < 800);
 
 	useEffect(() => {
 		const resizeListener = () => {
-			setIsNarrowScreen(isNarrowScreen => {
-				if (isNarrowScreen && window.innerWidth >= 800) {
+			setIsWheelLayout(isWheelLayout => {
+				if (isWheelLayout && window.innerWidth >= 800) {
 					return false;
-				} else if (!isNarrowScreen && window.innerWidth < 800) {
+				} else if (!isWheelLayout && window.innerWidth < 800) {
 					return true;
 				} else {
-					return isNarrowScreen;
+					return isWheelLayout;
 				}
 			})
 		};
@@ -29,12 +29,12 @@ const LineContainer = () => {
 		return () => {
 			window.removeEventListener('resize', resizeListener);
 		};
-	}, [setIsNarrowScreen]);
+	}, [setIsWheelLayout]);
 
 	return (
 		<Line
 			letterIds={ letterIds }
-			isNarrowScreen={ isNarrowScreen }
+			isWheelLayout={ isWheelLayout }
 		/>
 	);
 };

@@ -1,7 +1,7 @@
 import Letter from '../Letter';
 import styles from './Line.module.scss';
 
-const Line = ({ letterIds, isNarrowScreen }) => {
+const Line = ({ letterIds, isWheelLayout }) => {
 
 	const dimensions = 5;
 	const spacing = 0.5;
@@ -14,7 +14,7 @@ const Line = ({ letterIds, isNarrowScreen }) => {
 					key={ id }
 					id={ id }
 					dimensions={ dimensions }
-					isNarrowScreen={ isNarrowScreen }
+					isWheelLayout={ isWheelLayout }
 					spacing={ spacing }
 				/>
 			)) }
