@@ -1,22 +1,36 @@
-import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { useState, useEffect } from 'react';
+import { useSelector, shallowEqual } from 'react-redux'
 
 import Line from './Line';
 
-import { letterSelector, toggleLetter } from '../../../lib/slices/wordwheel/reducer';
+import { letterIdsSelector } from '../../../lib/slices/wordwheel/reducer';
 
 const LineContainer = () => {
-	const dispatch = useDispatch();
 
-	const letters = useSelector(letterSelector, shallowEqual);
+	const letterIds = useSelector(letterIdsSelector, shallowEqual);
 
-	const handleClick = id => {
-		dispatch(toggleLetter(id));
-	};
+	const [mobileView, setMobileView] = useState(window.innerWidth < 800);
+
+	useEffect(() => {
+		const resizeListener = () => {
+			if (mobileView && window.innerWidth >= 800) {
+				setMobileView(false);
+			} else if (!mobileView && window.innerWidth < 800) {
+				setMobileView(true);
+			}
+		};
+
+		window.addEventListener('resize', resizeListener);
+
+		return () => {
+			window.removeEventListener('resize', resizeListener);
+		};
+	}, [setMobileView]);
 
 	return (
 		<Line
-			letters={ letters }
-			handleClick={ handleClick }
+			letterIds={ letterIds }
+			mobileView={ mobileView }
 		/>
 	);
 };
