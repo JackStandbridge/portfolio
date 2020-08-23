@@ -23,7 +23,7 @@ const LetterContainer = ({ id, dimensions, spacing, isWheelLayout }) => {
 		selected,
 		basePosition,
 		raisedPosition,
-	} = letters.entities[id];
+	} = letters.entities[id] ?? {};
 
 	const scale = dimensions + spacing;
 
@@ -39,25 +39,26 @@ const LetterContainer = ({ id, dimensions, spacing, isWheelLayout }) => {
 	const baseTop = `calc(${ row } * ${ scale }rem)`;
 	const baseLeft = `calc(${ col } * ${ scale }rem)`;
 
+	const width = dimensions;
+	const height = dimensions;
+
 	const backingStyles = {
 		// position backing divs simply in a line
 		left: baseLeft,
 		top: baseTop,
 		// set the size
-		height: `${ dimensions }rem`,
-		width: `${ dimensions }rem`,
+		height: `${ height }rem`,
+		width: `${ width }rem`,
 	};
 
 	const buttonStyles = {
 		// get the left position based on the selected raisedPosition order
-		left: selected ? `calc(${ raisedPosition } * ${ scale }rem)` : baseLeft,
-		// transform it towards the middle based on how many are selected to centre
-		transform: selected ? `translateX(${ translateBy }rem)` : undefined,
+		left: selected ? `calc(${ raisedPosition } * ${ scale }rem + ${ translateBy }rem)` : baseLeft,
 		// move it up out of the base row
-		top: selected ? `-${ dimensions + (spacing * 4) }rem` : baseTop,
+		top: selected ? `-${ dimensions + (spacing * 2) }rem` : baseTop,
 		// set the size
-		height: `${ dimensions }rem`,
-		width: `${ dimensions }rem`,
+		height: `${ height }rem`,
+		width: `${ width }rem`,
 	};
 
 	return (

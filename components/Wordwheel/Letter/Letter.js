@@ -13,6 +13,7 @@ const Letter = ({
 			style={ backingStyles }
 			className={ styles.backing }
 			onClick={ () => handleDeselect(id) }
+			tabIndex={ -1 }
 		>
 			{ letter }
 		</button>

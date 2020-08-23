@@ -1,8 +1,9 @@
 import Line from '../Line';
+import styles from './Game.module.scss';
 
 const Game = () => {
 	return (
-		<main>
+		<main className={ styles.main }>
 			<Line />
 		</main>
 	);
