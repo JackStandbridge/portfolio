@@ -1,5 +1,7 @@
-.button, .backing {
+.button,
+.backing {
 	all: unset;
+	box-sizing: border-box;
 
 	position: absolute;
 	width: 5rem;
@@ -12,7 +14,6 @@
 	place-items: center;
 
 	border-radius: 1rem;
-	box-sizing: border-box;
 
 	cursor: pointer;
 }
@@ -20,9 +21,15 @@
 .button {
 	border: 2px solid grey;
 	background: white;
+
+	&:focus,
+	&:active,
+	&:hover {
+		filter: invert(1);
+	}
 }
 
 .backing {
-	opacity: 0.5;
+	opacity: 0.2;
 	border: 2px dotted grey;
 }

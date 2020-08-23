@@ -9,10 +9,12 @@ const LetterContainer = ({ id, dimensions, spacing, isWheelLayout }) => {
 	const letters = useSelector(letterSelector);
 
 	const handleToggle = id => {
+		document.activeElement.blur();
 		dispatch(toggleLetter(id));
 	};
 
 	const handleDeselect = id => {
+		document.activeElement.blur();
 		dispatch(deselectLetter(id));
 	};
 
