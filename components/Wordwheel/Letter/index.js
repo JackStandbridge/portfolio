@@ -3,7 +3,7 @@ import Letter from './Letter';
 
 import { letterSelector, toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/reducer';
 
-const LetterContainer = ({ id, dimensions, spacing, isWheelLayout }) => {
+const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 
 	const dispatch = useDispatch();
 	const letters = useSelector(letterSelector);
@@ -24,8 +24,6 @@ const LetterContainer = ({ id, dimensions, spacing, isWheelLayout }) => {
 		basePosition,
 		raisedPosition,
 	} = letters.entities[id] ?? {};
-
-	const scale = dimensions + spacing;
 
 	const numberOfSelectedLetters = letters.ids
 		.filter(id => letters.entities[id].selected)

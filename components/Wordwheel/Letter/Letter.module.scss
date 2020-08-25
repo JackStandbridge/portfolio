@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
 @import '../../../styles/functions';
+@import '../../../styles/variables';
 
 $radius: 0.5rem;
 
@@ -10,7 +10,7 @@ $radius: 0.5rem;
 
 	position: absolute;
 	font-size: 2rem;
-	transition: 0.3s;
+	transition: 0.2s;
 
 	font-family: sans-serif;
 	text-transform: uppercase;
@@ -25,43 +25,16 @@ $radius: 0.5rem;
 }
 
 .button {
-
-	$midYellow: map-deep-get($colours, 'wwYellow', 'mid');
-	$lightYellow: map-deep-get($colours, 'wwYellow', 'light');
-
-	$darkRed: map-deep-get($colours, 'wwRed', 'dark');
-
 	$darkerBlue: map-deep-get($colours, 'wwBlue', 'darker');
 	$darkBlue: map-deep-get($colours, 'wwBlue', 'dark');
 	$midBlue: map-deep-get($colours, 'wwBlue', 'mid');
 	$lightBlue: map-deep-get($colours, 'wwBlue', 'light');
 	$lighterBlue: map-deep-get($colours, 'wwBlue', 'lighter');
 
-	$shadow: map-deep-get($colours, 'wwShadow', 'mid');
-
-
-	background: radial-gradient(circle at 89% 11%, white 5%, transparent 7%), linear-gradient($darkBlue, $midBlue);
+	background: linear-gradient($darkBlue, $midBlue);
 	color: white;
 
 	&::before {
-		content: '';
-
-		$outset: 0.4rem;
-		position: absolute;
-		top: -$outset;
-		left: -$outset;
-		right: -$outset;
-		bottom: -$outset;
-		z-index: -1;
-
-		border-radius: 1.9 * $radius;
-		border: 1px solid $darkerBlue;
-
-		background: linear-gradient($lightBlue, $lighterBlue 80%);
-		box-shadow: 0 0.3rem $darkerBlue;
-	}
-
-	&::after {
 		content: '';
 
 		$outset: 0.6rem;
@@ -69,14 +42,13 @@ $radius: 0.5rem;
 		top: -$outset;
 		left: -$outset;
 		right: -$outset;
-		bottom: -$outset - 0.3rem;
-		z-index: -2;
-
-		background: linear-gradient($lightYellow, $midYellow);
+		bottom: -$outset;
+		z-index: -1;
 
 		border-radius: 2.2 * $radius;
-		box-shadow: 0 0.3rem $darkRed, 0 0.8rem 0 -0.2rem $shadow;
+		border: 3px solid $darkerBlue;
 
+		background: linear-gradient($lightBlue, $lighterBlue 80%);
 	}
 
 
@@ -89,4 +61,14 @@ $radius: 0.5rem;
 .backing {
 	opacity: 0.2;
 	border: 2px dotted grey;
+}
+
+.middle {
+	@extend .button;
+	$midYellow: map-deep-get($colours, 'wwYellow', 'mid');
+	$lightYellow: map-deep-get($colours, 'wwYellow', 'light');
+
+	&::before {
+		background: linear-gradient($midYellow, $lightYellow 80%);
+	}
 }

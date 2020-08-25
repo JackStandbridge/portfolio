@@ -1,7 +1,0 @@
-@import '../../../styles/functions';
-@import '../../../styles/variables';
-
-.main {
-	background: map-deep-get($colours, 'wwPurple', 'mid');
-	padding: 10rem 1rem;
-}

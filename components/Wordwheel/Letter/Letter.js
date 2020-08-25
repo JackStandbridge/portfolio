@@ -1,4 +1,4 @@
-import styles from './Letter.module.scss';
+import styles from './letter.module.scss';
 
 const Letter = ({
 	id,
@@ -21,7 +21,7 @@ const Letter = ({
 		<button
 			style={ buttonStyles }
 			onClick={ () => handleToggle(id) }
-			className={ styles.button }
+			className={ id === 4 ? styles.middle : styles.button }
 		>
 			{ letter }
 		</button>

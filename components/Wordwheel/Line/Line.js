@@ -1,24 +1,23 @@
 import Letter from '../Letter';
-import styles from './Line.module.scss';
+import styles from './line.module.scss';
 
-const Line = ({ letterIds, isWheelLayout }) => {
-
-	const dimensions = 5;
-	const spacing = 1.5;
-
+const Line = ({ letterIds, isWheelLayout, scale, spacing, dimensions }) => {
 	return (
-		<div className={ styles.line }>
+		<div className={ styles.wrapper }>
+			<div className={ styles.line }>
 
-			{ letterIds.map(id => (
-				<Letter
-					key={ id }
-					id={ id }
-					dimensions={ dimensions }
-					isWheelLayout={ isWheelLayout }
-					spacing={ spacing }
-				/>
-			)) }
+				{ letterIds.map(id => (
+					<Letter
+						scale={ scale }
+						spacing={ spacing }
+						dimensions={ dimensions }
+						isWheelLayout={ isWheelLayout }
+						key={ id }
+						id={ id }
+					/>
+				)) }
 
+			</div>
 		</div>
 	);
 };

@@ -1,5 +1,5 @@
 import Line from '../Line';
-import styles from './Game.module.scss';
+import styles from './game.module.scss';
 
 const Game = () => {
 	return (
