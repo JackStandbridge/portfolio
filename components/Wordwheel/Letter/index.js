@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Letter from './Letter';
 
-import { letterSelector, toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/reducer';
+import { letterSelector, toggleLetter, deselectLetter, positionSelector } from '../../../lib/slices/wordwheel/reducer';
 
 const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 
@@ -21,9 +21,9 @@ const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 	const {
 		letter,
 		selected,
-		basePosition,
-		raisedPosition,
 	} = letters.entities[id] ?? {};
+
+	const { raisedPosition, basePosition } = useSelector(state => positionSelector(state, id));
 
 	const numberOfSelectedLetters = letters.ids
 		.filter(id => letters.entities[id].selected)
