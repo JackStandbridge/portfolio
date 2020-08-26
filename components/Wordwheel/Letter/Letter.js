@@ -1,4 +1,4 @@
-import styles from './letter.module.scss';
+import styles from './Letter.module.scss';
 
 const Letter = ({
 	id,

@@ -31,22 +31,25 @@ const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 
 	const translateBy = (scale * (9 - numberOfSelectedLetters)) / 2;
 
-	const row = isWheelLayout ? Math.floor(basePosition / 3) : 0;
-	const col = isWheelLayout ? basePosition % 3 : basePosition;
+	const row = isWheelLayout ? Math.floor(id / 3) : 0;
+	const col = isWheelLayout ? id % 3 : basePosition;
 
-	const baseTop = `calc(${ row } * ${ scale }rem)`;
-	const baseLeft = `calc(${ col } * ${ scale }rem)`;
+	const baseTop = `calc(${ row * (isWheelLayout ? 3 : 1) } * ${ scale }rem)`;
+	const baseLeft = `calc(${ col * (isWheelLayout ? 3 : 1) } * ${ scale }rem)`;
 
-	const width = dimensions;
-	const height = dimensions;
+	const lineHeight = dimensions;
+	const lineWidth = dimensions;
+
+	const baseHeight = dimensions * (isWheelLayout ? 3 : 1) + (isWheelLayout ? spacing * 2 : 0);
+	const baseWidth = dimensions * (isWheelLayout ? 3 : 1) + (isWheelLayout ? spacing * 2 : 0);
 
 	const backingStyles = {
 		// position backing divs simply in a line
 		left: baseLeft,
 		top: baseTop,
 		// set the size
-		height: `${ height }rem`,
-		width: `${ width }rem`,
+		height: `${ baseHeight }rem`,
+		width: `${ baseWidth }rem`,
 	};
 
 	const buttonStyles = {
@@ -55,8 +58,8 @@ const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 		// move it up out of the base row
 		top: selected ? `-${ dimensions + (spacing * 2) }rem` : baseTop,
 		// set the size
-		height: `${ height }rem`,
-		width: `${ width }rem`,
+		height: `${ (!selected && isWheelLayout) ? baseHeight : lineHeight }rem`,
+		width: `${ (!selected && isWheelLayout) ? baseWidth : lineWidth }rem`,
 	};
 
 	return (

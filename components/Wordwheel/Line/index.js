@@ -9,7 +9,7 @@ const LineContainer = () => {
 
 	const letterIds = useSelector(letterIdsSelector, shallowEqual);
 
-	const breakPoint = 675;
+	const breakPoint = 550;
 
 	const [isWheelLayout, setIsWheelLayout] = useState(window.innerWidth < breakPoint);
 
@@ -30,12 +30,14 @@ const LineContainer = () => {
 				}
 			});
 
-			const fractionOfScreen = (window.innerWidth / 9 - (spacing * 16 + spacing)) / 16;
+			const fractionOfScreen = (window.innerWidth - 216) / 144;
 			const size = Math.min(3, fractionOfScreen);
 			setDimensions(size);
 		};
 
 		window.addEventListener('resize', resizeListener);
+
+		resizeListener();
 
 		return () => {
 			window.removeEventListener('resize', resizeListener);

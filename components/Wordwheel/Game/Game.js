@@ -1,9 +1,10 @@
 import Line from '../Line';
-import styles from './game.module.scss';
+import Guesses from '../Guesses';
 
 const Game = () => {
 	return (
-		<main className={ styles.main }>
+		<main>
+			<Guesses />
 			<Line />
 		</main>
 	);

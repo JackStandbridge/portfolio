@@ -1,5 +1,5 @@
 import Letter from '../Letter';
-import styles from './line.module.scss';
+import styles from './Line.module.scss';
 
 const Line = ({ letterIds, isWheelLayout, scale, spacing, dimensions }) => {
 	return (

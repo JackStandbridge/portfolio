@@ -24,7 +24,7 @@ const GameContainer = () => {
 		return () => {
 			window.removeEventListener('keydown', keyDownListener);
 		}
-	});
+	}, [dispatch]);
 
 	return (
 		<Game />

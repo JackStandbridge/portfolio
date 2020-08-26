@@ -1,6 +1,5 @@
 .wrapper {
-	padding: 7rem 1rem 1rem 1rem;
-	width: min-content;
+	padding: 7rem 0.75rem 0.75rem 0.75rem;
 }
 
 .line {
@@ -10,8 +9,10 @@
 	width: calc(9 * 4.5rem - 1.5rem);
 	height: 3rem;
 
-	@media only screen and (max-width: 800px) {
-		height: calc(3 * 4.5rem - 0.5rem);
-		width: calc(3 * 4.5rem - 0.5rem);
+	margin: auto;
+
+	@media only screen and (max-width: 550px) {
+		height: calc(100vw - 1.5rem);
+		width: calc(100vw - 1.5rem);
 	}
 }
