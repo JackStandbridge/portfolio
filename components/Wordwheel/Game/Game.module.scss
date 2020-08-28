@@ -1,0 +1,14 @@
+.main {
+	min-height: 100vh;
+
+	display: grid;
+	grid-template:
+		'header' min-content
+		'answers'
+		'interface' min-content
+	;
+
+	max-width: 1000px;
+	margin: auto;
+
+}

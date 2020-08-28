@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import Guesses from './Guesses';
-import { guessesSelector } from '../../../lib/slices/wordwheel/reducer';
+import { guessesSelector } from '../../../lib/slices/wordwheel/selectors';
 
 const GuessesContainer = () => {
 

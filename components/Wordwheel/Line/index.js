@@ -3,7 +3,7 @@ import { useSelector, shallowEqual } from 'react-redux'
 
 import Line from './Line';
 
-import { letterIdsSelector } from '../../../lib/slices/wordwheel/reducer';
+import { letterIdsSelector } from '../../../lib/slices/wordwheel/selectors';
 
 const LineContainer = () => {
 

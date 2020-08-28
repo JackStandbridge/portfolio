@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Letter from './Letter';
 
-import { letterSelector, toggleLetter, deselectLetter, positionSelector } from '../../../lib/slices/wordwheel/reducer';
+import { toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/reducer';
+import { letterSelector, positionSelector } from '../../../lib/slices/wordwheel/selectors';
 
 const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 

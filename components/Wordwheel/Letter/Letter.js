@@ -19,6 +19,7 @@ const Letter = ({
 		</button>
 
 		<button
+			tabIndex={ -1 }
 			style={ buttonStyles }
 			onClick={ () => handleToggle(id) }
 			className={ id === 4 ? styles.middle : styles.button }
