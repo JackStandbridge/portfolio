@@ -11,7 +11,7 @@ const LineContainer = () => {
 
 	const breakPoint = 550;
 
-	const [isWheelLayout, setIsWheelLayout] = useState(window.innerWidth < breakPoint);
+	const [isWheelLayout, setIsWheelLayout] = useState(false);
 
 	const spacing = 1.5;
 	const [dimensions, setDimensions] = useState(3);

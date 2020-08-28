@@ -1,5 +1,4 @@
-@import '../../../styles/functions';
-@import '../../../styles/variables';
+@import '../../../styles/index.module.scss';
 
 $radius: 0.5rem;
 
@@ -14,7 +13,6 @@ $radius: 0.5rem;
 	font-size: 2rem;
 	transition: 0.2s;
 
-	font-family: sans-serif;
 	text-transform: uppercase;
 	font-weight: bold;
 

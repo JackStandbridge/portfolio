@@ -3,8 +3,6 @@ import Head from 'next/head';
 
 import store from '../lib/store';
 
-import '../styles/index.scss';
-
 const Entry = ({ Component, pageProps }) => (
 	<Provider store={ store } >
 		<Head>

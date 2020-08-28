@@ -4,18 +4,33 @@ import { capitalize } from '../../lib/utils';
 
 const Games = () => {
 	const games = [
-		'wordwheel', 'bananagrams', 'colour flood', 'memory'
+		{
+			name: 'wordwheel',
+			imgUrl: 'https://placekitten.com/300/301'
+		},
+		{
+			name: 'bananagrams',
+			imgUrl: 'https://placekitten.com/301/300'
+		},
+		{
+			name: 'colour flood',
+			imgUrl: 'https://placekitten.com/300/299'
+		},
+		{
+			name: 'memory',
+			imgUrl: 'https://placekitten.com/299/300'
+		},
 	];
 
 	return (
 		<main>
 			<h1>Games</h1>
-			{ games.map(game => (
+			{ games.map((game, i) => (
 				<Card
-					key={ game }
-					title={ capitalize(game) }
-					img='https://placekitten.com/300/300'
-					link={ 'games/' + game.replace(' ', '-') }
+					key={ i }
+					title={ capitalize(game.name) }
+					img={ game.imgUrl }
+					link={ 'games/' + game.name.replace(' ', '-') }
 				/>
 			))
 			}
