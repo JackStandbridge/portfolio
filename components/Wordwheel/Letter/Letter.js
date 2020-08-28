@@ -1,3 +1,5 @@
+import Loading from '../Loading/Loading';
+
 import styles from './Letter.module.scss';
 
 const Letter = ({
@@ -7,25 +9,39 @@ const Letter = ({
 	letter,
 	handleToggle,
 	handleDeselect,
+	loading,
 }) => (
 	<>
-		<button
-			style={ backingStyles }
-			className={ styles.backing }
-			onClick={ () => handleDeselect(id) }
-			tabIndex={ -1 }
-		>
-			{ letter }
-		</button>
+		{ loading &&
+			<span
+				className={ styles.button }
+				style={ backingStyles }
+			>
+				<Loading />
+			</span>
+		}
 
-		<button
-			tabIndex={ -1 }
-			style={ buttonStyles }
-			onClick={ () => handleToggle(id) }
-			className={ id === 4 ? styles.middle : styles.button }
-		>
-			{ letter }
-		</button>
+		{ !loading &&
+			<>
+				<button
+					style={ backingStyles }
+					className={ styles.backing }
+					onClick={ () => handleDeselect(id) }
+					tabIndex={ -1 }
+				>
+					{ letter }
+				</button>
+
+				<button
+					tabIndex={ -1 }
+					style={ buttonStyles }
+					onClick={ () => handleToggle(id) }
+					className={ id === 4 ? styles.middle : styles.button }
+				>
+					{ letter }
+				</button>
+			</>
+		}
 	</>
 );
 

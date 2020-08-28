@@ -4,7 +4,8 @@
 	display: grid;
 	grid-template:
 		'header' min-content
-		'answers'
+		'answers' 1fr
+		'controls' min-content
 		'interface' min-content
 	;
 

@@ -1,9 +1,9 @@
-import React from 'react';
+import Link from 'next/link';
 
-const App = () => {
-	return (
-		<div>App</div>
-	);
-};
+const App = () => (
+	<Link href='/games'>
+		<a>Games</a>
+	</Link>
+);
 
 export default App;

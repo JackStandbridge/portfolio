@@ -1,0 +1,22 @@
+@import '../../../styles/index.module.scss';
+
+.section {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0 2rem 1rem 2rem;
+}
+
+.button {
+	font-family: inherit;
+	font-size: inherit;
+	align-self: flex-end;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	border: none;
+	color: white;
+	background: linear-gradient(
+		map-deep-get($colours, 'wwBlue', 'mid'),
+		map-deep-get($colours, 'wwBlue', 'dark'),
+	);
+}

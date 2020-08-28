@@ -2,7 +2,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Letter from './Letter';
 
 import { toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/reducer';
-import { letterSelector, positionSelector } from '../../../lib/slices/wordwheel/selectors';
+import {
+	letterSelector,
+	positionSelector,
+	loadingSelector
+} from '../../../lib/slices/wordwheel/selectors';
 
 const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 
@@ -24,7 +28,7 @@ const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 		selected,
 	} = letters.entities[id] ?? {};
 
-	const { raisedPosition, basePosition } = useSelector(state => positionSelector(state, id));
+	const { raisedPosition, basePosition } = useSelector(positionSelector(id));
 
 	const numberOfSelectedLetters = letters.ids
 		.filter(id => letters.entities[id].selected)
@@ -63,6 +67,8 @@ const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 		width: `${ (!selected && isWheelLayout) ? baseWidth : lineWidth }rem`,
 	};
 
+	const loading = useSelector(loadingSelector);
+
 	return (
 		<Letter
 			id={ id }
@@ -71,6 +77,7 @@ const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 			letter={ letter }
 			handleToggle={ handleToggle }
 			handleDeselect={ handleDeselect }
+			loading={ loading }
 		/>
 	);
 };

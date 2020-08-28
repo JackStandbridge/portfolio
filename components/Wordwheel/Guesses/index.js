@@ -1,31 +1,29 @@
 import { useSelector } from 'react-redux'
 import Guesses from './Guesses';
-import { guessesSelector } from '../../../lib/slices/wordwheel/selectors';
+
+import {
+	guessesSelector,
+	answersSelector,
+	showAnswersSelector
+} from '../../../lib/slices/wordwheel/selectors';
 
 const GuessesContainer = () => {
 
-	/**
-	 * Make this data structure
-	 * 	{
-	 * 		'a': {
-	 * 			id: 'a',
-	 * 			guesses: ['adder', 'apple'],
-	 * 		},
-	 * 		'b': {
-	 * 			id: 'b',
-	 * 			guesses: ['banana', 'boa'],
-	 * 		},
-	 * 		'c': {
-	 * 			id: 'c',
-	 * 			guesses: ['cornsnake', 'cranberry'],
-	 * 		},
-	 * 	}
-	 */
+	const guesses = useSelector(guessesSelector);
+	const answers = useSelector(answersSelector);
+	const showAnswers = useSelector(showAnswersSelector);
 
-	const guesses = [...useSelector(guessesSelector)]
-		.sort()
+	const guessObjects = guesses
+		.map(word => ({ word, guessedByUser: true }));
+
+	const answerObjects = !showAnswers ? [] : answers
+		.filter(word => !guesses.includes(word))
+		.map(word => ({ word, guessedByUser: false }));
+
+	const words = [...guessObjects, ...answerObjects]
+		.sort((a, b) => a.word > b.word ? 1 : -1)
 		.reduce((dictionary, guess) => {
-			const id = guess[0].toLowerCase();
+			const id = guess.word[0].toLowerCase();
 
 			if (dictionary[id] === undefined) {
 				dictionary[id] = {
@@ -40,8 +38,9 @@ const GuessesContainer = () => {
 
 		}, {});
 
+
 	return (
-		<Guesses guesses={ guesses } />
+		<Guesses words={ words } />
 	);
 };
 

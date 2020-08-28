@@ -1,0 +1,44 @@
+.loading {
+	position: absolute;
+	display: block;
+
+	width: 50%;
+	height: 50%;
+	margin: auto;
+
+	border-radius: 50%;
+
+	border-top: 3px solid transparent;
+	border-left: 3px solid white;
+	border-right: 3px solid white;
+	border-bottom: 3px solid transparent;
+
+	animation: spin 2s infinite linear;
+
+	&::after, &::before {
+		content: '';
+		position: absolute;
+		display: block;
+
+		height: 0.3rem;
+		width: 0.3rem;
+
+		border-radius: 50%;
+		background: white;
+	}
+
+	&::after {
+		top: 0;
+		left: 0;
+	}
+
+	&::before {
+		right: 0;
+		bottom: 0;
+	}
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg) }
+	100% { transform: rotate(360deg) }
+}

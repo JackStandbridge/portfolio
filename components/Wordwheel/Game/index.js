@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux';
 
 import Game from './Game';
 
-import { newGame, userTyped } from '../../../lib/slices/wordwheel/reducer';
+import { requestNewGame } from '../../../lib/slices/wordwheel/async';
+import { userTyped } from '../../../lib/slices/wordwheel/reducer';
 
 const GameContainer = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(newGame());
+		dispatch(requestNewGame());
 	}, [dispatch]);
 
 	useEffect(() => {
