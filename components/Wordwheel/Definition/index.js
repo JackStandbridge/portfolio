@@ -6,7 +6,7 @@ import Definition from './Definition';
 import { definitionsSelector } from '../../../lib/slices/wordwheel/selectors';
 import { getWordInfo } from '../../../lib/slices/wordwheel/async';
 
-const DefinitionContainer = ({ word }) => {
+const DefinitionContainer = ({ word, top, left }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -16,7 +16,11 @@ const DefinitionContainer = ({ word }) => {
 	const definitions = useSelector(definitionsSelector(word));
 
 	return (
-		<Definition definitions={ definitions } />
+		<Definition
+			definitions={ definitions }
+			top={ top }
+			left={ left }
+		/>
 	);
 };
 

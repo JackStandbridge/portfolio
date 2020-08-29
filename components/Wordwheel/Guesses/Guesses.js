@@ -1,39 +1,68 @@
+import { useCallback, useState } from 'react';
 import Guess from '../Guess';
 import Definition from '../Definition';
 
 import styles from './Guesses.module.scss';
 
-const Guesses = ({ words, handleClick, shownDefinition }) => (
-	<section className={ styles.section }>
-		<ul className={ styles.mainUl }>
-			{ Object.values(words).map(section => (
+const Guesses = ({ words, handleClick, shownDefinition }) => {
+	const [top, setTop] = useState(0);
+	const [left, setLeft] = useState(0);
 
-				<li key={ section.id }>
-					<ul className={ styles.subUl }>
+	const ref = useCallback(node => {
+		if (!node) {
+			return;
+		}
 
-						{ section.words.map(({ word, guessedByUser }) => (
-							<li
-								key={ word }
-								className={ styles.li }
-							>
-								<Guess
-									guessedByUser={ guessedByUser }
-									word={ word }
-									handleClick={ () => handleClick(word) }
-								/>
+		const {
+			x,
+			y,
+			width,
+			height
+		} = node.getBoundingClientRect();
+		const top = y + height;
+		const left = x + (width / 2);
 
-								{ shownDefinition === word &&
-									<Definition word={ word } />
-								}
-							</li>
-						)) }
+		setTop(top);
+		setLeft(left);
 
-					</ul>
-				</li>
+	});
 
-			)) }
-		</ul>
-	</section>
-);
+	return (
+		<section className={ styles.section }>
+			<ul className={ styles.mainUl }>
+				{ Object.values(words).map(section => (
+
+					<li key={ section.id }>
+						<ul className={ styles.subUl }>
+
+							{ section.words.map(({ word, guessedByUser }) => (
+								<li
+									key={ word }
+									className={ styles.li }
+									{ ...(word === shownDefinition ? { ref } : {}) }
+								>
+									<Guess
+										guessedByUser={ guessedByUser }
+										word={ word }
+										handleClick={ () => handleClick(word) }
+									/>
+								</li>
+							)) }
+
+						</ul>
+					</li>
+
+				)) }
+			</ul>
+			{ shownDefinition &&
+				<Definition
+					word={ shownDefinition }
+					top={ top }
+					left={ left }
+				/>
+			}
+		</section>
+	);
+}
 
 export default Guesses;

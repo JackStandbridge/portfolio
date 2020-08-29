@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 
 import Guesses from './Guesses';
@@ -46,6 +46,10 @@ const GuessesContainer = () => {
 		const newWord = shownDefinition === word ? null : word;
 		setShownDefinition(newWord);
 	};
+
+	useEffect(() => {
+		setShownDefinition(null);
+	}, [answers, setShownDefinition, showAnswers, guesses]);
 
 	return (
 		<Guesses

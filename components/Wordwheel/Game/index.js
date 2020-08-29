@@ -16,8 +16,6 @@ const GameContainer = () => {
 	useEffect(() => {
 
 		const keyDownListener = e => {
-			document.activeElement.blur();
-
 			if (!e.shiftKey && !e.metaKey && !e.altKey) {
 				dispatch(userTyped(e.key));
 			}

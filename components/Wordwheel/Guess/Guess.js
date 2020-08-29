@@ -1,10 +1,10 @@
 import styles from './Guess.module.scss';
 
-const Guess = ({ word, handleClick, guessedByUser }) => (
+const Guess = ({ word, handleClick, guessedByUser, handleDelete }) => (
 	<button
-	className={ styles.button }
 		className={ guessedByUser ? styles.guess : styles.answer }
 		onClick={ handleClick }
+		onContextMenu={ handleDelete }
 	>
 		{ word }
 	</button>

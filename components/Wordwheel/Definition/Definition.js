@@ -4,9 +4,12 @@ import Loading from '../Loading/Loading';
 
 import styles from './Definition.module.scss';
 
-const Definition = ({ definitions }) => {
+const Definition = ({ definitions, top, left }) => {
 	return (
-		<aside className={ styles.container }>
+		<aside
+			className={ styles.container }
+			style={{ top, left }}
+		>
 			{ definitions === null && 'No definitions found!' }
 
 			{ definitions === undefined &&
@@ -20,8 +23,7 @@ const Definition = ({ definitions }) => {
 					{ definitions.map(({ word, meaning, phonetics }, i) => (
 						<section key={ i }>
 							<h2>
-								{ word }
-								&thinsp;-&thinsp;
+								{ word }&thinsp;
 								<span className={ styles.pronunciation }>
 									{ phonetics.map(entry => entry.text) }
 								</span>
