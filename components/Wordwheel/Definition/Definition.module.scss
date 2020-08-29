@@ -1,0 +1,66 @@
+.container {
+	position: absolute;
+	z-index: 2;
+
+	left: 50%;
+	transform: translate(-50%, 1rem);
+
+	padding: 1rem;
+	background: white;
+	border: 2px solid #0005;
+
+	min-width: 4rem;
+	min-height: 4rem;
+	max-width: 20rem;
+	max-height: 12rem;
+
+	box-shadow: inset 0 -40px 15px -25px #0005;
+
+	&::before {
+		content: '';
+		display: block;
+		position: fixed;
+		left: 50%;
+		top: -1rem;
+		z-index: -1;
+		transform: translateX(-50%) rotate(45deg);
+		background: white;
+		width: 2rem;
+		height: 2rem;
+		border-left: 2px solid #0005;
+		border-top: 2px solid #0005;
+	}
+}
+
+.article {
+	overflow: scroll;
+	word-break: break-word;
+
+	max-height: 10rem;
+	max-width: 18rem;
+	width: max-content;
+
+	text-align: left;
+}
+
+.loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pronunciation {
+	font-family: Menlo, monospace;
+	font-weight: normal;
+	font-size: 1.3rem;
+}
+
+.p {
+	margin: 1rem 0;
+}

@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux'
+
 import Guesses from './Guesses';
 
 import {
@@ -28,19 +30,29 @@ const GuessesContainer = () => {
 			if (dictionary[id] === undefined) {
 				dictionary[id] = {
 					id,
-					guesses: [],
+					words: [],
 				};
 			}
 
-			dictionary[id].guesses.push(guess);
+			dictionary[id].words.push(guess);
 
 			return dictionary;
 
 		}, {});
 
+	const [shownDefinition, setShownDefinition] = useState(null);
+
+	const handleClick = word => {
+		const newWord = shownDefinition === word ? null : word;
+		setShownDefinition(newWord);
+	};
 
 	return (
-		<Guesses words={ words } />
+		<Guesses
+			words={ words }
+			handleClick={ handleClick }
+			shownDefinition={ shownDefinition }
+		/>
 	);
 };
 

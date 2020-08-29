@@ -1,5 +1,5 @@
 import styles from './Loading.module.scss';
 
-const Loading = () => <div className={ styles.loading }/>
+const Loading = ({ colour }) => <div className={ styles[colour ?? 'loading'] }/>
 
 export default Loading;

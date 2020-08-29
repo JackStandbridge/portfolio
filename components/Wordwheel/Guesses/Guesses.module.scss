@@ -13,18 +13,18 @@
 	margin: 0;
 	text-align: center;
 
-	columns: 1;
+	columns: 2;
 	@media screen and (min-width: 400px) {
-		columns: 2;
-	}
-	@media screen and (min-width: 600px) {
 		columns: 3;
 	}
-	@media screen and (min-width: 700px) {
+	@media screen and (min-width: 600px) {
 		columns: 4;
 	}
-	@media screen and (min-width: 900px) {
+	@media screen and (min-width: 700px) {
 		columns: 5;
+	}
+	@media screen and (min-width: 900px) {
+		columns: 6;
 	}
 	column-gap: 0;
 }
@@ -32,15 +32,9 @@
 .subUl {
 	list-style: none;
 	padding: 0;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 }
 
-.guess {
-	font-family: Nunito, sans-serif;
-	font-size: 1.4rem;
-}
-
-.answer {
-	@extend .guess;
-	color: red;
+.li {
+	position: relative;
 }

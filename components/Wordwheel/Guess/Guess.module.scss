@@ -1,0 +1,14 @@
+.guess {
+	font-family: Nunito, sans-serif;
+	font-size: 1.4rem;
+
+	cursor: pointer;
+
+	border: none;
+	background: none;
+}
+
+.answer {
+	@extend .guess;
+	color: red;
+}

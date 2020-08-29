@@ -3,8 +3,8 @@ import Target from './Target';
 import { answersSelector, guessesSelector } from '../../../lib/slices/wordwheel/selectors';
 
 const TargetContainer = () => {
-	const answers = useSelector(answersSelector);
-	const guesses = useSelector(guessesSelector);
+	const answers = Object.keys(useSelector(answersSelector));
+	const guesses = Object.keys(useSelector(guessesSelector));
 
 	const average = Math.floor(answers.length * 0.5);
 	const good = Math.floor(answers.length * 0.6);

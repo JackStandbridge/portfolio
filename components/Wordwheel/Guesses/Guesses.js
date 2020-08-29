@@ -1,31 +1,39 @@
-import React from 'react';
+import Guess from '../Guess';
+import Definition from '../Definition';
+
 import styles from './Guesses.module.scss';
 
-const Guesses = ({ words }) => {
-	return (
-		<section className={ styles.section }>
-			<ul className={ styles.mainUl }>
-				{ Object.values(words).map(section => (
+const Guesses = ({ words, handleClick, shownDefinition }) => (
+	<section className={ styles.section }>
+		<ul className={ styles.mainUl }>
+			{ Object.values(words).map(section => (
 
-					<li key={ section.id }>
-						<ul className={ styles.subUl }>
+				<li key={ section.id }>
+					<ul className={ styles.subUl }>
 
-							{ section.guesses.map(({ word, guessedByUser }) => (
-								<li
-									key={ word }
-									className={ guessedByUser ? styles.guess : styles.answer }
-								>
-									{ word }
-								</li>
-							)) }
+						{ section.words.map(({ word, guessedByUser }) => (
+							<li
+								key={ word }
+								className={ styles.li }
+							>
+								<Guess
+									guessedByUser={ guessedByUser }
+									word={ word }
+									handleClick={ () => handleClick(word) }
+								/>
 
-						</ul>
-					</li>
+								{ shownDefinition === word &&
+									<Definition word={ word } />
+								}
+							</li>
+						)) }
 
-				)) }
-			</ul>
-		</section>
-	);
-};
+					</ul>
+				</li>
+
+			)) }
+		</ul>
+	</section>
+);
 
 export default Guesses;

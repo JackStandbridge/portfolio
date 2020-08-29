@@ -17,7 +17,10 @@ const GameContainer = () => {
 
 		const keyDownListener = e => {
 			document.activeElement.blur();
-			dispatch(userTyped(e.key));
+
+			if (!e.shiftKey && !e.metaKey && !e.altKey) {
+				dispatch(userTyped(e.key));
+			}
 		};
 
 		window.addEventListener('keydown', keyDownListener);
