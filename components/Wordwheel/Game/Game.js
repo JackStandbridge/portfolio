@@ -1,4 +1,4 @@
-import Target from '../Target';
+import Header from '../Header';
 import Guesses from '../Guesses';
 import Controls from '../Controls';
 import Line from '../Line';
@@ -8,7 +8,7 @@ import styles from './Game.module.scss';
 const Game = () => {
 	return (
 		<main className={ styles.main }>
-			<Target />
+			<Header />
 			<Guesses />
 			<Controls />
 			<Line />

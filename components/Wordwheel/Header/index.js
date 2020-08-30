@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import Target from './Target';
+import Header from './Header';
 import { answersSelector, guessesSelector } from '../../../lib/slices/wordwheel/selectors';
 
-const TargetContainer = () => {
+const HeaderContainer = () => {
 	const answers = Object.keys(useSelector(answersSelector));
 	const guesses = Object.keys(useSelector(guessesSelector));
 
@@ -30,7 +30,7 @@ const TargetContainer = () => {
 	];
 
 	return (
-		<Target
+		<Header
 			guessed={ guessed }
 			targets={ targets }
 			total={ answers.length }
@@ -38,4 +38,4 @@ const TargetContainer = () => {
 	);
 };
 
-export default TargetContainer;
+export default HeaderContainer;

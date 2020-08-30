@@ -1,8 +1,9 @@
-import styles from './Target.module.scss';
+import styles from './Header.module.scss';
 
-const Target = ({ guessed, targets, total }) => {
+const Header = ({ guessed, targets, total }) => {
 	return (
 		<header className={ styles.header }>
+			<h1 className={ styles.h1 }>WordWheel</h1>
 			<span>Guessed: { guessed }</span>
 
 			<span className={ styles.targets }>
@@ -21,4 +22,4 @@ const Target = ({ guessed, targets, total }) => {
 	);
 };
 
-export default Target;
+export default Header;

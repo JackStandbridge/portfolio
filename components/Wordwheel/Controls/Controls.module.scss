@@ -8,15 +8,23 @@
 }
 
 .button {
+	align-self: flex-end;
+
 	font-family: inherit;
 	font-size: inherit;
-	align-self: flex-end;
-	padding: 1rem;
-	border-radius: 0.5rem;
-	border: none;
+
 	color: white;
 	background: linear-gradient(
 		map-deep-get($colours, 'wwBlue', 'mid'),
 		map-deep-get($colours, 'wwBlue', 'dark'),
 	);
+
+	padding: 1rem;
+	border-radius: 0.5rem;
+	border: 2px solid white;
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 3px map-deep-get($colours, 'wwBlue', 'mid');
+	}
 }

@@ -16,6 +16,10 @@ const GameContainer = () => {
 	useEffect(() => {
 
 		const keyDownListener = e => {
+			if (e.key.match(/^[a-zA-Z]$/)) {
+				document.activeElement.blur();
+			}
+
 			if (!e.shiftKey && !e.metaKey && !e.altKey) {
 				dispatch(userTyped(e.key));
 			}

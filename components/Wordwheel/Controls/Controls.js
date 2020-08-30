@@ -10,13 +10,15 @@ const Controls = ({
 			<button
 				className={ styles.button }
 				onClick={ handleNewGame }
-			>
+				title='Cmd + Shift + S'
+				>
 				New Game
 			</button>
 
 			<button
 				className={ styles.button }
 				onClick={ handleShowAnswers }
+				title='Cmd + Shift + A'
 			>
 				Show Answers
 			</button>
