@@ -16,6 +16,11 @@ const GuessContainer = ({ word, guessedByUser, handleClick }) => {
 		if (e.key === 'Backspace') {
 			handleDelete(e);
 		}
+
+		if (e.key === 'Enter') {
+			e.nativeEvent.stopImmediatePropagation();
+			window.eventJack = e;
+		}
 	};
 
 	return (

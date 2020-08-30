@@ -10,40 +10,42 @@ const Letter = ({
 	handleToggle,
 	handleDeselect,
 	loading,
-}) => (
-	<>
-		{ loading &&
-			<span
-				className={ styles.button }
-				style={ backingStyles }
-			>
-				<Loading />
-			</span>
-		}
-
-		{ !loading &&
-			<>
-				<button
+	focused,
+}) => {
+	return (
+		<>
+			{ loading &&
+				<span
+					className={ styles.button }
 					style={ backingStyles }
-					className={ styles.backing }
-					onClick={ () => handleDeselect(id) }
-					tabIndex={ -1 }
 				>
-					{ letter }
-				</button>
+					<Loading />
+				</span>
+			}
 
-				<button
-					tabIndex={ -1 }
-					style={ buttonStyles }
-					onClick={ () => handleToggle(id) }
-					className={ id === 4 ? styles.middle : styles.button }
-				>
-					{ letter }
-				</button>
-			</>
-		}
-	</>
-);
+			{ !loading &&
+				<>
+					<button
+						tabIndex={ -1 }
+						style={ backingStyles }
+						className={ `${ styles.backing } ${ focused ? styles.focused : '' }` }
+						onClick={ () => handleDeselect(id) }
+					>
+						{ letter }
+					</button>
 
+					<button
+						tabIndex={ -1 }
+						style={ buttonStyles }
+						onClick={ () => handleToggle(id) }
+						className={ id === 4 ? styles.middle : styles.button }
+					>
+						{ letter }
+					</button>
+				</>
+			}
+		</>
+	);
+}
 
 export default Letter;

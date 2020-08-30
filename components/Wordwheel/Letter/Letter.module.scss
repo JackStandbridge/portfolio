@@ -47,7 +47,6 @@ $radius: 0.5rem;
 		z-index: -1;
 
 		border-radius: 2.2 * $radius;
-		border: 3px solid $darkerBlue;
 
 		background: linear-gradient($lightBlue, $lighterBlue 80%);
 	}
@@ -55,13 +54,15 @@ $radius: 0.5rem;
 	&:focus,
 	&:hover {
 		text-decoration: underline;
+		outline: none;
 	}
 
 }
 
 .backing {
-	opacity: 0.2;
-	border: 2px dotted grey;
+	color: #0003;
+	border: 2px dotted #0003;
+	z-index: -1;
 }
 
 .middle {
@@ -71,5 +72,20 @@ $radius: 0.5rem;
 
 	&::before {
 		background: linear-gradient($midYellow, $lightYellow 80%);
+	}
+}
+
+.focused {
+	&::before {
+		content: '';
+
+		position: absolute;
+		top: -15px;
+		left: -15px;
+		right: -15px;
+		bottom: -15px;
+
+		border: 4px solid map-deep-get($colours, 'wwBlue', 'dark');
+		border-radius: 1.3rem;
 	}
 }

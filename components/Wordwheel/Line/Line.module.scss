@@ -1,3 +1,5 @@
+@import '../../../styles/index.module.scss';
+
 .wrapper {
 	padding: 7rem 0.75rem 0.75rem 0.75rem;
 	margin-bottom: 2rem;
@@ -16,5 +18,23 @@
 	@media only screen and (max-width: 550px) {
 		height: calc(100vw - 1.5rem);
 		width: calc(100vw - 1.5rem);
+	}
+}
+
+.focusable {
+	padding: 1rem;
+	max-width: max-content;
+	margin: auto;
+
+	border-radius: 1.3rem;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:not(:focus) {
+		button::before {
+			border: none;
+		}
 	}
 }

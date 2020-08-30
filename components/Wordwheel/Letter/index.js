@@ -8,18 +8,23 @@ import {
 	loadingSelector
 } from '../../../lib/slices/wordwheel/selectors';
 
-const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
+const LetterContainer = ({
+	id,
+	isWheelLayout,
+	scale,
+	spacing,
+	dimensions,
+	focused,
+}) => {
 
 	const dispatch = useDispatch();
 	const letters = useSelector(letterSelector);
 
 	const handleToggle = id => {
-		document.activeElement.blur();
 		dispatch(toggleLetter(id));
 	};
 
 	const handleDeselect = id => {
-		document.activeElement.blur();
 		dispatch(deselectLetter(id));
 	};
 
@@ -78,6 +83,7 @@ const LetterContainer = ({ id, isWheelLayout, scale, spacing, dimensions }) => {
 			handleToggle={ handleToggle }
 			handleDeselect={ handleDeselect }
 			loading={ loading }
+			focused={ focused }
 		/>
 	);
 };

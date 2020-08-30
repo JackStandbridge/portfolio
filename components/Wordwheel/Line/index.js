@@ -4,6 +4,7 @@ import { useSelector, shallowEqual } from 'react-redux'
 import Line from './Line';
 
 import { letterIdsSelector } from '../../../lib/slices/wordwheel/selectors';
+import { clamp } from '../../../lib/utils';
 
 const LineContainer = () => {
 
@@ -44,13 +45,32 @@ const LineContainer = () => {
 		};
 	}, [setIsWheelLayout, setDimensions]);
 
+	const [focused, setFocused] = useState(0);
+
+	const handleKeyDown = e => {
+		if (e.key !== 'Tab') {
+			return;
+		}
+
+		const newIndex = clamp(0, 8, focused + (e.shiftKey ? -1 : 1));
+
+
+		if (focused !== newIndex) {
+			e.preventDefault();
+		}
+
+		setFocused(newIndex);
+	};
+
 	return (
 		<Line
+			focused={ focused }
 			scale={ scale }
 			spacing={ spacing }
 			dimensions={ dimensions }
 			letterIds={ letterIds }
 			isWheelLayout={ isWheelLayout }
+			handleKeyDown={ handleKeyDown }
 		/>
 	);
 };

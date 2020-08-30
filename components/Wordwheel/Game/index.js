@@ -25,10 +25,10 @@ const GameContainer = () => {
 			}
 		};
 
-		window.addEventListener('keydown', keyDownListener);
+		document.addEventListener('keydown', keyDownListener);
 
 		return () => {
-			window.removeEventListener('keydown', keyDownListener);
+			document.removeEventListener('keydown', keyDownListener);
 		}
 	}, [dispatch]);
 
