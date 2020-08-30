@@ -28,3 +28,9 @@
 		box-shadow: 0 0 0 3px map-deep-get($colours, 'wwBlue', 'mid');
 	}
 }
+
+.instructions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

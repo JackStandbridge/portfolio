@@ -9,12 +9,11 @@ const Letter = ({
 	letter,
 	handleToggle,
 	handleDeselect,
-	loading,
 	focused,
 }) => {
 	return (
 		<>
-			{ loading &&
+			{ !letter &&
 				<span
 					className={ styles.button }
 					style={ backingStyles }
@@ -23,7 +22,7 @@ const Letter = ({
 				</span>
 			}
 
-			{ !loading &&
+			{ letter &&
 				<>
 					<button
 						tabIndex={ -1 }

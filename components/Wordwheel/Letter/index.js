@@ -5,7 +5,6 @@ import { toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/redu
 import {
 	letterSelector,
 	positionSelector,
-	loadingSelector
 } from '../../../lib/slices/wordwheel/selectors';
 
 const LetterContainer = ({
@@ -72,7 +71,6 @@ const LetterContainer = ({
 		width: `${ (!selected && isWheelLayout) ? baseWidth : lineWidth }rem`,
 	};
 
-	const loading = useSelector(loadingSelector);
 
 	return (
 		<Letter
@@ -82,7 +80,6 @@ const LetterContainer = ({
 			letter={ letter }
 			handleToggle={ handleToggle }
 			handleDeselect={ handleDeselect }
-			loading={ loading }
 			focused={ focused }
 		/>
 	);

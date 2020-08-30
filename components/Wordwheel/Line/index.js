@@ -6,6 +6,7 @@ import Line from './Line';
 import { letterIdsSelector, baseOrderSelector } from '../../../lib/slices/wordwheel/selectors';
 import { moveLetter } from '../../../lib/slices/wordwheel/reducer';
 import { clamp } from '../../../lib/utils';
+import { useRearrangment } from '../../../lib/hooks';
 
 const LineContainer = () => {
 
@@ -46,45 +47,7 @@ const LineContainer = () => {
 		};
 	}, [setIsWheelLayout, setDimensions]);
 
-	const [focused, setFocused] = useState(0);
-
-	const handleTab = e => {
-		const newIndex = clamp(0, 8, focused + (e.shiftKey ? -1 : 1));
-
-		if (focused !== newIndex) {
-			e.preventDefault();
-		}
-
-		setFocused(newIndex);
-	};
-
-	const dispatch = useDispatch();
-
-	const baseOrder = useSelector(baseOrderSelector);
-
-	const handleMove = e => {
-		const id = focused;
-		const currentPosition = baseOrder.indexOf(id);
-		const toPosition = clamp(0, 8, currentPosition + (e.key === 'ArrowLeft' ? -1 : 1));
-
-		dispatch(moveLetter({ id, toPosition }))
-	}
-
-	const handleKeyDown = e => {
-		switch (e.key) {
-			case 'Tab':
-				handleTab(e);
-				break;
-
-			case 'ArrowLeft':
-			case 'ArrowRight':
-				handleMove(e);
-				break;
-
-			default:
-				break;
-		}
-	};
+	const [focused, handleKeyDown] = useRearrangment();
 
 	return (
 		<Line

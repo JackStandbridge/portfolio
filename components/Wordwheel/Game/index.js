@@ -3,20 +3,20 @@ import { useDispatch } from 'react-redux';
 
 import Game from './Game';
 
-import { requestNewGame } from '../../../lib/slices/wordwheel/async';
+import { getInitialGame } from '../../../lib/slices/wordwheel/async';
 import { userTyped } from '../../../lib/slices/wordwheel/reducer';
 
 const GameContainer = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(requestNewGame());
+		dispatch(getInitialGame());
 	}, [dispatch]);
 
 	useEffect(() => {
 
 		const keyDownListener = e => {
-			if (e.key.match(/^[a-zA-Z]$/)) {
+			if (e.key.match(/^[a-zA-Z]$/ && document.activeElement.matches('button'))) {
 				document.activeElement.blur();
 			}
 
