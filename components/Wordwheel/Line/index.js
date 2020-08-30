@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useSelector, shallowEqual } from 'react-redux'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 
 import Line from './Line';
 
-import { letterIdsSelector } from '../../../lib/slices/wordwheel/selectors';
+import { letterIdsSelector, baseOrderSelector } from '../../../lib/slices/wordwheel/selectors';
+import { moveLetter } from '../../../lib/slices/wordwheel/reducer';
 import { clamp } from '../../../lib/utils';
 
 const LineContainer = () => {
@@ -47,19 +48,42 @@ const LineContainer = () => {
 
 	const [focused, setFocused] = useState(0);
 
-	const handleKeyDown = e => {
-		if (e.key !== 'Tab') {
-			return;
-		}
-
+	const handleTab = e => {
 		const newIndex = clamp(0, 8, focused + (e.shiftKey ? -1 : 1));
-
 
 		if (focused !== newIndex) {
 			e.preventDefault();
 		}
 
 		setFocused(newIndex);
+	};
+
+	const dispatch = useDispatch();
+
+	const baseOrder = useSelector(baseOrderSelector);
+
+	const handleMove = e => {
+		const id = focused;
+		const currentPosition = baseOrder.indexOf(id);
+		const toPosition = clamp(0, 8, currentPosition + (e.key === 'ArrowLeft' ? -1 : 1));
+
+		dispatch(moveLetter({ id, toPosition }))
+	}
+
+	const handleKeyDown = e => {
+		switch (e.key) {
+			case 'Tab':
+				handleTab(e);
+				break;
+
+			case 'ArrowLeft':
+			case 'ArrowRight':
+				handleMove(e);
+				break;
+
+			default:
+				break;
+		}
 	};
 
 	return (
