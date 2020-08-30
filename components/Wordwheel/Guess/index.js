@@ -4,7 +4,7 @@ import Guess from './Guess';
 
 import { deleteGuess } from '../../../lib/slices/wordwheel/reducer';
 
-const GuessContainer = ({ word, guessedByUser, handleClick }) => {
+const GuessContainer = ({ word, guessedByUser, handleClick, handleBlur }) => {
 	const dispatch = useDispatch();
 
 	const handleDelete = e => {
@@ -19,7 +19,6 @@ const GuessContainer = ({ word, guessedByUser, handleClick }) => {
 
 		if (e.key === 'Enter') {
 			e.nativeEvent.stopImmediatePropagation();
-			window.eventJack = e;
 		}
 	};
 
@@ -30,6 +29,7 @@ const GuessContainer = ({ word, guessedByUser, handleClick }) => {
 			handleClick={ handleClick }
 			handleDelete={ handleDelete }
 			handleKeyDown={ handleKeyDown }
+			handleBlur={ handleBlur }
 		/>
 	);
 }

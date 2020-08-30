@@ -1,32 +1,17 @@
-import { useCallback, useState } from 'react';
 import Guess from '../Guess';
 import Definition from '../Definition';
 
 import styles from './Guesses.module.scss';
 
-const Guesses = ({ words, handleClick, shownDefinition }) => {
-	const [top, setTop] = useState(0);
-	const [left, setLeft] = useState(0);
-
-	const ref = useCallback(node => {
-		if (!node) {
-			return;
-		}
-
-		const {
-			x,
-			y,
-			width,
-			height
-		} = node.getBoundingClientRect();
-		const top = y + height;
-		const left = x + (width / 2);
-
-		setTop(top);
-		setLeft(left);
-
-	});
-
+const Guesses = ({
+	words,
+	handleClick,
+	shownDefinition,
+	handleBlur,
+	top,
+	left,
+	selectedRef
+}) => {
 	return (
 		<section className={ styles.section }>
 			<ul className={ styles.mainUl }>
@@ -39,12 +24,13 @@ const Guesses = ({ words, handleClick, shownDefinition }) => {
 								<li
 									key={ word }
 									className={ styles.li }
-									{ ...(word === shownDefinition ? { ref } : {}) }
+									{ ...(word === shownDefinition ? { ref: selectedRef } : {}) }
 								>
 									<Guess
 										guessedByUser={ guessedByUser }
 										word={ word }
 										handleClick={ () => handleClick(word) }
+										handleBlur={ handleBlur }
 									/>
 								</li>
 							)) }

@@ -8,22 +8,22 @@ const Controls = ({
 		<section className={ styles.section }>
 
 			<div className={ styles.instructions }>
-				<small>Cmd + Shift + S</small>
+				<span>Cmd + B</span>
 				<button
 					className={ styles.button }
 					onClick={ handleNewGame }
-					title='Cmd + Shift + S'
+					title='Cmd + B'
 				>
 					New Game
 			</button>
 			</div>
 
 			<div className={ styles.instructions }>
-				<small>Cmd + Shift + A</small>
+				<span>Cmd + K</span>
 				<button
 					className={ styles.button }
 					onClick={ handleShowAnswers }
-					title='Cmd + Shift + A'
+					title='Cmd + K'
 				>
 					Show Answers
 			</button>

@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { useSelector, shallowEqual } from 'react-redux'
 
 import Line from './Line';
 
-import { letterIdsSelector, baseOrderSelector } from '../../../lib/slices/wordwheel/selectors';
-import { moveLetter } from '../../../lib/slices/wordwheel/reducer';
-import { clamp } from '../../../lib/utils';
+import { letterIdsSelector } from '../../../lib/slices/wordwheel/selectors';
 import { useRearrangment } from '../../../lib/hooks';
 
 const LineContainer = () => {
@@ -47,7 +45,20 @@ const LineContainer = () => {
 		};
 	}, [setIsWheelLayout, setDimensions]);
 
-	const [focused, handleKeyDown] = useRearrangment();
+	const [
+		focused,
+		handleKeyDown,
+		setFocus,
+		setBlur,
+	] = useRearrangment();
+
+	useEffect(() => {
+		document.addEventListener('keydown', handleKeyDown);
+
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+		}
+	}, [handleKeyDown]);
 
 	return (
 		<Line
@@ -57,7 +68,8 @@ const LineContainer = () => {
 			dimensions={ dimensions }
 			letterIds={ letterIds }
 			isWheelLayout={ isWheelLayout }
-			handleKeyDown={ handleKeyDown }
+			handleFocus={ setFocus }
+			handleBlur={ setBlur }
 		/>
 	);
 };

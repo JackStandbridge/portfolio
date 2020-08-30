@@ -23,6 +23,12 @@ $radius: 0.5rem;
 	border-radius: 1.5 * $radius;
 
 	cursor: pointer;
+
+	&:focus,
+	&:hover {
+		text-decoration: underline;
+		outline: none;
+	}
 }
 
 .button {
@@ -50,13 +56,6 @@ $radius: 0.5rem;
 
 		background: linear-gradient($lightBlue, $lighterBlue 80%);
 	}
-
-	&:focus,
-	&:hover {
-		text-decoration: underline;
-		outline: none;
-	}
-
 }
 
 .backing {

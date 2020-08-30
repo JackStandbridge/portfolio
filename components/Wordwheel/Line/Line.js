@@ -8,14 +8,16 @@ const Line = ({
 	spacing,
 	dimensions,
 	focused,
-	handleKeyDown,
+	handleFocus,
+	handleBlur,
 }) => {
 	return (
 		<div className={ styles.wrapper }>
 			<div
 				tabIndex='0'
 				className={ styles.focusable }
-				onKeyDown={ handleKeyDown }
+				onFocus={ handleFocus }
+				onBlur={ handleBlur }
 			>
 				<div className={ styles.line }>
 

@@ -10,21 +10,19 @@ const ControlsContainer = () => {
 
 	const dispatch = useDispatch();
 
-	const handleShowAnswers = useCallback(e => {
-		e.currentTarget.blur?.();
+	const handleShowAnswers = useCallback(() => {
 		dispatch(toggleAnswers());
 	}, [dispatch]);
 
-	const handleNewGame = useCallback(e => {
-		e.currentTarget.blur?.();
+	const handleNewGame = useCallback(() => {
 		dispatch(requestNewGame());
 	}, [dispatch]);
 
 	useEffect(() => {
 		const controlsListener = e => {
-			if (e.key === 'a' && e.metaKey && e.shiftKey) {
+			if (e.key === 'k' && e.metaKey) {
 				handleShowAnswers(e);
-			} else if (e.key === 's' && e.metaKey && e.shiftKey) {
+			} else if (e.key === 'b' && e.metaKey) {
 				handleNewGame(e);
 			}
 		};

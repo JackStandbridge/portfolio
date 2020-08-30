@@ -16,7 +16,13 @@ const GameContainer = () => {
 	useEffect(() => {
 
 		const keyDownListener = e => {
-			if (e.key.match(/^[a-zA-Z]$/ && document.activeElement.matches('button'))) {
+			const userIsTyping = e.key.match(/^[a-zA-Z]$/);
+
+			const buttonIsFocused = document.activeElement.matches('button');
+
+			const movingLetters = e.key.match(/^Arrow(Left|Right)$/);
+
+			if (userIsTyping || (movingLetters && buttonIsFocused)) {
 				document.activeElement.blur();
 			}
 

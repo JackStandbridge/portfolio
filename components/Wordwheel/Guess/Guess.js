@@ -5,13 +5,15 @@ const Guess = ({
 	handleClick,
 	guessedByUser,
 	handleDelete,
-	handleKeyDown
+	handleKeyDown,
+	handleBlur,
 }) => (
 	<button
 		className={ guessedByUser ? styles.guess : styles.answer }
 		onClick={ handleClick }
 		onContextMenu={ handleDelete }
 		onKeyDown={ handleKeyDown }
+		onBlur={ handleBlur }
 	>
 		{ word }
 	</button>
