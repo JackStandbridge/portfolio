@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Game from './Game';
 
 import { getInitialGame } from '../../../lib/slices/wordwheel/async';
 import { userTyped } from '../../../lib/slices/wordwheel/reducer';
+import { playingSelector } from '../../../lib/slices/wordwheel/selectors';
 
 const GameContainer = () => {
 	const dispatch = useDispatch();
@@ -13,7 +14,12 @@ const GameContainer = () => {
 		dispatch(getInitialGame());
 	}, [dispatch]);
 
+	const playing = useSelector(playingSelector);
+
 	useEffect(() => {
+		if (!playing) {
+			return;
+		}
 
 		const keyDownListener = e => {
 			const userIsTyping = e.key.match(/^[a-zA-Z]$/);
@@ -36,11 +42,9 @@ const GameContainer = () => {
 		return () => {
 			document.removeEventListener('keydown', keyDownListener);
 		}
-	}, [dispatch]);
+	}, [dispatch, playing]);
 
-	return (
-		<Game />
-	);
+	return <Game />;
 };
 
 export default GameContainer;

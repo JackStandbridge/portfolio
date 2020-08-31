@@ -3,7 +3,7 @@ import { useSelector, shallowEqual } from 'react-redux'
 
 import Line from './Line';
 
-import { letterIdsSelector } from '../../../lib/slices/wordwheel/selectors';
+import { letterIdsSelector, playingSelector } from '../../../lib/slices/wordwheel/selectors';
 import { useRearrangment } from '../../../lib/hooks';
 
 const LineContainer = () => {
@@ -52,13 +52,19 @@ const LineContainer = () => {
 		setBlur,
 	] = useRearrangment();
 
+	const playing = useSelector(playingSelector);
+
 	useEffect(() => {
+		if (!playing) {
+			return;
+		}
+
 		document.addEventListener('keydown', handleKeyDown);
 
 		return () => {
 			document.removeEventListener('keydown', handleKeyDown);
 		}
-	}, [handleKeyDown]);
+	}, [handleKeyDown, playing]);
 
 	return (
 		<Line
