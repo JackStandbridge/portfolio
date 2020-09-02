@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Letter from './Letter';
 
 import { toggleLetter, deselectLetter } from '../../../lib/slices/wordwheel/reducer';
+import { useDrag } from '../../../lib/hooks';
 import {
 	letterSelector,
 	positionSelector,
@@ -18,14 +19,6 @@ const LetterContainer = ({
 
 	const dispatch = useDispatch();
 	const letters = useSelector(letterSelector);
-
-	const handleToggle = id => {
-		dispatch(toggleLetter(id));
-	};
-
-	const handleDeselect = id => {
-		dispatch(deselectLetter(id));
-	};
 
 	const {
 		letter,
@@ -71,16 +64,33 @@ const LetterContainer = ({
 		width: `${ (!selected && isWheelLayout) ? baseWidth : lineWidth }rem`,
 	};
 
+	const spacingInPx = spacing * 16;
+	const [handleDragStart, dragLeft, movingLetter] = useDrag(spacingInPx, id, basePosition);
+
+	buttonStyles.left = dragLeft ?? buttonStyles.left;
+
+	const handleToggle = id => {
+		if (!movingLetter) {
+			dispatch(toggleLetter(id));
+		}
+	};
+
+	const handleDeselect = id => {
+		dispatch(deselectLetter(id));
+	};
 
 	return (
 		<Letter
 			id={ id }
+			letter={ letter }
+			focused={ focused }
 			backingStyles={ backingStyles }
 			buttonStyles={ buttonStyles }
-			letter={ letter }
+
 			handleToggle={ handleToggle }
 			handleDeselect={ handleDeselect }
-			focused={ focused }
+
+			handleDragStart={ handleDragStart }
 		/>
 	);
 };

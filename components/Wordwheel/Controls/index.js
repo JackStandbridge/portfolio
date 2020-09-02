@@ -8,6 +8,7 @@ import {
 	stopPlaying,
 	startPlaying,
 	defineWord,
+	submitGuess,
 } from '../../../lib/slices/wordwheel/reducer';
 import { requestNewGame } from '../../../lib/slices/wordwheel/async';
 import { playingSelector } from '../../../lib/slices/wordwheel/selectors';
@@ -95,6 +96,10 @@ const ControlsContainer = () => {
 		}
 	};
 
+	const handleGuess = () => {
+		dispatch(submitGuess());
+	};
+
 	return (
 		<Controls
 			handleDefineWord={ handleDefineWord }
@@ -106,6 +111,7 @@ const ControlsContainer = () => {
 			handleSubmit={ handleSubmit }
 			modalRef={ modalRef }
 			handleClose={ handleClose }
+			handleGuess={ handleGuess }
 		/>
 	);
 };

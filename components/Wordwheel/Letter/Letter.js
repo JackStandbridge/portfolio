@@ -4,12 +4,14 @@ import styles from './Letter.module.scss';
 
 const Letter = ({
 	id,
+	letter,
+	focused,
 	backingStyles,
 	buttonStyles,
-	letter,
+
 	handleToggle,
 	handleDeselect,
-	focused,
+	handleDragStart,
 }) => {
 	return (
 		<>
@@ -34,6 +36,7 @@ const Letter = ({
 					</button>
 
 					<button
+						onMouseDown={ handleDragStart }
 						tabIndex={ -1 }
 						style={ buttonStyles }
 						onClick={ () => handleToggle(id) }

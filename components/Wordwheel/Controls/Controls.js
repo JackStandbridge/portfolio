@@ -10,6 +10,7 @@ const Controls = ({
 	handleSubmit,
 	modalRef,
 	handleClose,
+	handleGuess,
 }) => {
 	return (
 		<>
@@ -22,8 +23,8 @@ const Controls = ({
 						onClick={ handleNewGame }
 						title='Cmd + B'
 					>
-						New Game
-			</button>
+						{ 'New Game' }
+					</button>
 				</div>
 
 				<div className={ styles.instructions }>
@@ -33,8 +34,19 @@ const Controls = ({
 						onClick={ handleDefineWord }
 						title='Cmd + G'
 					>
-						Define Word
-			</button>
+						{ 'Define Word' }
+					</button>
+				</div>
+
+				<div className={ styles.instructions }>
+					<span>Enter</span>
+					<button
+						className={ styles.button }
+						onClick={ handleGuess }
+						title='Enter'
+					>
+						{ 'Guess' }
+					</button>
 				</div>
 
 				<div className={ styles.instructions }>
@@ -44,8 +56,8 @@ const Controls = ({
 						onClick={ handleShowAnswers }
 						title='Cmd + K'
 					>
-						Show Answers
-			</button>
+						{ 'Show Answers' }
+					</button>
 				</div>
 
 			</section>
