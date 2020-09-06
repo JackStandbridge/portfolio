@@ -11,6 +11,8 @@ const Controls = ({
 	modalRef,
 	handleClose,
 	handleGuess,
+	handleRandomise,
+	handleUndo,
 }) => {
 	return (
 		<>
@@ -28,6 +30,17 @@ const Controls = ({
 				</div>
 
 				<div className={ styles.instructions }>
+					<span>Cmd + U</span>
+					<button
+						className={ styles.button }
+						onClick={ handleRandomise }
+						title='Cmd + U'
+					>
+						{ 'Randomise' }
+					</button>
+				</div>
+
+				<div className={ styles.instructions }>
 					<span>Cmd + G</span>
 					<button
 						className={ styles.button }
@@ -35,6 +48,17 @@ const Controls = ({
 						title='Cmd + G'
 					>
 						{ 'Define Word' }
+					</button>
+				</div>
+
+				<div className={ styles.instructions }>
+					<span>Cmd + Z</span>
+					<button
+						className={ styles.button }
+						onClick={ handleUndo }
+						title='Cmd + Z'
+					>
+						{ 'Undo' }
 					</button>
 				</div>
 

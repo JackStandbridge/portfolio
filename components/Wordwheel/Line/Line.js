@@ -8,17 +8,10 @@ const Line = ({
 	spacing,
 	dimensions,
 	focused,
-	handleFocus,
-	handleBlur,
 }) => {
 	return (
 		<div className={ styles.wrapper }>
-			<div
-				tabIndex='0'
-				className={ styles.focusable }
-				onFocus={ handleFocus }
-				onBlur={ handleBlur }
-			>
+			<div className={ styles.focusable }>
 				<div className={ styles.line }>
 
 					{ letterIds.map(id => (

@@ -23,9 +23,7 @@ const GameContainer = () => {
 
 		const keyDownListener = e => {
 			const userIsTyping = e.key.match(/^[a-zA-Z]$/);
-
 			const buttonIsFocused = document.activeElement.matches('button');
-
 			const movingLetters = e.key.match(/^Arrow(Left|Right)$/);
 
 			if (userIsTyping || (movingLetters && buttonIsFocused)) {

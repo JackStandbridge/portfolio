@@ -3,13 +3,12 @@
 .section {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	gap: 1rem;
 	padding: 0 2rem 1rem 2rem;
 }
 
 .button {
-	align-self: flex-end;
-
 	font-family: inherit;
 	font-size: inherit;
 
@@ -19,8 +18,9 @@
 		map-deep-get($colours, 'wwBlue', 'dark'),
 	);
 
+	margin: 0 auto;
 	padding: 1rem;
-	min-width: 12rem;
+	min-width: 10rem;
 	border-radius: 0.5rem;
 	border: 2px solid white;
 
@@ -52,6 +52,7 @@
 .input {
 	padding: 1rem;
 	padding-left: 2.5rem;
+
 	width: calc(9ch + (9 * 1.5rem) + 3.5rem + 6px);
 
 	border-radius: 0.5rem;

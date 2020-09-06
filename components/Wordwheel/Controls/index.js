@@ -9,6 +9,8 @@ import {
 	startPlaying,
 	defineWord,
 	submitGuess,
+	resequenceLetters,
+	undo,
 } from '../../../lib/slices/wordwheel/reducer';
 import { requestNewGame } from '../../../lib/slices/wordwheel/async';
 import { playingSelector } from '../../../lib/slices/wordwheel/selectors';
@@ -25,6 +27,16 @@ const ControlsContainer = () => {
 		dispatch(requestNewGame());
 	}, [dispatch]);
 
+	const handleRandomise = () => {
+		dispatch(resequenceLetters(
+			[0, 1, 2, 3, 4, 5, 6, 7, 8].sort(() => Math.random() < 0.5 ? 1 : -1)
+		));
+	};
+
+	const handleUndo = () => {
+		dispatch(undo());
+	};
+
 	const [showModal, setShowModal] = useState(false);
 
 	const handleDefineWord = () => {
@@ -40,13 +52,28 @@ const ControlsContainer = () => {
 
 	useEffect(() => {
 		const controlsListener = e => {
-			if (e.key === 'k' && e.metaKey) {
-				handleShowAnswers(e);
-			} else if (e.key === 'b' && e.metaKey) {
-				handleNewGame();
-			} else if (e.key === 'g' && e.metaKey) {
-				e.preventDefault();
-				handleDefineWord();
+			if (!e.metaKey) {
+				return;
+			}
+
+			switch (e.key) {
+				case 'k':
+					handleShowAnswers();
+					break;
+				case 'b':
+					handleNewGame();
+					break;
+				case 'g':
+					e.preventDefault();
+					handleDefineWord();
+					break;
+				case 'u':
+					handleRandomise();
+					break;
+				case 'z':
+					handleUndo();
+					break;
+				default: return;
 			}
 		};
 
@@ -55,7 +82,13 @@ const ControlsContainer = () => {
 		return () => {
 			document.removeEventListener('keydown', controlsListener);
 		}
-	}, [handleNewGame, handleShowAnswers, handleDefineWord]);
+	}, [
+		handleNewGame,
+		handleShowAnswers,
+		handleDefineWord,
+		handleRandomise,
+		handleUndo,
+	]);
 
 	const modalRef = useRef(null);
 
@@ -100,6 +133,7 @@ const ControlsContainer = () => {
 		dispatch(submitGuess());
 	};
 
+
 	return (
 		<Controls
 			handleDefineWord={ handleDefineWord }
@@ -112,6 +146,8 @@ const ControlsContainer = () => {
 			modalRef={ modalRef }
 			handleClose={ handleClose }
 			handleGuess={ handleGuess }
+			handleRandomise={ handleRandomise }
+			handleUndo={ handleUndo }
 		/>
 	);
 };

@@ -48,8 +48,6 @@ const LineContainer = () => {
 	const [
 		focused,
 		handleKeyDown,
-		setFocus,
-		setBlur,
 	] = useRearrangment();
 
 	const playing = useSelector(playingSelector);
@@ -74,8 +72,6 @@ const LineContainer = () => {
 			dimensions={ dimensions }
 			letterIds={ letterIds }
 			isWheelLayout={ isWheelLayout }
-			handleFocus={ setFocus }
-			handleBlur={ setBlur }
 		/>
 	);
 };
