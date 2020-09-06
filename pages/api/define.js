@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+
 import dummyData from './dummyData.json';
 
 const error = ({ res, error = 'Not found', code = 404 }) => {
