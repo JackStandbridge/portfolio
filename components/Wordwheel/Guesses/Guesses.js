@@ -43,6 +43,7 @@ const Guesses = ({
 			{ shownDefinition &&
 				<Definition
 					word={ shownDefinition }
+					handleBlur={ handleBlur }
 					top={ top }
 					left={ left }
 				/>

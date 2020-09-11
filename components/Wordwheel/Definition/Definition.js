@@ -20,8 +20,8 @@ const Definition = ({ definitions, top, left }) => {
 
 			{ definitions &&
 				<article className={ styles.article }>
-					{ definitions.map(({ word, meaning, phonetics }, i) => console.log({ word, meaning, phonetics }) || (
-						<section key={ i }>
+					{ definitions.map(({ word, meaning, phonetics }, i) => (
+						<section className={ styles.contents } key={ i }>
 							<h2>
 								{ word }&thinsp;
 								<span className={ styles.pronunciation }>

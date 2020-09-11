@@ -6,7 +6,7 @@ import Definition from './Definition';
 import { definitionsSelector } from '../../../lib/slices/wordwheel/selectors';
 import { getWordInfo } from '../../../lib/slices/wordwheel/async';
 
-const DefinitionContainer = ({ word, top, left }) => {
+const DefinitionContainer = ({ word, top, left, handleBlur }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -14,6 +14,18 @@ const DefinitionContainer = ({ word, top, left }) => {
 	}, [word, dispatch]);
 
 	const definitions = useSelector(definitionsSelector(word));
+
+	useEffect(() => {
+		const escapeListener = ({ key }) => {
+			if (key === 'Escape') {
+				handleBlur();
+			}
+		}
+
+		document.addEventListener('keydown', escapeListener);
+
+		return () => document.removeEventListener('keydown', escapeListener);
+	}, [handleBlur]);
 
 	return (
 		<Definition
