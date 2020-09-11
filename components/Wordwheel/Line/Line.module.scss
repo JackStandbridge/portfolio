@@ -1,6 +1,7 @@
 @import '../../../styles/index.module.scss';
 
 .wrapper {
+	grid-area: letters;
 	padding: 7rem 0.75rem 0.75rem 0.75rem;
 	margin-bottom: 2rem;
 }

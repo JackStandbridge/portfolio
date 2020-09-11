@@ -1,6 +1,7 @@
 @import '../../../styles/index.module.scss';
 
 .header {
+	grid-area: header;
 	position: relative;
 
 	display: flex;

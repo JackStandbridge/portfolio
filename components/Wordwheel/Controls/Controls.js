@@ -80,7 +80,7 @@ const Controls = ({
 						onClick={ handleShowAnswers }
 						title='Cmd + K'
 					>
-						{ 'Show Answers' }
+						{ 'Answers' }
 					</button>
 				</div>
 

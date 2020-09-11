@@ -1,41 +1,52 @@
-import mongoose from 'mongoose';
-
-import dummyData from './dummyData.json';
-
-const error = ({ res, error = 'Not found', code = 404 }) => {
-	res.statusCode === code;
-	res.json({ error });
-};
+import '../../lib/database';
+import Definition from '../../lib/models/Definition';
 
 const define = async (req, res) => {
-	try {
+	const word = req.query.q;
 
-		const word = req.query.q;
+	try {
 
 		if (!word) {
 			throw new Error();
 		}
 
-		// const base = process.env.DICTIONARY_API_BASE;
+		let result = await Definition.find({ word });
+		result = result[0];
 
-		// const response = await fetch(`${ base }${ word }`);
-		// const result = await response.json();
+		if (!result) {
+			const base = process.env.DICTIONARY_API_BASE;
 
-		// if (response.status >= 400 || !Array.isArray(result)) {
-		// 	throw new Error();
-		// }
+			const response = await fetch(`${ base }${ word }`);
+			const json = await response.json();
 
-		const result = dummyData;
+			if (response.status >= 400 || !Array.isArray(json)) {
+				throw new Error();
+			}
+
+			result = await new Definition({
+				word,
+				definitions: json,
+			}).save();
+		}
 
 		res.statusCode = 200;
-		res.json({ word, result });
+		res.json({ word, result: result.definitions });
 
 	} catch (e) {
-		return error({
-			res,
-			error: 'Not found',
-			code: 404,
+		if (word) {
+			new Definition({
+				word,
+				definitions: null,
+			}).save();
+		}
+
+		res.statusCode === 404;
+		res.json({
+			word,
+			result: null,
 		});
+
+		return;
 	}
 
 };

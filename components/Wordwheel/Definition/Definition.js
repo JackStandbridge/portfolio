@@ -20,7 +20,7 @@ const Definition = ({ definitions, top, left }) => {
 
 			{ definitions &&
 				<article className={ styles.article }>
-					{ definitions.map(({ word, meaning, phonetics }, i) => (
+					{ definitions.map(({ word, meaning, phonetics }, i) => console.log({ word, meaning, phonetics }) || (
 						<section key={ i }>
 							<h2>
 								{ word }&thinsp;

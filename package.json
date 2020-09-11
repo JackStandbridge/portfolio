@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "next build",
 		"prestart": "brew services start mongodb-community@4.4",
-		"start": "trap 'yarn stop' INT; next dev",
+		"start": "trap 'yarn stop && exit' INT; next dev",
 		"stop": "brew services stop mongodb-community@4.4",
 		"serve": "next start"
 	},
