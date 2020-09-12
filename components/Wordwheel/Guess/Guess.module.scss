@@ -4,12 +4,13 @@
 	font-family: Nunito, sans-serif;
 	font-size: 1.4rem;
 
+	width: 100%;
+
 	cursor: pointer;
 
 	border: none;
 	border-bottom: 3px solid transparent;
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
+	border-radius: 5px;
 
 	background: none;
 	padding: 0 1rem;
@@ -18,7 +19,14 @@
 
 	&:focus {
 		outline: none;
-		background: map-deep-get($colours, 'wwYellow', 'light');
+		background:
+			map-deep-get($colours, 'wwBlue', 'light')
+			linear-gradient(
+				map-deep-get($colours, 'wwBlue', 'light'),
+				map-deep-get($colours, 'wwBlue', 'dark'),
+			);
+
+		color: white;
 		border-bottom: 3px solid map-deep-get($colours, 'wwGrey', 'dark');
 	}
 }
@@ -27,7 +35,4 @@
 	@extend .guess;
 	color: map-deep-get($colours, 'wwRed', 'mid');
 
-	&:focus {
-		color: map-deep-get($colours, 'wwGrey', 'dark');
-	}
 }

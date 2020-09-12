@@ -8,7 +8,7 @@ const Definition = ({ definitions, top, left }) => {
 	return (
 		<aside
 			className={ styles.container }
-			style={{ top, left }}
+			style={ { top, left } }
 		>
 			{ definitions === null && 'No definitions found!' }
 
@@ -22,23 +22,26 @@ const Definition = ({ definitions, top, left }) => {
 				<article className={ styles.article }>
 					{ definitions.map(({ word, meaning, phonetics }, i) => (
 						<section className={ styles.contents } key={ i }>
-							<h2>
+							<h2 className={ styles.title }>
 								{ word }&thinsp;
+
 								<span className={ styles.pronunciation }>
 									{ phonetics.map(entry => entry.text) }
 								</span>
 							</h2>
+
 							<ul>
 								{ Object.entries(meaning).map(([type, entries]) => (
 									<li key={ type }>
-										<hr />
 										<h3>{ type }</h3>
+
 										{ entries.map(entry => (
 											<Fragment key={ entry.definition }>
+												<hr />
+
 												<p className={ styles.p }>
 													{ entry.definition }
 												</p>
-												<hr />
 											</Fragment>
 										)) }
 									</li>

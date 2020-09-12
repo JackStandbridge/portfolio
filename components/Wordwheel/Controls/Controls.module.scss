@@ -19,13 +19,16 @@
 	);
 
 	margin: 0 auto;
-	padding: 0.7rem 1rem;
+	padding: 0.7rem 0;
 	min-width: 8rem;
 	border-radius: 0.5rem;
 	border: 2px solid white;
 
 	&:focus {
 		outline: none;
+		font-weight: 700;
+		background: white;
+		color: map-deep-get($colours, 'wwBlue', 'dark');
 		box-shadow: 0 0 0 3px map-deep-get($colours, 'wwBlue', 'mid');
 	}
 }
