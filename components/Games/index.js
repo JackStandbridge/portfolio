@@ -3,24 +3,29 @@ import Games from './Games';
 const GamesContainer = () => {
 	const games = [
 		{
-			name: 'wordwheel',
-			imgUrl: '/assets/images/preview--wordwheel.png'
+			url: 'wordwheel',
+			imgUrl: '/assets/images/preview--wordwheel.png',
+			title: 'Word Wheel',
 		},
 		{
-			name: 'bananagrams',
-			imgUrl: 'https://placekitten.com/301/300'
+			url: 'bananagrams',
+			imgUrl: 'https://placekitten.com/301/300',
+			title: 'Bananagrams',
 		},
 		{
-			name: 'colour flood',
-			imgUrl: 'https://placekitten.com/300/299'
+			url: 'colourflood',
+			imgUrl: 'https://placekitten.com/300/299',
+			title: 'Colour Flood',
 		},
 		{
-			name: 'memory',
-			imgUrl: 'https://placekitten.com/299/300'
+			url: 'memory',
+			imgUrl: 'https://placekitten.com/299/300',
+			title: 'Memory',
 		},
 		{
-			name: 'madlibs',
-			imgUrl: 'https://placekitten.com/300/300'
+			url: 'madlibs',
+			imgUrl: 'https://placekitten.com/300/300',
+			title: 'Madlibs',
 		},
 	];
 

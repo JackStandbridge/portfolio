@@ -4,7 +4,7 @@ import styles from './Card.module.scss';
 const Card = ({ title, img, link }) => {
 	return (
 		<Link href={ link }>
-			<a>
+			<a className={ styles.link }>
 				<article className={ styles.card }>
 					<h2>{ title }</h2>
 					<img

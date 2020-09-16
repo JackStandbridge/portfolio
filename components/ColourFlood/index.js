@@ -1,6 +1,8 @@
+import Game from './Game';
+
 const ColourFlood = () => {
 	return (
-		<div>ColourFlood</div>
+		<Game />
 	);
 };
 

@@ -22,16 +22,22 @@
 	}
 }
 
-.focusable {
+.center {
 	padding: 1rem;
 	max-width: max-content;
 	margin: auto;
+}
 
-	border-radius: 1.3rem;
+.instructions {
+	position: absolute;
+	left: 50%;
+	bottom: 1rem;
+	transform: translateX(-50%);
 
-	&:focus {
-		outline: none;
-		box-shadow: 0 0 0 3px map-deep-get($colours, 'wwBlue', 'dark');
-	}
+	color: map-deep-get($colours, 'wwBlue', 'dark');
+}
 
+.reverse {
+	display: inline-block;
+	transform: rotateY(180deg);
 }

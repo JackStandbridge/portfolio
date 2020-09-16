@@ -11,7 +11,7 @@ const Line = ({
 }) => {
 	return (
 		<div className={ styles.wrapper }>
-			<div className={ styles.focusable }>
+			<div className={ styles.center }>
 				<div className={ styles.line }>
 
 					{ letterIds.map(id => (
@@ -28,6 +28,9 @@ const Line = ({
 
 				</div>
 			</div>
+			<p className={ styles.instructions }>
+				<b>click</b> and <b>drag</b> (or <small><b>OPT</b></small> + <span className={ styles.reverse }>&#10140;</span> / &#10140;)
+			</p>
 		</div>
 	);
 };
