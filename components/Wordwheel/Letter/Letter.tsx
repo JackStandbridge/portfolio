@@ -1,8 +1,31 @@
+import { FC, MouseEvent } from 'react';
 import Loading from '../Loading/Loading';
 
 import styles from './Letter.module.scss';
 
-const Letter = ({
+interface Props {
+	id: number
+	letter: string
+	focused: boolean
+	backingStyles: {
+		left: string
+		top: string
+		height: string
+		width: string
+	}
+	buttonStyles: {
+		left: string
+		top: string
+		height: string
+		width: string
+	}
+
+	handleToggle: (id: number) => void
+	handleDeselect: (id: number) => void
+	handleDragStart: (e: MouseEvent) => void
+}
+
+const Letter: FC<Props> = ({
 	id,
 	letter,
 	focused,

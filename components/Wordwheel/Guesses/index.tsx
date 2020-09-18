@@ -16,11 +16,11 @@ const GuessesContainer = () => {
 	const showAnswers = useSelector(showAnswersSelector);
 
 	const guessObjects = guesses
-		.map(word => ({ word, guessedByUser: true }));
+		.map((word: string) => ({ word, guessedByUser: true }));
 
 	const answerObjects = !showAnswers ? [] : answers
-		.filter(word => !guesses.includes(word))
-		.map(word => ({ word, guessedByUser: false }));
+		.filter((word: string) => !guesses.includes(word))
+		.map((word: string) => ({ word, guessedByUser: false }));
 
 	const words = [...guessObjects, ...answerObjects]
 		.sort((a, b) => a.word > b.word ? 1 : -1)
@@ -42,7 +42,7 @@ const GuessesContainer = () => {
 
 	const [shownDefinition, setShownDefinition] = useState(null);
 
-	const handleClick = word => {
+	const handleClick = (word: string) => {
 		const newWord = shownDefinition === word ? null : word;
 		setShownDefinition(newWord);
 	};
@@ -54,7 +54,7 @@ const GuessesContainer = () => {
 	const [top, setTop] = useState(0);
 	const [left, setLeft] = useState(0);
 
-	const ref = useCallback(node => {
+	const ref = useCallback((node: HTMLElement) => {
 		if (!node) {
 			return;
 		}
@@ -71,7 +71,7 @@ const GuessesContainer = () => {
 		setTop(top);
 		setLeft(left);
 
-	});
+	}, []);
 
 	const handleBlur = () => {
 		setShownDefinition(null);

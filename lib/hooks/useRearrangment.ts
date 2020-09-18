@@ -5,7 +5,7 @@ import { baseOrderSelector } from '../slices/wordwheel/selectors';
 import { moveLetter } from '../slices/wordwheel/reducer';
 import { clamp } from '../utils';
 
-const useRearrangment = () => {
+const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 	const [prevPosition, setPrevPosition] = useState(0);
 	const [focused, setFocused] = useState(0);
 
@@ -16,7 +16,7 @@ const useRearrangment = () => {
 		'right': 1
 	};
 
-	const handleSelect = (e, direction) => {
+	const handleSelect = (e: KeyboardEvent, direction: string) => {
 		const position = baseOrder.indexOf(focused);
 
 		if (position !== -1) {
@@ -36,7 +36,7 @@ const useRearrangment = () => {
 
 	const dispatch = useDispatch();
 
-	const handleMove = direction => {
+	const handleMove = (direction: string) => {
 		const id = focused;
 
 		const currentPosition = baseOrder.indexOf(id);
@@ -52,7 +52,7 @@ const useRearrangment = () => {
 
 	}
 
-	const handleKeyDown = e => {
+	const handleKeyDown = (e: KeyboardEvent) => {
 		if (e.key.match(/Arrow(Left|Right)/)) {
 			const direction = e.key.replace(/Arrow(\w)/, '$1').toLowerCase();
 			if (e.shiftKey || e.altKey) {

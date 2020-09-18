@@ -5,12 +5,13 @@
 	"scripts": {
 		"build": "next build",
 		"prestart": "brew services start mongodb-community@4.4",
-		"start": "trap 'yarn stop && exit' INT; next dev",
-		"stop": "brew services stop mongodb-community@4.4",
+		"start": "trap 'yarn stop' INT; next dev",
+		"stop": "brew services stop mongodb-community@4.4 && clear",
 		"serve": "next start"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.4.0",
+		"@types/mongoose": "^5.7.36",
 		"cypress": "^5.1.0",
 		"mongoose": "^5.10.3",
 		"next": "9.5.2",
@@ -19,5 +20,11 @@
 		"react-redux": "^7.2.1",
 		"sass": "^1.26.10",
 		"worker-plugin": "^5.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^14.10.2",
+		"@types/react": "^16.9.49",
+		"@types/react-redux": "^7.1.9",
+		"typescript": "^4.0.2"
 	}
 }

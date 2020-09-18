@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, FunctionComponent } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import Definition from './Definition';
@@ -6,7 +6,20 @@ import Definition from './Definition';
 import { definitionsSelector } from '../../../lib/slices/wordwheel/selectors';
 import { getWordInfo } from '../../../lib/slices/wordwheel/async';
 
-const DefinitionContainer = ({ word, top, left, handleBlur }) => {
+interface Props {
+	word: string
+	top: number
+	left: number
+	handleBlur: () => void
+}
+
+const DefinitionContainer: FunctionComponent<Props> = ({
+	word,
+	top,
+	left,
+	handleBlur
+}) => {
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {

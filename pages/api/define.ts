@@ -1,7 +1,9 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+
 import '../../lib/database';
 import Definition from '../../lib/models/Definition';
 
-const define = async (req, res) => {
+const define = async (req: NextApiRequest, res: NextApiResponse) => {
 	const word = req.query.q;
 
 	try {
@@ -10,8 +12,8 @@ const define = async (req, res) => {
 			throw new Error();
 		}
 
-		let result = await Definition.find({ word });
-		result = result[0];
+		const results = await Definition.find({ word });
+		let result = results[0];
 
 		if (!result) {
 			const base = process.env.DICTIONARY_API_BASE;
@@ -42,7 +44,7 @@ const define = async (req, res) => {
 
 		res.statusCode === 404;
 		res.json({
-			word,
+			word: '',
 			result: null,
 		});
 

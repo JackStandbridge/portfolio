@@ -16,18 +16,18 @@ const GameContainer = () => {
 
 	const playing = useSelector(playingSelector);
 
-	useEffect(() => {
+	useEffect(() : () => void => {
 		if (!playing) {
 			return;
 		}
 
-		const keyDownListener = e => {
+		const keyDownListener = (e: KeyboardEvent) : void => {
 			const userIsTyping = e.key.match(/^[a-zA-Z]$/);
 			const buttonIsFocused = document.activeElement.matches('button');
 			const movingLetters = e.key.match(/^Arrow(Left|Right)$/);
 
 			if (userIsTyping || (movingLetters && buttonIsFocused)) {
-				document.activeElement.blur();
+				(document.activeElement as HTMLElement).blur();
 			}
 
 			if (!e.shiftKey && !e.metaKey && !e.altKey) {
@@ -37,7 +37,7 @@ const GameContainer = () => {
 
 		document.addEventListener('keydown', keyDownListener);
 
-		return () => {
+		return () : void => {
 			document.removeEventListener('keydown', keyDownListener);
 		}
 	}, [dispatch, playing]);

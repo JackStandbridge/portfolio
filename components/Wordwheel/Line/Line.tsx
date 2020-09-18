@@ -1,7 +1,17 @@
+import { FC } from 'react';
 import Letter from '../Letter';
 import styles from './Line.module.scss';
 
-const Line = ({
+interface Props {
+	letterIds: number[]
+	isWheelLayout: boolean
+	scale: number
+	spacing: number
+	dimensions: number
+	focused: number
+}
+
+const Line: FC<Props> = ({
 	letterIds,
 	isWheelLayout,
 	scale,

@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { useSelector } from 'react-redux'
 import Header from './Header';
 import { answersSelector, guessesSelector } from '../../../lib/slices/wordwheel/selectors';
 
-const HeaderContainer = () => {
+const HeaderContainer: FC = () => {
 	const answers = Object.keys(useSelector(answersSelector));
 	const guesses = Object.keys(useSelector(guessesSelector));
 

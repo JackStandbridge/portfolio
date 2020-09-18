@@ -1,6 +1,17 @@
+import { FC } from 'react';
 import styles from './Header.module.scss';
 
-const Header = ({ guessed, targets, total }) => {
+interface Props {
+	guessed: number
+	targets: {
+		name: string
+		value: number
+		attained: boolean
+	}[]
+	total: number
+}
+
+const Header: FC<Props> = ({ guessed, targets, total }) => {
 	return (
 		<header className={ styles.header }>
 			<h1 className={ styles.h1 }>WordWheel</h1>

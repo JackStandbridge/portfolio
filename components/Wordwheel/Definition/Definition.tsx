@@ -1,10 +1,32 @@
-import { Fragment } from 'react';
+import { Fragment, FunctionComponent } from 'react';
 
 import Loading from '../Loading/Loading';
 
 import styles from './Definition.module.scss';
 
-const Definition = ({ definitions, top, left }) => {
+interface DefinitionListing {
+	word: string
+	meaning: {
+		[key: string]: {
+			definition: string
+		}[]
+	}
+	phonetics: {
+		text: string
+	}[]
+}
+
+interface Props {
+	top: number
+	left: number
+	definitions: DefinitionListing[]
+}
+
+const Definition: FunctionComponent<Props> = ({
+	definitions,
+	top,
+	left
+}) => {
 	return (
 		<aside
 			className={ styles.container }

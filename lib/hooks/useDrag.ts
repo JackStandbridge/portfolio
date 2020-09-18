@@ -4,7 +4,15 @@ import { useDispatch } from 'react-redux';
 import { moveLetter } from '../slices/wordwheel/reducer';
 import { clamp } from '../utils';
 
-const useDrag = (spacing, id, startingPosition) => {
+const useDrag = (
+	spacing: number,
+	id: number,
+	startingPosition: number
+): [
+	(e: React.DragEvent) => void,
+	number,
+	boolean
+] => {
 	const dispatch = useDispatch();
 
 	const [position, setPosition] = useState(0);
@@ -25,7 +33,7 @@ const useDrag = (spacing, id, startingPosition) => {
 
 	const [originalX, setOriginalX] = useState(null);
 
-	const handleDragStart = e => {
+	const handleDragStart = (e: React.DragEvent<HTMLButtonElement>) => {
 		const target = e.currentTarget;
 		setOriginalX(target.style.left);
 
@@ -36,7 +44,7 @@ const useDrag = (spacing, id, startingPosition) => {
 		target.style.zIndex = '10';
 		target.style.transform = 'translateY(-15px) rotate(2deg)';
 
-		const moveListener = e => {
+		const moveListener = (e: MouseEvent|React.DragEvent<HTMLButtonElement>) => {
 			const distance = e.clientX - startingPlace;
 			target.style.transform = `translateX(${ distance }px) translateY(-15px) rotate(2deg)`;
 

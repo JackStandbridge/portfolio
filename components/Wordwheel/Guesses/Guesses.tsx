@@ -1,9 +1,28 @@
+import { FC, Ref, SyntheticEvent } from 'react';
 import Guess from '../Guess';
 import Definition from '../Definition';
 
 import styles from './Guesses.module.scss';
 
-const Guesses = ({
+interface Props {
+	words: {
+		[key: string]: {
+			id: string
+			words: {
+				word: string
+				guessedByUser: boolean
+			}[]
+		}
+	},
+	handleBlur: () => void
+	handleClick: (word: string) => void
+	shownDefinition: null | string
+	top: number
+	left: number
+	selectedRef: (node: any) => void
+}
+
+const Guesses: FC<Props> = ({
 	words,
 	handleClick,
 	shownDefinition,
@@ -18,6 +37,7 @@ const Guesses = ({
 				{ Object.values(words).map(section => (
 
 					<li key={ section.id }>
+
 						<ul className={ styles.subUl }>
 
 							{ section.words.map(({ word, guessedByUser }) => (

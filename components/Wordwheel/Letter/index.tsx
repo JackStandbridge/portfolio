@@ -28,7 +28,7 @@ const LetterContainer = ({
 	const { raisedPosition, basePosition } = useSelector(positionSelector(id));
 
 	const numberOfSelectedLetters = letters.ids
-		.filter(id => letters.entities[id].selected)
+		.filter((id: number) => letters.entities[id].selected)
 		.length;
 
 	const translateBy = (scale * (9 - numberOfSelectedLetters)) / 2;
@@ -67,15 +67,15 @@ const LetterContainer = ({
 	const spacingInPx = spacing * 16;
 	const [handleDragStart, dragLeft, movingLetter] = useDrag(spacingInPx, id, basePosition);
 
-	buttonStyles.left = dragLeft ?? buttonStyles.left;
+	buttonStyles.left = dragLeft ? `${dragLeft}px` : buttonStyles.left;
 
-	const handleToggle = id => {
+	const handleToggle = (id: number) => {
 		if (!movingLetter) {
 			dispatch(toggleLetter(id));
 		}
 	};
 
-	const handleDeselect = id => {
+	const handleDeselect = (id: number) => {
 		dispatch(deselectLetter(id));
 	};
 

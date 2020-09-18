@@ -1,3 +1,4 @@
+import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import Head from 'next/head';
 
@@ -5,7 +6,7 @@ import store from '../lib/store';
 
 import '../styles/index.scss';
 
-const Entry = ({ Component, pageProps }) => (
+const Entry = ({ Component, pageProps }: AppProps) => (
 	<Provider store={ store } >
 		<Head>
 			<meta
