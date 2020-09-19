@@ -2,19 +2,8 @@ import { Fragment, FunctionComponent } from 'react';
 
 import Loading from '../Loading/Loading';
 
+import { DefinitionListing } from '../../../lib/slices/wordwheel/initial';
 import styles from './Definition.module.scss';
-
-interface DefinitionListing {
-	word: string
-	meaning: {
-		[key: string]: {
-			definition: string
-		}[]
-	}
-	phonetics: {
-		text: string
-	}[]
-}
 
 interface Props {
 	top: number

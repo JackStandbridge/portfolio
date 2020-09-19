@@ -1,6 +1,7 @@
+import { Letters } from '../slices/wordwheel/initial';
 import { formatWord } from './';
 
-const newWord = (nineLetterWords: string[]) => {
+const newWord = (nineLetterWords: string[]): Letters => {
 	const index = Math.floor(Math.random() * nineLetterWords.length);
 	const word = nineLetterWords[index]
 		.split('')

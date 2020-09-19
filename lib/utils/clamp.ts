@@ -1,4 +1,4 @@
-const clamp = (min: number, max: number, num: number) => {
+const clamp = (min: number, max: number, num: number): number => {
 	if (num > max) {
 		return max;
 	} else if (num < min) {

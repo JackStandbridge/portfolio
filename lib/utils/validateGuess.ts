@@ -1,6 +1,6 @@
 import { dictionaryMaker } from './';
 
-const validateGuess = (word: string, letters: string[]) => {
+const validateGuess = (word: string, letters: string[]): boolean => {
 	if (word.length < 4) {
 		return false;
 	}
