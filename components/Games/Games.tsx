@@ -1,8 +1,18 @@
+import { FC } from 'react';
+
 import Card from '../Card/Card';
 
 import styles from './Games.module.scss';
 
-const Games = ({ games }) => {
+interface Props {
+	games: {
+		title: string
+		imgUrl: string
+		url: string
+	}[]
+}
+
+const Games: FC<Props> = ({ games }) => {
 	return (
 		<main className={ styles.main }>
 			<h1 className={ styles.title }>Games</h1>

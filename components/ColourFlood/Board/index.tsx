@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Board from './Board';
@@ -6,7 +6,7 @@ import Board from './Board';
 import { boardSelector } from '../../../lib/slices/colourflood/selectors';
 import { newBoard } from '../../../lib/slices/colourflood/reducer';
 
-const BoardContainer = () => {
+const BoardContainer: FC = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {

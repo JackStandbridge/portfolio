@@ -1,6 +1,16 @@
+import { FC } from 'react';
 import styles from './Guess.module.scss';
 
-const Guess = ({
+interface Props {
+	word: string
+	handleClick: (e: React.MouseEvent) => void
+	guessedByUser: boolean
+	handleDelete: (e: React.MouseEvent) => void
+	handleKeyDown: (e: React.KeyboardEvent) => void
+	handleBlur: (e: React.FocusEvent) => void
+}
+
+const Guess: FC<Props> = ({
 	word,
 	handleClick,
 	guessedByUser,

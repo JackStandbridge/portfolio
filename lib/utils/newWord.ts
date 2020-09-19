@@ -1,6 +1,6 @@
 import { formatWord } from './';
 
-const newWord = nineLetterWords => {
+const newWord = (nineLetterWords: string[]) => {
 	const index = Math.floor(Math.random() * nineLetterWords.length);
 	const word = nineLetterWords[index]
 		.split('')

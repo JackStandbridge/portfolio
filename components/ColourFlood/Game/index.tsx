@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import Game from './Game';
 
-const GameContainer = () => {
+const GameContainer: FC = () => {
 	return (
 		<Game />
 	);

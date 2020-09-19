@@ -1,7 +1,14 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import styles from './Card.module.scss';
 
-const Card = ({ title, img, link }) => {
+interface Props {
+	title: string
+	img: string
+	link: string
+}
+
+const Card: FC<Props> = ({ title, img, link }) => {
 	return (
 		<Link href={ link }>
 			<a className={ styles.link }>

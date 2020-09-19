@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Controls from './Controls';
@@ -15,7 +15,7 @@ import {
 import { requestNewGame } from '../../../lib/slices/wordwheel/async';
 import { playingSelector } from '../../../lib/slices/wordwheel/selectors';
 
-const ControlsContainer = () => {
+const ControlsContainer: FC = () => {
 
 	const dispatch = useDispatch();
 
@@ -37,21 +37,21 @@ const ControlsContainer = () => {
 		dispatch(undo());
 	};
 
-	const [showModal, setShowModal] = useState(false);
+	const [modalIsShown, setModalIsShown] = useState(false);
 
 	const handleDefineWord = () => {
-		if (showModal) {
-			setShowModal(false);
+		if (modalIsShown) {
+			setModalIsShown(false);
 			dispatch(startPlaying());
 
 		} else {
-			setShowModal(true);
+			setModalIsShown(true);
 			dispatch(stopPlaying());
 		}
 	};
 
 	useEffect(() => {
-		const controlsListener = e => {
+		const controlsListener = (e: KeyboardEvent) => {
 			if (!e.metaKey) {
 				return;
 			}
@@ -95,14 +95,14 @@ const ControlsContainer = () => {
 	const playing = useSelector(playingSelector);
 
 	useEffect(() => {
-		if (showModal) {
+		if (modalIsShown) {
 			modalRef.current.focus();
 		}
-	}, [showModal, playing]);
+	}, [modalIsShown, playing]);
 
 	const [input, setInput] = useState('');
 
-	const handleChange = e => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.currentTarget.value;
 		if (value.match(/[^a-z]/gi)) {
 			return;
@@ -113,19 +113,19 @@ const ControlsContainer = () => {
 		}
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 
 		if (input.length === 9) {
 			dispatch(defineWord(input));
-			setShowModal(false);
+			setModalIsShown(false);
 			setInput('');
 		}
 	};
 
-	const handleClose = e => {
+	const handleClose = (e: React.MouseEvent) => {
 		if (e.currentTarget === e.target) {
-			setShowModal(false);
+			setModalIsShown(false);
 		}
 	};
 
@@ -133,13 +133,12 @@ const ControlsContainer = () => {
 		dispatch(submitGuess());
 	};
 
-
 	return (
 		<Controls
 			handleDefineWord={ handleDefineWord }
 			handleShowAnswers={ handleShowAnswers }
 			handleNewGame={ handleNewGame }
-			showModal={ showModal }
+			modalIsShown={ modalIsShown }
 			handleChange={ handleChange }
 			input={ input }
 			handleSubmit={ handleSubmit }

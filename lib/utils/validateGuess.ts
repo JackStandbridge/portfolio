@@ -1,12 +1,12 @@
 import { dictionaryMaker } from './';
 
-const validateGuess = (word, letters) => {
+const validateGuess = (word: string, letters: string[]) => {
 	if (word.length < 4) {
 		return false;
 	}
 
 	const letterDict = letters.reduce(dictionaryMaker, {});
-	const wordDict = [...word].reduce(dictionaryMaker, {});
+	const wordDict = Array.from(word).reduce(dictionaryMaker, {});
 
 	if (!wordDict[letters[4]]) {
 		return false;

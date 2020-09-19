@@ -1,6 +1,8 @@
+import { FC } from 'react';
+
 import Games from './Games';
 
-const GamesContainer = () => {
+const GamesContainer: FC = () => {
 	const games = [
 		{
 			url: 'wordwheel',

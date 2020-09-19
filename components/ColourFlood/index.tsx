@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import Game from './Game';
 
-const ColourFlood = () => {
+const ColourFlood: FC = () => {
 	return (
 		<Game />
 	);

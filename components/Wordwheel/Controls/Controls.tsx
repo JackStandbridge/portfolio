@@ -1,10 +1,26 @@
+import { FC } from 'react';
 import styles from './Controls.module.scss';
 
-const Controls = ({
+interface Props {
+	handleShowAnswers: (e: React.MouseEvent) => void
+	handleNewGame: (e: React.MouseEvent) => void
+	handleDefineWord: (e: React.MouseEvent) => void
+	modalIsShown: boolean
+	handleChange: (e: React.KeyboardEvent|React.ChangeEvent) => void
+	input: string
+	handleSubmit: (e: React.FormEvent) => void
+	modalRef: React.Ref<HTMLInputElement>
+	handleClose: (e: React.MouseEvent) => void
+	handleGuess: (e: React.MouseEvent) => void
+	handleRandomise: (e: React.MouseEvent) => void
+	handleUndo: (e: React.MouseEvent) => void
+}
+
+const Controls: FC<Props> = ({
 	handleShowAnswers,
 	handleNewGame,
 	handleDefineWord,
-	showModal,
+	modalIsShown,
 	handleChange,
 	input,
 	handleSubmit,
@@ -86,7 +102,7 @@ const Controls = ({
 
 			</section>
 
-			{ showModal &&
+			{ modalIsShown &&
 				<div
 					className={ styles.modalBacking }
 					onClick={ handleClose }

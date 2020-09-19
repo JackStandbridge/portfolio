@@ -1,4 +1,4 @@
-const formatWord = word => {
+const formatWord = (word: string) => {
 	return {
 		entities: word
 			.split('')
