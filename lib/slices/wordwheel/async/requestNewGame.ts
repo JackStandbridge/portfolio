@@ -6,7 +6,7 @@ let worker: Worker;
 const requestNewGame = (): (dispatch: AppDispatch) => void => dispatch => {
 	// only do work if there isn't already a worker doing something
 	if (!worker) {
-		worker = new Worker('./workers/newWord.js', { type: 'module' });
+		worker = new Worker('./workers/newWord.ts', { type: 'module' });
 		dispatch(newGame());
 
 		worker.onmessage = event => {

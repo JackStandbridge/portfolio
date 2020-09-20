@@ -13,7 +13,7 @@ const getInitialGame = (): thunk => (dispatch, getState) => {
 		return;
 	}
 
-	const worker = new Worker('./workers/newWord.js', { type: 'module' })
+	const worker = new Worker('./workers/newWord.ts', { type: 'module' })
 
 	worker.onmessage = event => {
 		dispatch(storeGame(event.data));
