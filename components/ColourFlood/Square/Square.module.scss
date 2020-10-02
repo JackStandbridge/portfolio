@@ -12,7 +12,9 @@ $transitionSpeed: 0.2s;
 	border-radius: $cfDimensions / 4;
 
 	position: relative;
-	transition: $transitionSpeed;
+	transition: background $transitionSpeed;
+
+	outline: none;
 
 	&::after,
 	&::before {
@@ -80,6 +82,15 @@ $variants: (
 
 		background: map-deep-get($colours, $colour, 'mid');
 		border-color: map-deep-get($colours, $colour, 'dark');
+
+		&:hover,
+		&:focus {
+			box-shadow: 0 0 0 3px white, 0 0 0 7px map-deep-get($colours, $colour, 'dark');
+
+			&[disabled] {
+				box-shadow: none;
+			}
+		}
 
 		&--join-down {
 			@extend .colour#{$num};

@@ -1,0 +1,50 @@
+@import '../../../styles/index.module.scss';
+
+$variants: (
+	1: 'cfRed',
+	2: 'cfGreen',
+	3: 'cfBlue',
+	4: 'cfYellow',
+	5: 'cfCyan',
+	6: 'cfMagenta',
+);
+
+%button {
+	border-width: 4px;
+	border-style: solid;
+	border-radius: 50%;
+
+	height: 4rem;
+	width: 4rem;
+
+	outline: none;
+	cursor: pointer;
+}
+
+@each $num, $colour in $variants {
+	.colour#{$num} {
+		@extend %button;
+
+		background: map-deep-get($colours, $colour, 'mid');
+		border-color: map-deep-get($colours, $colour, 'dark');
+
+		&[disabled] {
+			background: white;
+			cursor: default;
+		}
+
+		&:hover,
+		&:focus {
+			box-shadow: 0 0 0 3px white, 0 0 0 7px map-deep-get($colours, $colour, 'dark');
+			&[disabled] {
+				box-shadow: none;
+			}
+		}
+	}
+}
+
+.container {
+	display: flex;
+	margin-top: 1rem;
+	justify-content: space-between;
+}

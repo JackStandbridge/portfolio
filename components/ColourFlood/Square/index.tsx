@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Square from './Square';
 
 import { squareSelector, boardSelector } from '../../../lib/slices/colourflood/selectors';
-import { clickSquare } from '../../../lib/slices/colourflood/reducer';
+import { setColour } from '../../../lib/slices/colourflood/reducer';
 import { useNeighbours } from '../../../lib/hooks/';
 
 interface Props {
@@ -17,11 +17,12 @@ interface Props {
 const SquareContainer: FC<Props> = ({ coords }) => {
 	const dispatch = useDispatch();
 
+	const { colour, disabled } = useSelector(squareSelector(coords));
+
 	const handleClick = () => {
-		dispatch(clickSquare(coords));
+		dispatch(setColour(colour));
 	};
 
-	const colour = useSelector(squareSelector(coords));
 	const board = useSelector(boardSelector);
 	const [joinDown, joinRight] = useNeighbours(coords, board);
 
@@ -31,6 +32,7 @@ const SquareContainer: FC<Props> = ({ coords }) => {
 
 	return (
 		<Square
+			disabled={ disabled }
 			handleClick={ handleClick }
 			className={ className }
 		/>

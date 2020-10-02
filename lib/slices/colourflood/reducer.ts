@@ -7,7 +7,7 @@ const colourflood = createSlice({
 	initialState,
 	reducers: {
 		newBoard: reducers.newBoard,
-		clickSquare: reducers.clickSquare,
+		setColour: reducers.setColour,
 	}
 });
 
@@ -15,5 +15,5 @@ export default colourflood.reducer;
 
 export const {
 	newBoard,
-	clickSquare,
+	setColour,
 } = colourflood.actions;
