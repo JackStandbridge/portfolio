@@ -1,19 +1,20 @@
-import { FC, Ref, SyntheticEvent } from 'react';
+import { FC } from 'react';
 import Guess from '../Guess';
 import Definition from '../Definition';
 
 import styles from './Guesses.module.scss';
 
+export interface Words {
+	[key: string]: {
+		id: string
+		words: {
+			word: string
+			guessedByUser: boolean
+		} []
+	}
+}
 interface Props {
-	words: {
-		[key: string]: {
-			id: string
-			words: {
-				word: string
-				guessedByUser: boolean
-			}[]
-		}
-	},
+	words: Words,
 	handleBlur: () => void
 	handleClick: (word: string) => void
 	shownDefinition: null | string

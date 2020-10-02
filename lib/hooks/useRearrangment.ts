@@ -16,7 +16,7 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 		'right': 1
 	};
 
-	const handleSelect = (e: KeyboardEvent, direction: string) => {
+	const handleSelect = (e: KeyboardEvent, direction: 'left'|'right') => {
 		const position = baseOrder.indexOf(focused);
 
 		if (position !== -1) {
@@ -36,7 +36,7 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 
 	const dispatch = useDispatch();
 
-	const handleMove = (direction: string) => {
+	const handleMove = (direction: 'left'|'right') => {
 		const id = focused;
 
 		const currentPosition = baseOrder.indexOf(id);
@@ -54,14 +54,12 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 
 	const handleKeyDown = (e: KeyboardEvent) => {
 		if (e.key.match(/Arrow(Left|Right)/)) {
-			const direction = e.key.replace(/Arrow(\w)/, '$1').toLowerCase();
+			const direction = e.key.replace(/Arrow(\w)/, '$1').toLowerCase() as 'left'|'right';
 			if (e.shiftKey || e.altKey) {
 				handleMove(direction);
 			} else {
 				handleSelect(e, direction);
 			}
-		} else if (!['Shift', 'Meta', 'Alt', 'Control', 'Capslock'].includes(e.key)) {
-			setFocused(null);
 		}
 	};
 

@@ -3,7 +3,7 @@ import { State, DefinitionListing } from '../initial';
 interface Action {
 	payload: {
 		word: string,
-		result: DefinitionListing,
+		result: DefinitionListing[]|null,
 	}
 }
 

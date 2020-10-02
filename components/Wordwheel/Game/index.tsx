@@ -16,14 +16,11 @@ const GameContainer = () => {
 
 	const playing = useSelector(playingSelector);
 
-	useEffect(() : () => void => {
-		if (!playing) {
-			return;
-		}
+	useEffect((): () => void => {
 
-		const keyDownListener = (e: KeyboardEvent) : void => {
+		const keyDownListener = (e: KeyboardEvent): void => {
 			const userIsTyping = e.key.match(/^[a-zA-Z]$/);
-			const buttonIsFocused = document.activeElement.matches('button');
+			const buttonIsFocused = document.activeElement?.matches('button');
 			const movingLetters = e.key.match(/^Arrow(Left|Right)$/);
 
 			if (userIsTyping || (movingLetters && buttonIsFocused)) {
@@ -35,9 +32,11 @@ const GameContainer = () => {
 			}
 		};
 
-		document.addEventListener('keydown', keyDownListener);
+		if (playing) {
+			document.addEventListener('keydown', keyDownListener);
+		}
 
-		return () : void => {
+		return (): void => {
 			document.removeEventListener('keydown', keyDownListener);
 		}
 	}, [dispatch, playing]);

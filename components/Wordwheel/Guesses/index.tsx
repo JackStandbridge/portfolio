@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux'
 
-import Guesses from './Guesses';
+import Guesses, { Words } from './Guesses';
 
 import {
 	guessesSelector,
@@ -38,9 +38,9 @@ const GuessesContainer = () => {
 
 			return dictionary;
 
-		}, {});
+		}, {} as Words);
 
-	const [shownDefinition, setShownDefinition] = useState(null);
+	const [shownDefinition, setShownDefinition] = useState<string | null>(null);
 
 	const handleClick = (word: string) => {
 		const newWord = shownDefinition === word ? null : word;

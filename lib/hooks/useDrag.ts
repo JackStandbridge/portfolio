@@ -9,8 +9,8 @@ const useDrag = (
 	id: number,
 	startingPosition: number
 ): [
-	(e: React.DragEvent) => void,
-	number,
+	(e: React.DragEvent<HTMLButtonElement>) => void,
+	string|null,
 	boolean
 ] => {
 	const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const useDrag = (
 		positionRef.current = position;
 	}, [position]);
 
-	const [originalX, setOriginalX] = useState(null);
+	const [originalX, setOriginalX] = useState<string|null>(null);
 
 	const handleDragStart = (e: React.DragEvent<HTMLButtonElement>) => {
 		const target = e.currentTarget;

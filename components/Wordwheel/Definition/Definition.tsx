@@ -8,7 +8,7 @@ import styles from './Definition.module.scss';
 interface Props {
 	top: number
 	left: number
-	definitions: DefinitionListing[]
+	definitions: DefinitionListing[]|null
 }
 
 const Definition: FunctionComponent<Props> = ({

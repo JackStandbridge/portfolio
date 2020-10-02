@@ -6,7 +6,7 @@ interface Props {
 	handleNewGame: (e: React.MouseEvent) => void
 	handleDefineWord: (e: React.MouseEvent) => void
 	modalIsShown: boolean
-	handleChange: (e: React.KeyboardEvent|React.ChangeEvent) => void
+	handleChange: (e: React.KeyboardEvent<HTMLInputElement>|React.ChangeEvent<HTMLInputElement>) => void
 	input: string
 	handleSubmit: (e: React.FormEvent) => void
 	modalRef: React.Ref<HTMLInputElement>

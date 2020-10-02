@@ -90,19 +90,19 @@ const ControlsContainer: FC = () => {
 		handleUndo,
 	]);
 
-	const modalRef = useRef(null);
+	const modalRef = useRef<HTMLInputElement>(null);
 
 	const playing = useSelector(playingSelector);
 
 	useEffect(() => {
-		if (modalIsShown) {
+		if (modalIsShown && modalRef.current) {
 			modalRef.current.focus();
 		}
 	}, [modalIsShown, playing]);
 
 	const [input, setInput] = useState('');
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>|React.KeyboardEvent<HTMLInputElement>) => {
 		const value = e.currentTarget.value;
 		if (value.match(/[^a-z]/gi)) {
 			return;

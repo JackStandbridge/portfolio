@@ -16,17 +16,17 @@ const HeaderContainer: FC = () => {
 		{
 			name: 'Average',
 			value: average,
-			attained: guessed && guessed >= average,
+			attained: guessed ? guessed >= average : false,
 		},
 		{
 			name: 'Good',
 			value: good,
-			attained: guessed && guessed >= good,
+			attained: guessed ? guessed >= good : false,
 		},
 		{
 			name: 'Excellent',
 			value: excellent,
-			attained: guessed && guessed >= excellent,
+			attained: guessed ? guessed >= excellent : false,
 		},
 	];
 

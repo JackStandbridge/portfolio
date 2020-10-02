@@ -1,7 +1,7 @@
 import { storeGame, newGame } from '../reducer';
 import { AppDispatch } from '../../../store';
 
-let worker: Worker;
+let worker: Worker|null;
 
 const requestNewGame = (): (dispatch: AppDispatch) => void => dispatch => {
 	// only do work if there isn't already a worker doing something

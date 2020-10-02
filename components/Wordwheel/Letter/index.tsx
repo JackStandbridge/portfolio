@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Letter from './Letter';
 
@@ -8,7 +9,16 @@ import {
 	positionSelector,
 } from '../../../lib/slices/wordwheel/selectors';
 
-const LetterContainer = ({
+interface Props {
+	id: number,
+	isWheelLayout: boolean,
+	scale: number,
+	dimensions: number,
+	spacing: number,
+	focused: boolean,
+}
+
+const LetterContainer: FC<Props> = ({
 	id,
 	isWheelLayout,
 	scale,

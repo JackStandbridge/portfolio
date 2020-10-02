@@ -29,7 +29,7 @@ const DefinitionContainer: FunctionComponent<Props> = ({
 	const definitions = useSelector(definitionsSelector(word));
 
 	useEffect(() => {
-		const escapeListener = ({ key }) => {
+		const escapeListener = ({ key }: KeyboardEvent) => {
 			if (key === 'Escape') {
 				handleBlur();
 			}

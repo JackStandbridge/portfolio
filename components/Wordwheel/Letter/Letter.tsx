@@ -4,25 +4,25 @@ import Loading from '../Loading/Loading';
 import styles from './Letter.module.scss';
 
 interface Props {
-	id: number
-	letter: string
-	focused: boolean
+	id: number,
+	letter: string | null,
+	focused: boolean,
 	backingStyles: {
-		left: string
-		top: string
-		height: string
-		width: string
-	}
+		left: string,
+		top: string,
+		height: string,
+		width: string,
+	},
 	buttonStyles: {
-		left: string
-		top: string
-		height: string
-		width: string
-	}
+		left: string,
+		top: string,
+		height: string,
+		width: string,
+	},
 
-	handleToggle: (id: number) => void
-	handleDeselect: (id: number) => void
-	handleDragStart: (e: MouseEvent) => void
+	handleToggle: (id: number) => void,
+	handleDeselect: (id: number) => void,
+	handleDragStart: (e: React.DragEvent<HTMLButtonElement>) => void,
 }
 
 const Letter: FC<Props> = ({
