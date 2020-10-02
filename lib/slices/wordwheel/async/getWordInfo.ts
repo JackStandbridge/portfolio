@@ -30,6 +30,7 @@ const getWordInfo = (word: string): thunk => {
 			dispatch(setWordInfo(result));
 
 		} catch (e) {
+			console.error(e);
 			dispatch(setWordInfo({ word, result: null }));
 		}
 	}

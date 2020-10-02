@@ -1,3 +1,5 @@
+export type Board = number[][];
+
 export interface State {
 	difficulty: number;
 	height: number;
@@ -11,7 +13,7 @@ export interface State {
 		6: number;
 	};
 	opponentMoving: false;
-	board: string[][];
+	board: Board;
 }
 
 const initial: State = {

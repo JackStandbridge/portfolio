@@ -3,22 +3,22 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Board from './Board';
 
-import { boardSelector } from '../../../lib/slices/colourflood/selectors';
+import { boardSelector, difficultySelector } from '../../../lib/slices/colourflood/selectors';
 import { newBoard } from '../../../lib/slices/colourflood/reducer';
+import { generateBoard } from '../../../lib/utils';
 
 const BoardContainer: FC = () => {
+	const board = useSelector(boardSelector);
+	const difficulty = useSelector(difficultySelector);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(newBoard());
-	}, [dispatch]);
-
-	const board = useSelector(boardSelector);
-
-	console.log(board);
+		dispatch(newBoard(generateBoard(difficulty)));
+	}, [dispatch, difficulty]);
 
 	return (
-		<Board />
+		<Board board={ board } />
 	);
 };
 
