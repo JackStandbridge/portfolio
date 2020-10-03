@@ -18,6 +18,7 @@ const Controls: FC<Props> = ({ colours, handleClick, userColour }) => {
 					onClick={ () => handleClick(colour) }
 					className={ styles[`colour${ colour + 1 }`] }
 				>
+					{ colour + 1 }
 				</button>
 			)) }
 		</section>

@@ -24,8 +24,6 @@ const updateNeighbours = (board: Board, { x, y }: { x: number, y: number }, colo
 };
 
 const updateBoard = (state: State): void => {
-	console.clear();
-
 	const { colour, board } = state;
 
 	const perimeter = board.reduce((perimeter, line, y) => {

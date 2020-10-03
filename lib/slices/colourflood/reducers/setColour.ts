@@ -5,9 +5,12 @@ interface Action {
 	payload: number
 }
 
-const clickSquare = (state: State, { payload }: Action): void => {
-	state.colour = payload;
+const setColour = (state: State, { payload }: Action): void => {
+	if (payload < state.difficulty) {
+		state.colour = payload;
+	}
+
 	updateBoard(state);
 };
 
-export default clickSquare;
+export default setColour;
