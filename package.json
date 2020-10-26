@@ -4,16 +4,12 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"prestart": "brew services start mongodb-community@4.4",
-		"start": "trap 'yarn stop' INT; next dev",
-		"stop": "brew services stop mongodb-community@4.4 && clear",
+		"start": "next dev",
 		"serve": "next start"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.4.0",
-		"@types/mongoose": "^5.7.36",
 		"cypress": "^5.1.0",
-		"mongoose": "^5.10.3",
 		"next": "9.5.2",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",

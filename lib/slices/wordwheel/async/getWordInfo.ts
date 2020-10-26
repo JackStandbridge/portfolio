@@ -16,10 +16,9 @@ const getWordInfo = (word: string): thunk => {
 		}
 
 		try {
+			const base = process.env.NEXT_PUBLIC_DICTIONARY_API_BASE;
 
-			const base = '/api/define';
-
-			const response = await fetch(`${ base }?q=${ word }`);
+			const response = await fetch(`${ base }${ word }`);
 
 			if (response.status >= 400) {
 				throw new Error();
@@ -27,7 +26,7 @@ const getWordInfo = (word: string): thunk => {
 
 			const result = await response.json();
 
-			dispatch(setWordInfo(result));
+			dispatch(setWordInfo({ word, result }));
 
 		} catch (e) {
 			console.error(e);
