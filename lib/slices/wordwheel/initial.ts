@@ -12,7 +12,7 @@ export type Letters = {
 	entities: Entities,
 	ids: number[],
 	raisedOrder: number[],
-	baseOrder: number[]
+	baseOrder: number[],
 }
 
 interface Game {
@@ -24,12 +24,12 @@ export interface DefinitionListing {
 	word: string
 	meaning: {
 		[key: string]: {
-			definition: string
-		}[]
-	}
+			definition: string,
+		}[],
+	},
 	phonetics: {
-		text: string
-	}[]
+		text: string,
+	}[],
 }
 
 export interface State extends Game {
