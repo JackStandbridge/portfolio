@@ -10,12 +10,12 @@ $variants: (
 );
 
 %button {
-	border-width: 4px;
+	border-width: $cfDimensions / 10;
 	border-style: solid;
 	border-radius: 50%;
 
-	height: 4rem;
-	width: 4rem;
+	height: $cfDimensions / 0.75;
+	width: $cfDimensions / 0.75;
 
 	outline: none;
 	cursor: pointer;
@@ -30,7 +30,7 @@ $variants: (
 		color: map-deep-get($colours, $colour, 'darker');
 
 		font-weight: bold;
-		font-size: 2rem;
+		font-size: $cfDimensions / 1.25;
 
 		&[disabled] {
 			cursor: default;

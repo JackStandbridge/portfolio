@@ -31,7 +31,7 @@ $variants: (
 
 	top: $cfDimensions / 3;
 	left: $cfDimensions * 1.33;
-	bottom: calc(100% - 3.3rem);
+	bottom: calc(100% - #{$cfDimensions + 0.8});
 }
 
 .section2 {
@@ -50,7 +50,7 @@ $variants: (
 	border-top-right-radius: 0;
 	border-top-width: 0;
 
-	top: $cfDimensions / 3 + 0.7;
+	top: $cfDimensions / 1.85;
 	left: $cfDimensions / 3;
 	bottom: $cfDimensions / 3;
 }
@@ -62,7 +62,7 @@ $variants: (
 	border-bottom-left-radius: 0;
 
 	bottom: $cfDimensions / 3;
-	left: $cfDimensions / 1.75;
+	left: $cfDimensions / 1.85;
 	width: $cfDimensions + 0.7;
 }
 
@@ -73,7 +73,7 @@ $variants: (
 	border-top-color: transparent;
 	border-radius: 0;
 
-	bottom: $cfDimensions / 1.75;
-	top: calc(100% - #{$cfDimensions + 0.3});
+	bottom: $cfDimensions / 1.85;
+	top: calc(100% - #{$cfDimensions + 0.7});
 	left: $cfDimensions + 1.5;
 }
