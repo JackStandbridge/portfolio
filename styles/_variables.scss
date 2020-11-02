@@ -27,26 +27,32 @@ $colours: (
 	cfRed: (
 		mid: rgb(255, 153, 153),
 		dark: rgb(204, 0, 0),
+		darker: rgb(105, 0, 0),
 	),
 	cfGreen: (
 		mid: rgb(153, 255, 153),
 		dark: rgb(0, 204, 0),
+		darker: rgb(0, 105, 0),
 	),
 	cfBlue: (
 		mid: rgb(153, 153, 255),
 		dark: rgb(0, 0, 204),
+		darker: rgb(0, 0, 105),
 	),
 	cfYellow: (
 		mid: rgb(255, 255, 153),
 		dark: rgb(204, 204, 0),
+		darker: rgb(105, 105, 0),
 	),
 	cfCyan: (
 		mid: rgb(153, 255, 255),
 		dark: rgb(0, 204, 204),
+		darker: rgb(0, 105, 105),
 	),
 	cfMagenta: (
 		mid: rgb(255, 153, 255),
 		dark: rgb(204, 0, 204),
+		darker: rgb(105, 0, 105),
 	),
 );
 

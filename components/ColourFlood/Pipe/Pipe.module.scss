@@ -1,0 +1,79 @@
+@import '../../../styles/index.module.scss';
+
+$variants: (
+	1: 'cfRed',
+	2: 'cfGreen',
+	3: 'cfBlue',
+	4: 'cfYellow',
+	5: 'cfCyan',
+	6: 'cfMagenta',
+);
+
+@each $num, $colour in $variants {
+	.colour#{$num} {
+		background: map-deep-get($colours, $colour, 'mid');
+		border-color: map-deep-get($colours, $colour, 'dark');
+		border-style: solid;
+		padding: $cfDimensions / 18;
+		transition: 0.2s;
+	}
+}
+
+%section {
+	border-width: $cfDimensions / 10;
+	position: absolute;
+	border-radius: $cfDimensions / 10;
+}
+
+.section1 {
+	@extend %section;
+	border-bottom-color: transparent;
+
+	top: $cfDimensions / 3;
+	left: $cfDimensions * 1.33;
+	bottom: calc(100% - 3.3rem);
+}
+
+.section2 {
+	@extend %section;
+	border-right-width: 0;
+	border-top-right-radius: 0;
+
+	right: calc(100% - #{$cfDimensions * 1.42});
+	top: $cfDimensions / 3;
+	left: $cfDimensions / 3;
+}
+
+.section3 {
+	@extend %section;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-top-width: 0;
+
+	top: $cfDimensions / 3 + 0.7;
+	left: $cfDimensions / 3;
+	bottom: $cfDimensions / 3;
+}
+
+.section4 {
+	@extend %section;
+	border-left-width: 0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+
+	bottom: $cfDimensions / 3;
+	left: $cfDimensions / 1.75;
+	width: $cfDimensions + 0.7;
+}
+
+.section5 {
+	@extend %section;
+	border-bottom-width: 0;
+	border-top-width: 0;
+	border-top-color: transparent;
+	border-radius: 0;
+
+	bottom: $cfDimensions / 1.75;
+	top: calc(100% - #{$cfDimensions + 0.3});
+	left: $cfDimensions + 1.5;
+}

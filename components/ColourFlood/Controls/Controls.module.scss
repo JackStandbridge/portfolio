@@ -27,18 +27,18 @@ $variants: (
 
 		background: map-deep-get($colours, $colour, 'mid');
 		border-color: map-deep-get($colours, $colour, 'dark');
+		color: map-deep-get($colours, $colour, 'darker');
+
 		font-weight: bold;
 		font-size: 2rem;
 
 		&[disabled] {
-			background: white;
 			cursor: default;
-			filter: saturate(0.2);
 		}
 
 		&:hover,
 		&:focus {
-			box-shadow: 0 0 0 3px white, 0 0 0 7px map-deep-get($colours, $colour, 'dark');;
+			box-shadow: 0 0 0 3px white, 0 0 0 7px map-deep-get($colours, $colour, 'darker');
 			&[disabled] {
 				box-shadow: none;
 			}
