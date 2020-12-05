@@ -60,6 +60,8 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 			} else {
 				handleSelect(e, direction);
 			}
+		} else if (e.key.match(/^\w$/i)) {
+			setFocused(-1);
 		}
 	};
 
