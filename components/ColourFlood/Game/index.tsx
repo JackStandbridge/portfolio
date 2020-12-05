@@ -5,7 +5,7 @@ import Game from './Game';
 
 import { setColour } from '../../../lib/slices/colourflood/reducer';
 
-const GameContainer: FC = () => {
+const ConnectedGame: FC = () => {
 
 	const dispatch = useDispatch();
 
@@ -29,4 +29,4 @@ const GameContainer: FC = () => {
 	);
 };
 
-export default GameContainer;
+export default ConnectedGame;

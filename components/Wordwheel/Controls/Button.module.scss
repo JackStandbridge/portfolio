@@ -1,0 +1,36 @@
+@import '../../../styles/index.module.scss';
+
+.button {
+	font-family: inherit;
+	font-size: inherit;
+
+	color: white;
+	background: linear-gradient(
+		map-deep-get($colours, 'wwBlue', 'mid'),
+		map-deep-get($colours, 'wwBlue', 'dark'),
+	);
+
+	margin: 0 auto;
+	padding: 0.7rem 0;
+	min-width: 8rem;
+	border-radius: 0.5rem;
+	border: 2px solid white;
+
+	&:focus {
+		outline: none;
+		font-weight: 700;
+		box-shadow: 0 0 0 3px map-deep-get($colours, 'wwBlue', 'mid');
+	}
+
+	&:hover {
+		background: white;
+		color: map-deep-get($colours, 'wwBlue', 'mid');
+		box-shadow: 0 0 0 3px map-deep-get($colours, 'wwBlue', 'mid');
+	}
+}
+
+.instructions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

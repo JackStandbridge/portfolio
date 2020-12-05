@@ -12,7 +12,7 @@ interface Props {
 	handleBlur: (e: React.FocusEvent) => void
 }
 
-const GuessContainer: FC<Props> = ({ word, guessedByUser, handleClick, handleBlur }) => {
+const ConnectedGuess: FC<Props> = ({ word, guessedByUser, handleClick, handleBlur }) => {
 	const dispatch = useDispatch();
 
 	const handleDelete = (e: React.MouseEvent|React.KeyboardEvent) => {
@@ -42,4 +42,4 @@ const GuessContainer: FC<Props> = ({ word, guessedByUser, handleClick, handleBlu
 	);
 }
 
-export default GuessContainer;
+export default ConnectedGuess;

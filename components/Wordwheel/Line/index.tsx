@@ -6,7 +6,7 @@ import Line from './Line';
 import { letterIdsSelector, playingSelector } from '../../../lib/slices/wordwheel/selectors';
 import { useRearrangment } from '../../../lib/hooks';
 
-const LineContainer = () => {
+const ConnectedLine = () => {
 
 	const letterIds = useSelector(letterIdsSelector, shallowEqual);
 
@@ -76,4 +76,4 @@ const LineContainer = () => {
 	);
 };
 
-export default LineContainer;
+export default ConnectedLine;

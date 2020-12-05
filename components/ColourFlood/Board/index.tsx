@@ -7,7 +7,7 @@ import { boardSelector, difficultySelector } from '../../../lib/slices/colourflo
 import { newBoard } from '../../../lib/slices/colourflood/reducer';
 import { generateBoard } from '../../../lib/utils';
 
-const BoardContainer: FC = () => {
+const ConnectedBoard: FC = () => {
 	const board = useSelector(boardSelector);
 	const difficulty = useSelector(difficultySelector);
 
@@ -22,4 +22,4 @@ const BoardContainer: FC = () => {
 	);
 };
 
-export default BoardContainer;
+export default ConnectedBoard;

@@ -7,7 +7,7 @@ import { getInitialGame } from '../../../lib/slices/wordwheel/async';
 import { userTyped } from '../../../lib/slices/wordwheel/reducer';
 import { playingSelector } from '../../../lib/slices/wordwheel/selectors';
 
-const GameContainer = () => {
+const ConnectedGame = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -44,4 +44,4 @@ const GameContainer = () => {
 	return <Game />;
 };
 
-export default GameContainer;
+export default ConnectedGame;

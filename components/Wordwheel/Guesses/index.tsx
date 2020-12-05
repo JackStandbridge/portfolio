@@ -9,7 +9,7 @@ import {
 	showAnswersSelector
 } from '../../../lib/slices/wordwheel/selectors';
 
-const GuessesContainer = () => {
+const ConnectedGuesses = () => {
 
 	const guesses = useSelector(guessesSelector);
 	const answers = useSelector(answersSelector);
@@ -90,4 +90,4 @@ const GuessesContainer = () => {
 	);
 };
 
-export default GuessesContainer;
+export default ConnectedGuesses;

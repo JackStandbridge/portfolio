@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Header from './Header';
 import { answersSelector, guessesSelector } from '../../../lib/slices/wordwheel/selectors';
 
-const HeaderContainer: FC = () => {
+const ConnectedHeader: FC = () => {
 	const answers = Object.keys(useSelector(answersSelector));
 	const guesses = Object.keys(useSelector(guessesSelector));
 
@@ -39,4 +39,4 @@ const HeaderContainer: FC = () => {
 	);
 };
 
-export default HeaderContainer;
+export default ConnectedHeader;

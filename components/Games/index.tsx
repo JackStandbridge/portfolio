@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import Games from './Games';
 
-const GamesContainer: FC = () => {
+const ConnectedGames: FC = () => {
 	const games = [
 		{
 			url: 'wordwheel',
@@ -36,4 +36,4 @@ const GamesContainer: FC = () => {
 	);
 };
 
-export default GamesContainer;
+export default ConnectedGames;

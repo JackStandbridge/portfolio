@@ -6,7 +6,7 @@ import Controls from './Controls';
 import { setColour } from '../../../lib/slices/colourflood/reducer';
 import { difficultySelector, colourSelector } from '../../../lib/slices/colourflood/selectors';
 
-const ControlsContainer: FC = () => {
+const ConnectedControls: FC = () => {
 	const dispatch = useDispatch();
 
 	const handleClick = (num: number): void => {
@@ -26,4 +26,4 @@ const ControlsContainer: FC = () => {
 	);
 };
 
-export default ControlsContainer;
+export default ConnectedControls;

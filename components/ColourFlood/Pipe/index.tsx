@@ -5,7 +5,7 @@ import Pipe from './Pipe';
 
 import { colourSelector, difficultySelector } from '../../../lib/slices/colourflood/selectors';
 
-const PipeContainer: FC = () => {
+const ConnectedPipe: FC = () => {
 	const colour = useSelector(colourSelector);
 	const difficulty = useSelector(difficultySelector);
 
@@ -32,4 +32,4 @@ const PipeContainer: FC = () => {
 	);
 };
 
-export default PipeContainer;
+export default ConnectedPipe;

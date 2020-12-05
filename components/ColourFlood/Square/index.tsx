@@ -14,7 +14,7 @@ interface Props {
 	},
 };
 
-const SquareContainer: FC<Props> = ({ coords }) => {
+const ConnectedSquare: FC<Props> = ({ coords }) => {
 	const dispatch = useDispatch();
 
 	const { colour, disabled } = useSelector(squareSelector(coords));
@@ -39,4 +39,4 @@ const SquareContainer: FC<Props> = ({ coords }) => {
 	);
 };
 
-export default SquareContainer;
+export default ConnectedSquare;

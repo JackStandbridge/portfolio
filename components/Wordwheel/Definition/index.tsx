@@ -13,7 +13,7 @@ interface Props {
 	handleBlur: () => void
 }
 
-const DefinitionContainer: FunctionComponent<Props> = ({
+const ConnectedDefinition: FunctionComponent<Props> = ({
 	word,
 	top,
 	left,
@@ -49,4 +49,4 @@ const DefinitionContainer: FunctionComponent<Props> = ({
 	);
 };
 
-export default DefinitionContainer;
+export default ConnectedDefinition;

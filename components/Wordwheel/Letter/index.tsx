@@ -18,7 +18,7 @@ interface Props {
 	focused: boolean,
 }
 
-const LetterContainer: FC<Props> = ({
+const ConnectedLetter: FC<Props> = ({
 	id,
 	isWheelLayout,
 	scale,
@@ -105,4 +105,4 @@ const LetterContainer: FC<Props> = ({
 	);
 };
 
-export default LetterContainer;
+export default ConnectedLetter;
