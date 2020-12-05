@@ -7,7 +7,7 @@ import { clamp } from '../utils';
 
 const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 	const [prevPosition, setPrevPosition] = useState(0);
-	const [focused, setFocused] = useState(0);
+	const [focused, setFocused] = useState(-1);
 
 	const baseOrder = useSelector(baseOrderSelector);
 
