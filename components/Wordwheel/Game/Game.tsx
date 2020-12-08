@@ -8,7 +8,7 @@ import styles from './Game.module.scss';
 
 const Game: FunctionComponent = () => {
 	return (
-		<main className={ styles.main }>
+		<main className={ styles.main + ' site-width' }>
 			<Header />
 			<Guesses />
 			<Controls />

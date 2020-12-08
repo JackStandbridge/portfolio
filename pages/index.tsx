@@ -1,9 +1,5 @@
-import Link from 'next/link';
+import Home from '../components/Home';
 
-const App = () => (
-	<Link href='/games'>
-		<a>Games</a>
-	</Link>
-);
+const App = () => <Home />;
 
 export default App;

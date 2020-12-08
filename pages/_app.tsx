@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import store from '../lib/store';
 
-import '../styles/index.scss';
+import '../styles/global.scss';
 
 const Entry = ({ Component, pageProps }: AppProps) => (
 	<Provider store={ store } >

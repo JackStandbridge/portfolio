@@ -5,7 +5,7 @@ import Button from './Button';
 
 import { toggleAnswers } from '../../../lib/slices/wordwheel/reducer';
 
-const ConnectedAnswers: FC = () => {
+const ShowAnswers: FC = () => {
 
 	const dispatch = useDispatch();
 
@@ -17,9 +17,9 @@ const ConnectedAnswers: FC = () => {
 		<Button
 			handleClick={ handleShowAnswers }
 			instructions='Cmd + K'
-			title='Show Answers'
+			title='Answers'
 		/>
 	);
 };
 
-export default ConnectedAnswers;
+export default ShowAnswers;

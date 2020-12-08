@@ -3,6 +3,7 @@
 .header {
 	grid-area: header;
 	position: relative;
+	z-index: 2;
 
 	display: flex;
 	justify-content: space-between;
@@ -14,8 +15,8 @@
 		map-deep-get($colours, 'wwBlue', 'mid'),
 		map-deep-get($colours, 'wwBlue', 'dark'),
 	);
-
 	color: white;
+
 
 	&::before,
 	&::after {

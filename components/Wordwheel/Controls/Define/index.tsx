@@ -59,10 +59,8 @@ const ConnectedDefine: FC = () => {
 		}
 	};
 
-	const handleClose = (e: React.MouseEvent) => {
-		if (e.currentTarget === e.target) {
-			setModalIsShown(false);
-		}
+	const handleClose = () => {
+		setModalIsShown(false);
 	};
 
 	return (

@@ -3,14 +3,14 @@
 
 	display: grid;
 	grid-template:
-		'header  header  ' min-content
-		'guesses controls' 1fr
-		'letters letters ' max-content
-		/ 1fr min-content
+		'header   header ' min-content
+		'controls guesses' 1fr
+		'letters  letters' max-content
+		/ min-content 1fr
 	;
 
-	max-width: 1000px;
 	max-height: 100vh;
+	padding: 0;
 	margin: auto;
 
 }

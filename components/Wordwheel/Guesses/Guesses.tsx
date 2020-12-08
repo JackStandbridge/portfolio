@@ -10,7 +10,7 @@ export interface Words {
 		words: {
 			word: string
 			guessedByUser: boolean
-		} []
+		}[]
 	}
 }
 interface Props {

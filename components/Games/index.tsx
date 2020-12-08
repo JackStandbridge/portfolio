@@ -9,26 +9,26 @@ const ConnectedGames: FC = () => {
 			imgUrl: '/assets/images/preview--wordwheel.png',
 			title: 'Word Wheel',
 		},
-		{
-			url: 'bananagrams',
-			imgUrl: 'https://placekitten.com/301/300',
-			title: 'Bananagrams',
-		},
+		// {
+		// 	url: 'bananagrams',
+		// 	imgUrl: 'https://placekitten.com/301/300',
+		// 	title: 'Bananagrams',
+		// },
 		{
 			url: 'colourflood',
-			imgUrl: 'https://placekitten.com/300/299',
+			imgUrl: '/assets/images/preview--colourflood.png',
 			title: 'Colour Flood',
 		},
-		{
-			url: 'memory',
-			imgUrl: 'https://placekitten.com/299/300',
-			title: 'Memory',
-		},
-		{
-			url: 'madlibs',
-			imgUrl: 'https://placekitten.com/300/300',
-			title: 'Madlibs',
-		},
+		// {
+		// 	url: 'memory',
+		// 	imgUrl: 'https://placekitten.com/299/300',
+		// 	title: 'Memory',
+		// },
+		// {
+		// 	url: 'madlibs',
+		// 	imgUrl: 'https://placekitten.com/300/300',
+		// 	title: 'Madlibs',
+		// },
 	];
 
 	return (

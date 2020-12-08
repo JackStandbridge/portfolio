@@ -4,6 +4,7 @@
 	grid-area: letters;
 	padding: 7rem 0.75rem 0.75rem 0.75rem;
 	margin-bottom: 2rem;
+	position: relative;
 }
 
 .line {
@@ -31,7 +32,7 @@
 .instructions {
 	position: absolute;
 	left: 50%;
-	bottom: 1rem;
+	bottom: -1rem;
 	transform: translateX(-50%);
 
 	color: map-deep-get($colours, 'wwBlue', 'dark');

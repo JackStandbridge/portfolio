@@ -10,3 +10,14 @@ body {
 	margin: 0;
 	font-family: Nunito, sans-serif;
 }
+
+button {
+	cursor: pointer;
+}
+
+.site-width {
+	max-width: 1200px;
+	margin: auto;
+	padding-left: 150px;
+	padding-right: 150px;
+}

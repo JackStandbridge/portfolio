@@ -3,7 +3,7 @@ import { FC } from 'react';
 import styles from './Button.module.scss';
 
 interface Props {
-	handleClick: () => void,
+	handleClick: (e: React.MouseEvent) => void,
 	instructions: string,
 	title: string,
 };
@@ -11,7 +11,6 @@ interface Props {
 const Button: FC<Props> = ({ handleClick, instructions, title }) => {
 	return (
 		<div className={ styles.instructions }>
-			<span>{ instructions }</span>
 			<button
 				className={ styles.button }
 				onClick={ handleClick }
