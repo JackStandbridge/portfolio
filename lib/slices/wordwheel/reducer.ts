@@ -8,6 +8,7 @@ const wordwheel = createSlice({
 	reducers: {
 		undo: reducers.undo,
 		newGame: reducers.newGame,
+		altActive: reducers.altActive,
 		userTyped: reducers.userTyped,
 		storeGame: reducers.storeGame,
 		moveLetter: reducers.moveLetter,
@@ -30,6 +31,7 @@ export default wordwheel.reducer;
 export const {
 	undo,
 	newGame,
+	altActive,
 	userTyped,
 	storeGame,
 	moveLetter,

@@ -12,11 +12,17 @@ const Undo: FC = () => {
 		dispatch(undo());
 	};
 
+	const title = {
+		start: '',
+		keyLetter: 'U',
+		end: 'ndo',
+	};
+
 	return (
 		<Button
 			handleClick={ handleUndo }
-			instructions='Cmd + Z'
-			title='Undo'
+			instructions={ `Alt + ${ title.keyLetter.toUpperCase() }` }
+			title={ title }
 		/>
 	);
 };

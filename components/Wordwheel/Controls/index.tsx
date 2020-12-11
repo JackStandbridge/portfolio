@@ -1,27 +1,37 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Controls from './Controls';
+import { altActive } from '../../../lib/slices/wordwheel/reducer';
 
-import ShowAnswers from './ShowAnswers';
-import Define from './Define';
-import Guess from './Guess';
-import NewGame from './NewGame';
-import Randomise from './Randomise';
-import Undo from './Undo';
-import Instructions from './Instructions';
+const ConnectedControls: FC = () => {
+	const dispatch = useDispatch();
 
-import styles from './Controls.module.scss';
+	useEffect(() => {
+		const keyDownListener = (e: KeyboardEvent): void => {
+			if (e.key === 'Alt') {
+				dispatch(altActive(true));
+			}
+		};
 
-const Controls: FC = () => {
+		document.addEventListener('keydown', keyDownListener);
+
+		const keyUpListener = (e: KeyboardEvent): void => {
+			if (e.key === 'Alt') {
+				dispatch(altActive(false));
+			}
+		}
+
+		document.addEventListener('keyup', keyUpListener);
+
+		return (): void => {
+			document.removeEventListener('keydown', keyDownListener);
+			document.removeEventListener('keyup', keyUpListener);
+		};
+	}, []);
+
 	return (
-		<section className={ styles.section }>
-			<NewGame />
-			<Randomise />
-			<Define />
-			<Undo />
-			<Guess />
-			<ShowAnswers />
-			<Instructions />
-		</section>
+		<Controls />
 	);
 };
 
-export default Controls;
+export default ConnectedControls;

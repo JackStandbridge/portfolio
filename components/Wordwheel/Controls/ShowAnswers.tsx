@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Button from './Button';
@@ -13,11 +13,17 @@ const ShowAnswers: FC = () => {
 		dispatch(toggleAnswers());
 	}, [dispatch]);
 
+	const title = {
+		start: '',
+		keyLetter: 'A',
+		end: 'nswers',
+	};
+
 	return (
 		<Button
 			handleClick={ handleShowAnswers }
-			instructions='Cmd + K'
-			title='Answers'
+			instructions={ `Alt + ${ title.keyLetter.toUpperCase() }` }
+			title={ title }
 		/>
 	);
 };

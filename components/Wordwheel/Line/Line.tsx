@@ -39,7 +39,7 @@ const Line: FC<Props> = ({
 				</div>
 			</div>
 			<p className={ styles.instructions }>
-				<b>click</b> and <b>drag</b> (or <small><b>OPT</b></small> + <span className={ styles.reverse }>&#10140;</span> / &#10140;)
+				<b>click</b> and <b>drag</b> (or <small><b>SHIFT</b></small> + <span className={ styles.reverse }>&#10140;</span> / &#10140;)
 			</p>
 		</div>
 	);

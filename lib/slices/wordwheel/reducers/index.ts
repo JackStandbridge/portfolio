@@ -1,5 +1,6 @@
 export { default as undo } from './undo';
 export { default as newGame } from './newGame';
+export { default as altActive } from './altActive';
 export { default as userTyped } from './userTyped';
 export { default as storeGame } from './storeGame';
 export { default as moveLetter } from './moveLetter';

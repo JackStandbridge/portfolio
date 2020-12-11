@@ -12,6 +12,11 @@ interface Props {
 	handleChange: (e: React.ChangeEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>) => void,
 	input: string,
 	modalRef: React.Ref<HTMLInputElement>,
+	buttonTitle: {
+		start: string,
+		keyLetter: string,
+		end: string,
+	}
 };
 
 const Define: FC<Props> = ({
@@ -22,17 +27,19 @@ const Define: FC<Props> = ({
 	handleChange,
 	input,
 	modalRef,
+	buttonTitle,
 }) => (
 	<>
 		<Button
 			handleClick={ handleDefineWord }
-			instructions='Cmd + G'
-			title='Define'
+			instructions={ `Alt + ${ buttonTitle.keyLetter.toUpperCase() }` }
+			title={ buttonTitle }
 		/>
 		<Modal
 			show={ modalIsShown }
 			handleClose={ handleClose }
 		>
+			<p className={ styles.instructions }>Type your word here</p>
 			<form onSubmit={ handleSubmit }>
 				<input
 					ref={ modalRef }

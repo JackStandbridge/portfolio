@@ -14,11 +14,17 @@ const Randomise: FC = () => {
 		));
 	};
 
+	const title = {
+		start: '',
+		keyLetter: 'S',
+		end: 'huffle',
+	};
+
 	return (
 		<Button
 			handleClick={ handleRandomise }
-			instructions='Cmd + U'
-			title='Shuffle'
+			instructions={ `Alt + ${ title.keyLetter.toUpperCase() }` }
+			title={ title }
 		/>
 	);
 };

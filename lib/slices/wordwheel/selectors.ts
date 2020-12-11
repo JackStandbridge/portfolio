@@ -25,3 +25,5 @@ export const showAnswersSelector = ({ wordwheel }: State) => wordwheel.showAnswe
 export const definitionsSelector = (word: string) => ({ wordwheel }: State) => wordwheel.fetchedInfo[word];
 
 export const playingSelector = ({ wordwheel }: State) => wordwheel.playing;
+
+export const altKeySelector = ({ wordwheel }: State) => wordwheel.altActive;

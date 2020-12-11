@@ -39,7 +39,7 @@ $variants: (
 	border-right-width: 0;
 	border-top-right-radius: 0;
 
-	right: calc(100% - #{$cfDimensions * 1.42});
+	right: calc(100% - #{$cfDimensions * 1.425});
 	top: $cfDimensions / 3;
 	left: $cfDimensions / 3;
 }

@@ -6,6 +6,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
+	background: rgba(0, 0, 0, 0.2);
 }
 
 .modal {
@@ -23,8 +24,8 @@
 
 .button {
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	top: 2rem;
+	right: 2rem;
 
 	border: none;
 	border-radius: 50%;

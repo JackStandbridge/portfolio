@@ -10,11 +10,17 @@ const Guess: FC = () => {
 		dispatch(submitGuess());
 	};
 
+	const title = {
+		start: 'Guess (',
+		keyLetter: 'Enter',
+		end: ')',
+	};
+
 	return (
 		<Button
 			handleClick={ handleGuess }
-			instructions='Enter'
-			title='Guess'
+			instructions={ title.keyLetter }
+			title={ title }
 		/>
 	);
 };

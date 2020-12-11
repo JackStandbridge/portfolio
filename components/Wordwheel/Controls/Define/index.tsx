@@ -61,7 +61,14 @@ const ConnectedDefine: FC = () => {
 
 	const handleClose = () => {
 		setModalIsShown(false);
+		dispatch(startPlaying());
 	};
+
+	const buttonTitle = {
+		start: '',
+		keyLetter: 'D',
+		end: 'efine',
+	}
 
 	return (
 		<Define
@@ -72,6 +79,7 @@ const ConnectedDefine: FC = () => {
 			input={ input }
 			modalRef={ modalRef }
 			modalIsShown={ modalIsShown }
+			buttonTitle={ buttonTitle }
 		/>
 	);
 };

@@ -38,6 +38,7 @@ export interface State extends Game {
 	fetchedInfo: { [key: string]: DefinitionListing[]|null },
 	playing: boolean,
 	showAnswers: boolean,
+	altActive: boolean,
 };
 
 const initial: State = {
@@ -81,6 +82,7 @@ const initial: State = {
 	fetchedInfo: {},
 	playing: false,
 	showAnswers: false,
+	altActive: false,
 };
 
 export default initial;

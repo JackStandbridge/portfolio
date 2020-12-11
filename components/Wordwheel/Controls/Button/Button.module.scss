@@ -1,4 +1,4 @@
-@import '../../../styles/index.module.scss';
+@import '../../../../styles/index.module.scss';
 
 .button {
 	font-family: inherit;
@@ -33,4 +33,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.keyLetter {
+	text-decoration: underline;
 }

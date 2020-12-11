@@ -14,19 +14,30 @@ const NewGame: FC = () => {
 
 	useEffect(() => {
 		const keyListener = (e: KeyboardEvent) => {
-			if (e.altKey && e.key === 'b') {
+
+			if (e.altKey && e.code === 'KeyN') {
 				console.log('go');
 			}
 		};
 
 		document.addEventListener('keydown', keyListener);
+
+		return () => {
+			document.removeEventListener('keydown', keyListener);
+		};
 	}, []);
+
+	const title = {
+		start: '',
+		keyLetter: 'N',
+		end: 'ew Game',
+	};
 
 	return (
 		<Button
 			handleClick={ handleNewGame }
-			instructions='Cmd + B'
-			title='New Game'
+			instructions={ `Alt + ${ title.keyLetter.toUpperCase() }` }
+			title={ title }
 		/>
 	);
 };
