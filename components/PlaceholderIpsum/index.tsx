@@ -18,8 +18,8 @@ const ConnectedPlaceholderIpsum: FC = () => {
 	const [output, setOutput] = useState<string[][]>([]);
 
 	useEffect(() => {
-		const result = Array(Math.abs(numberOfParagraphs)).fill('').map(() => {
-			return Array(Math.abs(numberOfSentences)).fill('').map(() => {
+		const result = Array(numberOfParagraphs).fill('').map(() => {
+			return Array(numberOfSentences).fill('').map(() => {
 				const index = Math.floor(Math.random() * sentences.length);
 				return sentences[index];
 			});
