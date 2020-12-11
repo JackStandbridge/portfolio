@@ -8,11 +8,11 @@ const ConnectedPlaceholderIpsum: FC = () => {
 	const [numberOfParagraphs, setNumberOfParagraphs] = useState<number>(3);
 
 	const handleParagraphs = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setNumberOfParagraphs(clamp(1, Infinity, +e.currentTarget.value));
+		setNumberOfParagraphs(clamp(1, 50, +e.currentTarget.value));
 	};
 
 	const handleSentences = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setNumberOfSentences(clamp(1, Infinity, +e.currentTarget.value));
+		setNumberOfSentences(clamp(1, 50, +e.currentTarget.value));
 	};
 
 	const [output, setOutput] = useState<string[][]>([]);
