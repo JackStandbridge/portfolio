@@ -52,7 +52,7 @@ const ConnectedPlaceholderIpsum: FC = () => {
 			setTimeout(() => setButtonText('Copy'), 6000);
 		}
 
-	}, [setButtonText]);
+	}, [setButtonText, output]);
 
 	return (
 		<PlaceholderIpsum
