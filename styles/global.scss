@@ -18,6 +18,16 @@ button {
 .site-width {
 	max-width: 1200px;
 	margin: auto;
-	padding-left: 150px;
-	padding-right: 150px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+
+	@media (min-width: 500px) {
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+
+	@media (min-width: 768px) {
+		padding-left: 9rem;
+		padding-right: 9rem;
+	}
 }

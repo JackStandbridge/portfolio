@@ -1,0 +1,61 @@
+.header {
+	padding-top: 2rem;
+}
+
+.main {
+	margin-bottom: 2rem;
+}
+
+.inputs {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-bottom: 2rem;
+}
+
+.label,
+.input {
+	display: block;
+	max-width: 100%;
+}
+
+.label {
+	padding: 1rem 0rem;
+	font-size: 1.2rem;
+}
+
+.input {
+	margin-top: 0.4rem;
+	padding: 0.5rem 1rem;
+	font-size: 1.4rem;
+}
+
+.outputHeader {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	padding-right: 5rem;
+}
+
+.paragraph {
+	margin: 1rem 0;
+}
+
+.ipsum {
+	background: #f4f4f4;
+	padding: 0.5rem 2rem;
+	margin-top: 1rem;
+	border-radius: 0.3rem;
+	border: 1px solid #ddd;
+	box-shadow: 0 5px 15px #0004;
+}
+
+.button {
+	background: #fff;
+	padding: 0.5rem 1rem;
+	border-radius: 0.3rem;
+	border: 1px solid #444;
+	position: absolute;
+	right: 0;
+	max-width: 100%;
+}
