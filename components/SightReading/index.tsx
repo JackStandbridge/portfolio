@@ -1,8 +1,11 @@
 import { FC } from 'react';
 
+import Bar from './Bar';
+
+
 const SightReading: FC = () => {
 	return (
-		<section>SightReading</section>
+		<Bar />
 	);
 };
 
