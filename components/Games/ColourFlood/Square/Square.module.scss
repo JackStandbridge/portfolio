@@ -1,0 +1,110 @@
+@import '../../../../styles/index.module.scss';
+
+$transitionSpeed: 0.2s;
+
+%button {
+	width: $cfDimensions;
+	height: $cfDimensions;
+	box-sizing: border-box;
+
+	border-width: $cfDimensions / 10;
+	border-style: solid;
+	border-radius: $cfDimensions / 4;
+
+	position: relative;
+	transition: background $transitionSpeed;
+
+	outline: none;
+
+	&::after,
+	&::before {
+		content: '';
+		box-sizing: border-box;
+		position: absolute;
+		display: block;
+		background: inherit;
+
+		transition: height $transitionSpeed, width $transitionSpeed;
+
+		width: $cfDimensions * 0.8;
+		height: $cfDimensions * 0.8;
+
+		border-width: inherit;
+		border-color: inherit;
+		border-style: inherit;
+
+		z-index: 1;
+	}
+
+	&::after {
+		top: 99%;
+		left: 50%;
+		transform: translateX(-50%);
+		height: 0;
+		border-top: none;
+		border-bottom: none;
+	}
+
+	&::before {
+		left: 99%;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 0;
+		border-left: none;
+		border-right: none;
+	}
+}
+
+%join-right {
+	&::before {
+		width: $cfDimensions * 0.39;
+	}
+}
+
+%join-down {
+	&::after {
+		height: $cfDimensions * 0.39;
+	}
+}
+
+$variants: (
+	1: 'cfRed',
+	2: 'cfGreen',
+	3: 'cfBlue',
+	4: 'cfYellow',
+	5: 'cfCyan',
+	6: 'cfMagenta',
+);
+
+@each $num, $colour in $variants {
+	.colour#{$num} {
+		@extend %button;
+
+		background: map-deep-get($colours, $colour, 'mid');
+		border-color: map-deep-get($colours, $colour, 'dark');
+
+		&:hover,
+		&:focus {
+			box-shadow: 0 0 0 3px white, 0 0 0 7px map-deep-get($colours, $colour, 'dark');
+
+			&[disabled] {
+				box-shadow: none;
+			}
+		}
+
+		&--join-down {
+			@extend .colour#{$num};
+			@extend %join-down;
+		}
+
+		&--join-right {
+			@extend .colour#{$num};
+			@extend %join-right;
+		}
+
+		&--join-down--join-right {
+			@extend .colour#{$num}--join-down;
+			@extend .colour#{$num}--join-right;
+		}
+	}
+}

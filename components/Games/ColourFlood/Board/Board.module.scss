@@ -1,0 +1,7 @@
+@import '../../../../styles/index.module.scss';
+
+.board {
+	display: grid;
+	grid-template: auto / repeat(10, $cfDimensions);
+	gap: $cfDimensions / 6;
+}

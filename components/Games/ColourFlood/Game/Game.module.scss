@@ -1,0 +1,7 @@
+@import '../../../../styles/index.module.scss';
+
+.container {
+	padding: $cfDimensions $cfDimensions / 3 $cfDimensions $cfDimensions;
+	display: inline-block;
+	position: relative;
+}

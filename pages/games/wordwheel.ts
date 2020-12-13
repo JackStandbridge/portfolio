@@ -1,1 +1,1 @@
-export { default } from '../../components/Wordwheel';
+export { default } from '../../components/Games/Wordwheel';

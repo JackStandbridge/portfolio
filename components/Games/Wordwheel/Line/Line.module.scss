@@ -1,0 +1,44 @@
+@import '../../../../styles/index.module.scss';
+
+.wrapper {
+	grid-area: letters;
+	padding: 7rem 0.75rem 0.75rem 0.75rem;
+	margin-bottom: 2rem;
+	position: relative;
+}
+
+.line {
+	position: relative;
+	z-index: 1;
+
+	width: calc(9 * 4.5rem - 1.5rem);
+	max-width: 100vw;
+	height: 3rem;
+
+	margin: auto;
+
+	@media only screen and (max-width: 550px) {
+		height: calc(100vw - 1.5rem);
+		width: calc(100vw - 1.5rem);
+	}
+}
+
+.center {
+	padding: 1rem;
+	max-width: max-content;
+	margin: auto;
+}
+
+.instructions {
+	position: absolute;
+	left: 50%;
+	bottom: -1rem;
+	transform: translateX(-50%);
+
+	color: map-deep-get($colours, 'wwBlue', 'dark');
+}
+
+.reverse {
+	display: inline-block;
+	transform: rotateY(180deg);
+}

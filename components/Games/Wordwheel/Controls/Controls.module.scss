@@ -1,0 +1,10 @@
+@import '../../../../styles/index.module.scss';
+
+.section {
+	display: grid;
+	grid-area: controls;
+	align-content: start;
+	gap: 1rem;
+	padding: 1rem;
+	z-index: 5;
+}
