@@ -75,9 +75,7 @@ const PlaceholderIpsum: FC<Props> = ({
 						)) }
 					</div>
 				</article>
-
 			</main>
-
 		</div>
 	)
 };
