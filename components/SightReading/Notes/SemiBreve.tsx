@@ -6,9 +6,11 @@ interface Props {
 }
 
 const SemiBreve: FC<Props> = ({ x, y }) => {
+	const id = `counter${ x }${ y }`
+
 	return (
 		<g>
-			<mask id='counter'>
+			<mask id={ id }>
 				<rect width="100%" height="100%" fill="white" />
 				<ellipse
 					transform={ `rotate(45 ${ x } ${ y })` }
@@ -21,7 +23,7 @@ const SemiBreve: FC<Props> = ({ x, y }) => {
 			</mask>
 
 			<ellipse
-				mask='url(#counter)'
+				mask={ `url(#${ id })` }
 				ry={ 4 }
 				rx={ 6.5 }
 				cx={ x }

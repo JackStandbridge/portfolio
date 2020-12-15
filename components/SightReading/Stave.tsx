@@ -3,56 +3,43 @@ import { FC } from 'react';
 const Stave: FC = () => {
 	const lineGap = 10;
 
-	return (
-		<>
+	const lines = [1, 2, 3, 4, 5];
 
+	return (
+		<g>
+			{/* stave lines */}
+			{ lines.map(lineNum => (
+				<line
+					key={ lineNum }
+					x1='0%'
+					y1={ lineGap * lineNum }
+					x2='100%'
+					y2={ lineGap * lineNum }
+					stroke='#000'
+					strokeWidth={ 1 }
+				/>
+			)) }
+
+			{/* start of bar line */}
 			<line
-				x1={ 0 }
+				x1='0%'
 				y1={ lineGap }
-				x2={ 500 }
-				y2={ lineGap }
-				stroke='#000'
-				strokeWidth={ 1 }
-				strokeLinecap='round'
-			/>
-			<line
-				x1={ 0 }
-				y1={ lineGap * 2 }
-				x2={ 500 }
-				y2={ lineGap * 2 }
-				stroke='#000'
-				strokeWidth={ 1 }
-				strokeLinecap='round'
-			/>
-			<line
-				x1={ 0 }
-				y1={ lineGap * 3 }
-				x2={ 500 }
-				y2={ lineGap * 3 }
-				stroke='#000'
-				strokeWidth={ 1 }
-				strokeLinecap='round'
-			/>
-			<line
-				x1={ 0 }
-				y1={ lineGap * 4 }
-				x2={ 500 }
-				y2={ lineGap * 4 }
-				stroke='#000'
-				strokeWidth={ 1 }
-				strokeLinecap='round'
-			/>
-			<line
-				x1={ 0 }
-				y1={ lineGap * 5 }
-				x2={ 500 }
+				x2='0%'
 				y2={ lineGap * 5 }
 				stroke='#000'
-				strokeWidth={ 1 }
-				strokeLinecap='round'
+				strokeWidth={ 2 }
 			/>
 
-		</>
+			{/* end of bar line */}
+			<line
+				x1='100%'
+				y1={ lineGap }
+				x2='100%'
+				y2={ lineGap * 5 }
+				stroke='#000'
+				strokeWidth={ 2 }
+			/>
+		</g>
 	);
 };
 

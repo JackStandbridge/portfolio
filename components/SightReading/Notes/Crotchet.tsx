@@ -1,11 +1,8 @@
 import { FC } from 'react';
 
-interface Props {
-	x: number,
-	y: number,
-}
+import { NoteInterface } from './Note';
 
-const Crotchet: FC<Props> = ({ x, y }) => {
+const Crotchet: FC<NoteInterface> = ({ x, y }) => {
 	const lineRight = x + 6.5;
 	const lineTop = y - 40;
 
