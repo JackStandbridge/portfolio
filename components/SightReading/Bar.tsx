@@ -8,7 +8,7 @@ import Crotchet from './Notes/Crotchet';
 import Quaver from './Notes/Quaver';
 import SemiQuaver from './Notes/SemiQuaver';
 
-import { NoteInterface } from './Notes/Note';
+import { NoteDefinition, NoteCoordinates } from './types';
 
 const components = {
 	1: SemiBreve,
@@ -18,46 +18,52 @@ const components = {
 	16: SemiQuaver,
 };
 
-type Duration = 1 | 2 | 4 | 8 | 16
-
-type NoteDefinition = [string, Duration];
-
 interface Props {
 	voices: NoteDefinition[][],
-}
+};
 
 const Bar: FC<Props> = ({ voices }) => {
-	voices.forEach(voice => {
-		const total = voice.reduce((total, [, value]) => {
-			const fraction = 1 / value;
-			return total + fraction;
-		}, 0);
-
-		if (total > 1) {
-			throw new Error('Bar may not exceed value of 1 semibreve');
-		}
-	});
-
 	return (
 		<svg viewBox='0 0 300 150'>
 			<g transform='translate(0, 45)'>
 				<Stave />
-				{ voices.map(voice => voice.map(([name, value], i) => {
-					const Component = components[value];
 
-					return (
-						<Note
-							key={ i }
-							position={ i }
-							dotted={ false }
-							note={ name }
-						>
-							{ (props: NoteInterface) => (
-								<Component { ...props } />
-							) }
-						</Note>
-					);
-				})) }
+				{ voices.map(voice => {
+
+					const sumOfNotes = voice.reduce((sumOfNotes, [, value]) => {
+						const fraction = 1 / value;
+						return sumOfNotes + fraction;
+					}, 0);
+
+					if (sumOfNotes > 1) {
+						throw new Error('Bar may not exceed value of 1 semibreve');
+					}
+
+					let noteXCoordinate = 0;
+
+					return voice.map(([name, value], i) => {
+
+						const Component = components[value];
+
+						const note = (
+							<Note
+								key={ i }
+								xFraction={ noteXCoordinate }
+								dotted={ false }
+								note={ name }
+							>
+								{ (props: NoteCoordinates) => (
+									<Component { ...props } />
+								) }
+							</Note>
+						);
+
+						noteXCoordinate += 1 / value;
+
+						return note;
+					})
+				}) }
+
 			</g>
 		</svg>
 	);

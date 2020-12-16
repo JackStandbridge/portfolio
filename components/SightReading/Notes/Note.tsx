@@ -1,19 +1,15 @@
 import { FC } from 'react';
-
-export interface NoteInterface {
-	x: number,
-	y: number,
-};
+import { NoteName, NoteCoordinates } from '../types';
 
 interface Props {
-	note: string,
+	note: NoteName,
 	dotted: boolean,
-	position: number,
-	children: (props: NoteInterface) => JSX.Element
+	xFraction: number,
+	children: (props: NoteCoordinates) => JSX.Element
 };
 
+const Note: FC<Props> = ({ note, xFraction, children }) => {
 
-const Note: FC<Props> = ({ note, position, children }) => {
 	const y = {
 		'C4': 60,
 		'D4': 55,
@@ -30,7 +26,7 @@ const Note: FC<Props> = ({ note, position, children }) => {
 	}[note] || 0;
 
 	const props = {
-		x: position * 65 + 50,
+		x: xFraction * 270 + 25,
 		y,
 	};
 

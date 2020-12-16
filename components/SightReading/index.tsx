@@ -1,16 +1,20 @@
 import { FC } from 'react';
 import Bar from './Bar';
+import Head from 'next/head'
 
 import styles from './SightReading.module.scss';
 
 const SightReading: FC = () => {
 	return (
-		<div className={ styles.container }>
+		<main className={ styles.container }>
+			<Head>
+				<title>JS | Sight Reading</title>
+			</Head>
 			<Bar
 				voices={ [
 					[
 						['C5', 4],
-						['B4', 8],
+						['B4', 2],
 						['A4', 4],
 					],
 					[
@@ -47,10 +51,19 @@ const SightReading: FC = () => {
 						['E4', 16],
 						['D4', 16],
 						['C4', 16],
+						['D4', 16],
+						['E4', 16],
+						['D4', 16],
+						['C4', 16],
+						['D4', 16],
+						['E4', 16],
+						['D4', 16],
+						['C4', 16],
+						['D4', 16],
 					],
 				] }
 			/>
-		</div>
+		</main>
 	);
 };
 

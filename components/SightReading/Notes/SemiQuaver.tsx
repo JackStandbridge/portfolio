@@ -1,11 +1,7 @@
 import { FC } from 'react';
+import { NoteCoordinates } from '../types';
 
-interface Props {
-	x: number,
-	y: number,
-}
-
-const SemiQuaver: FC<Props> = ({ x, y }) => {
+const SemiQuaver: FC<NoteCoordinates> = ({ x, y }) => {
 	const lineRight = x + 6.5;
 	const lineTop = y - 40;
 

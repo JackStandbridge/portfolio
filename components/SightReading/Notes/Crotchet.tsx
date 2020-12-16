@@ -1,8 +1,7 @@
 import { FC } from 'react';
+import { NoteCoordinates } from '../types';
 
-import { NoteInterface } from './Note';
-
-const Crotchet: FC<NoteInterface> = ({ x, y }) => {
+const Crotchet: FC<NoteCoordinates> = ({ x, y }) => {
 	const lineRight = x + 6.5;
 	const lineTop = y - 40;
 
