@@ -1,10 +1,14 @@
 import { FC } from 'react';
 import { NoteCoordinates } from '../types';
 
-const Minim: FC<NoteCoordinates> = ({ x, y }) => {
+type Props = NoteCoordinates & {
+	barNumber: number,
+};
+
+const Minim: FC<Props> = ({ x, y, barNumber }) => {
 	const lineRight = x + 6.5;
 	const lineTop = y - 40;
-	const id = `counter${ x }${ y }`
+	const id = `counter${ x }${ y }${ barNumber }`;
 
 	return (
 		<g>

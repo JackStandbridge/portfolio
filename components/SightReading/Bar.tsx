@@ -20,9 +20,10 @@ const components = {
 
 interface Props {
 	voices: NoteDefinition[][],
+	barNumber: number,
 };
 
-const Bar: FC<Props> = ({ voices }) => {
+const Bar: FC<Props> = ({ voices, barNumber }) => {
 	return (
 		<svg viewBox='0 0 300 150'>
 			<g transform='translate(0, 45)'>
@@ -31,7 +32,7 @@ const Bar: FC<Props> = ({ voices }) => {
 				{ voices.map(voice => {
 
 					const sumOfNotes = voice.reduce((sumOfNotes, [, value]) => {
-						const fraction = 1 / value;
+						const fraction = 1 / +value;
 						return sumOfNotes + fraction;
 					}, 0);
 
@@ -53,15 +54,15 @@ const Bar: FC<Props> = ({ voices }) => {
 								note={ name }
 							>
 								{ (props: NoteCoordinates) => (
-									<Component { ...props } />
+									<Component { ...props } barNumber={ barNumber } />
 								) }
 							</Note>
 						);
 
-						noteXCoordinate += 1 / value;
+						noteXCoordinate += 1 / +value;
 
 						return note;
-					})
+					});
 				}) }
 
 			</g>

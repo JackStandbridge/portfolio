@@ -6,3 +6,4 @@ export { default as getAnswers } from './getAnswers';
 export { default as dictionaryMaker } from './dictionaryMaker';
 export { default as newWord } from './newWord';
 export { default as formatWord } from './formatWord';
+export { default as randomEntry } from './randomEntry';

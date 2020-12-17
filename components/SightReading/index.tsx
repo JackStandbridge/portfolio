@@ -1,68 +1,29 @@
 import { FC } from 'react';
-import Bar from './Bar';
 import Head from 'next/head'
 
+import Bar from './Bar';
+
 import styles from './SightReading.module.scss';
+import { useRandomBars } from '../../lib/hooks';
 
 const SightReading: FC = () => {
+	const { bars, fetchMoreBars } = useRandomBars([4, 4]);
+
 	return (
 		<main className={ styles.container }>
 			<Head>
 				<title>JS | Sight Reading</title>
 			</Head>
-			<Bar
-				voices={ [
-					[
-						['C5', 4],
-						['B4', 2],
-						['A4', 4],
-					],
-					[
-						['G4', 1],
-					],
-				] }
-			/>
-
-			<Bar
-				voices={ [
-					[
-						['F5', 2],
-						['E5', 2],
-					],
-				] }
-			/>
-
-			<Bar
-				voices={ [
-					[
-						['D5', 4],
-						['C5', 4],
-						['B4', 4],
-						['A4', 4],
-					],
-				] }
-			/>
-
-			<Bar
-				voices={ [
-					[
-						['G4', 8],
-						['F4', 8],
-						['E4', 16],
-						['D4', 16],
-						['C4', 16],
-						['D4', 16],
-						['E4', 16],
-						['D4', 16],
-						['C4', 16],
-						['D4', 16],
-						['E4', 16],
-						['D4', 16],
-						['C4', 16],
-						['D4', 16],
-					],
-				] }
-			/>
+			<button onClick={ fetchMoreBars }>More</button>
+			{ bars.map((bar, i) => {
+				return (
+					<Bar
+						barNumber={ i }
+						key={ i }
+						voices={ bar.voices }
+					/>
+				)
+			}) }
 		</main>
 	);
 };

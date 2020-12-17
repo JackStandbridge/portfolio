@@ -1,7 +1,11 @@
 import { FC } from 'react';
 import { NoteCoordinates } from '../types';
 
-const Quaver: FC<NoteCoordinates> = ({ x, y }) => {
+type Props = NoteCoordinates & {
+	barNumber: number,
+};
+
+const Quaver: FC<Props> = ({ x, y }) => {
 	const lineRight = x + 6.5;
 	const lineTop = y - 40;
 

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NoteName, NoteCoordinates } from '../types';
+import { NoteName, NoteCoordinates, notes } from '../types';
 
 interface Props {
 	note: NoteName,
@@ -10,20 +10,7 @@ interface Props {
 
 const Note: FC<Props> = ({ note, xFraction, children }) => {
 
-	const y = {
-		'C4': 60,
-		'D4': 55,
-		'E4': 50,
-		'F4': 45,
-		'G4': 40,
-		'A4': 35,
-		'B4': 30,
-		'C5': 25,
-		'D5': 20,
-		'E5': 15,
-		'F5': 10,
-		'G5': 5,
-	}[note] || 0;
+	const y = notes[note];
 
 	const props = {
 		x: xFraction * 270 + 25,

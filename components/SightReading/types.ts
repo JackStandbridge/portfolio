@@ -3,8 +3,31 @@ export interface NoteCoordinates {
 	y: number,
 };
 
-export type NoteName = 'C4' | 'D4' | 'E4' | 'F4' | 'G4' | 'A4' | 'B4' | 'C5' | 'D5' | 'E5' | 'F5' | 'G5';
+export const notes = {
+	'C4': 60,
+	'D4': 55,
+	'E4': 50,
+	'F4': 45,
+	'G4': 40,
+	'A4': 35,
+	'B4': 30,
+	'C5': 25,
+	'D5': 20,
+	'E5': 15,
+	'F5': 10,
+	'G5': 5,
+} as const;
 
-export type Duration = 1 | 2 | 4 | 8 | 16;
+export const durations = {
+	'1': 'semibreve',
+	'2': 'minim',
+	'4': 'crotchet',
+	'8': 'quaver',
+	'16': 'semiquaver',
+} as const;
+
+export type NoteName = keyof typeof notes;
+
+export type Duration = keyof typeof durations;
 
 export type NoteDefinition = [NoteName, Duration];

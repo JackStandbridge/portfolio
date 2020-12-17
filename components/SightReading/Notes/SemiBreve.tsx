@@ -1,8 +1,12 @@
 import { FC } from 'react';
 import { NoteCoordinates } from '../types';
 
-const SemiBreve: FC<NoteCoordinates> = ({ x, y }) => {
-	const id = `counter${ x }${ y }`
+type Props = NoteCoordinates & {
+	barNumber: number,
+};
+
+const SemiBreve: FC<Props> = ({ x, y, barNumber }) => {
+	const id = `counter${ x }${ y }${ barNumber }`;
 
 	return (
 		<g>
