@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NoteName, NoteCoordinates, notes } from '../types';
+import { NoteName, NoteCoordinates, notes } from '../../../lib/slices/sightreading/types';
 
 interface Props {
 	note: NoteName,

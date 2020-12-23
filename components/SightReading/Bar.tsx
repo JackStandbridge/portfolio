@@ -8,7 +8,8 @@ import Crotchet from './Notes/Crotchet';
 import Quaver from './Notes/Quaver';
 import SemiQuaver from './Notes/SemiQuaver';
 
-import { NoteDefinition, NoteCoordinates } from './types';
+import { NoteDefinition, NoteCoordinates } from '../../lib/slices/sightreading/types';
+import styles from './SightReading.module.scss';
 
 const components = {
 	1: SemiBreve,
@@ -25,18 +26,19 @@ interface Props {
 
 const Bar: FC<Props> = ({ voices, barNumber }) => {
 	return (
-		<svg viewBox='0 0 300 150'>
+		<svg className={ styles.bar } viewBox='0 0 300 150'>
 			<g transform='translate(0, 45)'>
 				<Stave />
 
 				{ voices.map(voice => {
 
 					const sumOfNotes = voice.reduce((sumOfNotes, [, value]) => {
-						const fraction = 1 / +value;
+						const fraction = 1 / value;
 						return sumOfNotes + fraction;
 					}, 0);
 
 					if (sumOfNotes > 1) {
+						console.error('Received:', voices);
 						throw new Error('Bar may not exceed value of 1 semibreve');
 					}
 
@@ -59,7 +61,7 @@ const Bar: FC<Props> = ({ voices, barNumber }) => {
 							</Note>
 						);
 
-						noteXCoordinate += 1 / +value;
+						noteXCoordinate += 1 / value;
 
 						return note;
 					});

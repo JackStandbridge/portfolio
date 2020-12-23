@@ -1,4 +1,4 @@
-import { State } from '../';
+import { State } from '../../store';
 import { Board } from './initial';
 
 export const boardSelector = ({ colourflood }: State): Board => colourflood.board;

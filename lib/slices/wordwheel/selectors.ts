@@ -1,4 +1,4 @@
-import { State } from '../';
+import { State } from '../../store';
 
 export const letterSelector =
 	({ wordwheel }: State) => wordwheel.letters;

@@ -1,0 +1,26 @@
+.controls {
+	display: flex;
+	gap: 1rem;
+}
+
+%button {
+	border: 1px solid grey;
+	border-radius: 5px;
+	display: block;
+	padding: 0.2rem 0;
+}
+
+.active {
+	@extend %button;
+	background: white;
+}
+
+.inactive {
+	@extend %button;
+	background: #ddd;
+	opacity: 0.5;
+}
+
+.svg {
+	display: block;
+}

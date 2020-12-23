@@ -1,11 +1,7 @@
 import { setWordInfo } from '../reducer';
-import { AppDispatch, AppGetState } from '../../../store';
+import { Thunk } from '../../../store';
 
-interface thunk {
-	(dispatch: AppDispatch, getState: AppGetState): void
-}
-
-const getWordInfo = (word: string): thunk => {
+const getWordInfo = (word: string): Thunk => {
 
 	return async (dispatch, getState) => {
 

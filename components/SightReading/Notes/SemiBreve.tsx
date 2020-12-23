@@ -1,11 +1,7 @@
 import { FC } from 'react';
-import { NoteCoordinates } from '../types';
+import { NoteProps } from '../../../lib/slices/sightreading/types';
 
-type Props = NoteCoordinates & {
-	barNumber: number,
-};
-
-const SemiBreve: FC<Props> = ({ x, y, barNumber }) => {
+const SemiBreve: FC<NoteProps> = ({ x, y, barNumber }) => {
 	const id = `counter${ x }${ y }${ barNumber }`;
 
 	return (

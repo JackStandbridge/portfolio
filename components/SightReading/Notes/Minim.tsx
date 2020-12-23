@@ -1,11 +1,7 @@
 import { FC } from 'react';
-import { NoteCoordinates } from '../types';
+import { NoteProps } from '../../../lib/slices/sightreading/types';
 
-type Props = NoteCoordinates & {
-	barNumber: number,
-};
-
-const Minim: FC<Props> = ({ x, y, barNumber }) => {
+const Minim: FC<NoteProps> = ({ x, y, barNumber }) => {
 	const lineRight = x + 6.5;
 	const lineTop = y - 40;
 	const id = `counter${ x }${ y }${ barNumber }`;

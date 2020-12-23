@@ -3,6 +3,10 @@ export interface NoteCoordinates {
 	y: number,
 };
 
+export type NoteProps = NoteCoordinates & {
+	barNumber: number,
+};
+
 export const notes = {
 	'C4': 60,
 	'D4': 55,
@@ -19,11 +23,11 @@ export const notes = {
 } as const;
 
 export const durations = {
-	'1': 'semibreve',
-	'2': 'minim',
-	'4': 'crotchet',
-	'8': 'quaver',
-	'16': 'semiquaver',
+	1: 'semibreve',
+	2: 'minim',
+	4: 'crotchet',
+	8: 'quaver',
+	16: 'semiquaver',
 } as const;
 
 export type NoteName = keyof typeof notes;

@@ -1,12 +1,8 @@
-import { AppDispatch, AppGetState } from '../../../store';
+import { Thunk } from '../../../store';
 import { requestNewGame } from './';
 import { storeGame } from '../reducer';
 
-interface thunk {
-	(dispatch: AppDispatch, getState: AppGetState): void
-}
-
-const getInitialGame = (): thunk => (dispatch, getState) => {
+const getInitialGame = (): Thunk => (dispatch, getState) => {
 	const state = getState();
 
 	if (state.wordwheel.answers.length) {

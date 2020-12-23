@@ -1,9 +1,9 @@
 import { storeGame, newGame } from '../reducer';
-import { AppDispatch } from '../../../store';
+import { Thunk } from '../../../store';
 
 let worker: Worker|null;
 
-const requestNewGame = (): (dispatch: AppDispatch) => void => dispatch => {
+const requestNewGame = (): Thunk => dispatch => {
 	// only do work if there isn't already a worker doing something
 	if (!worker) {
 		worker = new Worker('./workers/newWord.ts', { type: 'module' });
