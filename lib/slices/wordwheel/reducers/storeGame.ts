@@ -1,13 +1,12 @@
 import { State, Letters } from '../initial';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 interface Action {
-	payload: {
-		answers: string[],
-		letters: Letters,
-	}
-}
+	answers: string[],
+	letters: Letters,
+};
 
-const storeGame = (state: State, { payload }: Action): void => {
+const storeGame = (state: State, { payload }: PayloadAction<Action>): void => {
 	state.nextGame.answers = payload.answers;
 	state.nextGame.letters = payload.letters;
 };

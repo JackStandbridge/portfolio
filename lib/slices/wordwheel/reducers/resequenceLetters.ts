@@ -1,10 +1,7 @@
 import { State } from '../initial';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: number[]
-}
-
-const resequenceLetters = (state: State, { payload }: Action): void => {
+const resequenceLetters = (state: State, { payload }: PayloadAction<number[]>): void => {
 	state.letters.baseOrder = payload;
 };
 

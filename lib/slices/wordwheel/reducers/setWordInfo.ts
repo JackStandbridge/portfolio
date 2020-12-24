@@ -1,13 +1,12 @@
 import { State, DefinitionListing } from '../initial';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 interface Action {
-	payload: {
-		word: string,
-		result: DefinitionListing[]|null,
-	}
-}
+	word: string,
+	result: DefinitionListing[] | null,
+};
 
-const setWordInfo = (state: State, { payload }: Action): void => {
+const setWordInfo = (state: State, { payload }: PayloadAction<Action>): void => {
 	state.fetchedInfo[payload.word] = payload.result;
 };
 

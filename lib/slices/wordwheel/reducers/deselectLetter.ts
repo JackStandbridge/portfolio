@@ -1,10 +1,7 @@
 import { State } from '../initial';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: number
-}
-
-const deselectLetter = (state: State, { payload }: Action): void => {
+const deselectLetter = (state: State, { payload }: PayloadAction<number>): void => {
 	state.letters.entities[payload].selected = false;
 
 	const index = state.letters.raisedOrder.indexOf(payload);

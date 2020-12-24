@@ -1,10 +1,7 @@
 import { State } from '../initial';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: boolean
-}
-
-const altActive = (state: State, { payload }: Action): void => {
+const altActive = (state: State, { payload }: PayloadAction<boolean>): void => {
 	state.altActive = payload;
 };
 

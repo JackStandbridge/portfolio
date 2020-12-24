@@ -11,7 +11,7 @@ const newGame = (state: State): void => {
 	state.nextGame.answers = initial.nextGame.answers;
 
 	startPlaying(state);
-	setShowAnswers(state, { payload: false });
+	setShowAnswers(state, { payload: false, type: 'setShowAnswers' });
 	wipeGuesses(state);
 };
 

@@ -1,10 +1,9 @@
 import { State } from '../initial';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: { id: number, toPosition: number }
-}
+interface Action { id: number, toPosition: number }
 
-const moveLetter = (state: State, { payload }: Action): void => {
+const moveLetter = (state: State, { payload }: PayloadAction<Action>): void => {
 	const { id, toPosition } = payload;
 
 	const index = state.letters.baseOrder.indexOf(id);

@@ -1,10 +1,7 @@
 import { State } from '../initial';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: string
-}
-
-const deleteGuess = (state: State, { payload }: Action): void => {
+const deleteGuess = (state: State, { payload }: PayloadAction<string>): void => {
 	const index = state.guesses.indexOf(payload);
 
 	if (index !== -1) {
