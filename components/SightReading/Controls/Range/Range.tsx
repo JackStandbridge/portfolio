@@ -6,7 +6,7 @@ import SemiBreve from '../../Notes/SemiBreve';
 
 import styles from './Range.module.scss';
 import controlStyles from '../Controls.module.scss';
-import { NoteName, NoteCoordinates } from '../../../../lib/slices/sightreading/types';
+import { NoteName, NoteProps } from '../../../../lib/slices/sightreading/types';
 
 interface Props {
 	top: NoteName,
@@ -40,30 +40,28 @@ const Range: FC<Props> = ({
 						className={ styles.svg }
 						viewBox='0 0 55 100'
 					>
-						<g transform='translate(0, 20)'>
-							<Stave />
-							<Note
-								barWidth={ 50 }
-								xFraction={ 0.25 }
-								dotted={ false }
-								note={ bottom }
-							>
-								{ (props: NoteCoordinates) => (
-									<SemiBreve { ...props } barNumber={ -2 } />
-								) }
-							</Note>
+						<Stave />
+						<Note
+							barWidth={ 50 }
+							xFraction={ 0.25 }
+							dotted={ false }
+							note={ bottom }
+						>
+							{ (props: NoteProps) => (
+								<SemiBreve { ...props } barNumber={ -2 } />
+							) }
+						</Note>
 
-							<Note
-								barWidth={ 50 }
-								xFraction={ 0.75 }
-								dotted={ false }
-								note={ top }
-							>
-								{ (props: NoteCoordinates) => (
-									<SemiBreve { ...props } barNumber={ -2 } />
-								) }
-							</Note>
-						</g>
+						<Note
+							barWidth={ 50 }
+							xFraction={ 0.75 }
+							dotted={ false }
+							note={ top }
+						>
+							{ (props: NoteProps) => (
+								<SemiBreve { ...props } barNumber={ -2 } />
+							) }
+						</Note>
 					</svg>
 
 					<div className={ styles.controlGroup }>

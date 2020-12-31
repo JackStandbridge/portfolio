@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { NoteProps } from '../../../lib/slices/sightreading/types';
 
-const Quaver: FC<NoteProps & { stemDown?: boolean }> = ({ x, y, stemDown = false }) => {
+const Quaver: FC<NoteProps> = ({ x, y, stemDown = false, ledgerLines = [] }) => {
 	const lineRight = x + (stemDown ? -6.5 : 6.5);
 	const lineTop = y - (stemDown ? - 40 : 40);
 	const lineBottom = y + (stemDown ? 2 : -2);
@@ -26,6 +26,7 @@ const Quaver: FC<NoteProps & { stemDown?: boolean }> = ({ x, y, stemDown = false
 
 	return (
 		<g transform={ `translate(${translation})` }>
+			{ ledgerLines }
 			<line
 				x1={ lineRight }
 				y1={ lineTop }

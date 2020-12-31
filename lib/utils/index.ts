@@ -8,3 +8,4 @@ export { default as dictionaryMaker } from './dictionaryMaker';
 export { default as newWord } from './newWord';
 export { default as formatWord } from './formatWord';
 export { default as randomEntry } from './randomEntry';
+export { default as calculateLedgerLines } from './calculateLedgerLines';

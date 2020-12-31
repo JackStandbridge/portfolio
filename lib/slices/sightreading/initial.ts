@@ -8,8 +8,8 @@ export interface State {
 
 const initial: State = {
 	durations: [2, 4],
-	maxInterval: 1,
-	range: ['E4', 'G4'],
+	maxInterval: 3,
+	range: ['E4', 'F5'],
 };
 
 export default initial;

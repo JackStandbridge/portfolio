@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import { NoteProps } from '../../../lib/slices/sightreading/types';
 
-const SemiBreve: FC<NoteProps> = ({ x, y, barNumber }) => {
+const SemiBreve: FC<NoteProps> = ({ x, y, barNumber, ledgerLines = [] }) => {
 	const id = `counter${ x }${ y }${ barNumber }`;
 
 	return (
 		<g>
+			{ ledgerLines }
 			<mask id={ id }>
 				<rect width="100%" height="100%" fill="white" />
 				<ellipse

@@ -19,7 +19,7 @@ const Durations: FC<Props> = ({ notes, handleClick, durations }) => {
 
 			<div className={ controlStyles.controlAlignment }>
 				<section className={ styles.durations }>
-					{ notes.map(({ note: Note, width, value }, i) => (
+					{ notes.map(({ note: NoteComponent, width, value }, i) => (
 						<button
 							className={ durations.includes(value) ? styles.active : styles.inactive }
 							key={ i }
@@ -30,7 +30,7 @@ const Durations: FC<Props> = ({ notes, handleClick, durations }) => {
 								style={ { height: buttonSize } }
 								viewBox={ `0 0 ${ width } ${ 55 }` }
 							>
-								<Note
+								<NoteComponent
 									x={ 15 }
 									y={ 45 }
 									barNumber={ -i }

@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { NoteName, NoteCoordinates, notes } from '../../../lib/slices/sightreading/types';
+import { NoteName, NoteProps, notes } from '../../../lib/slices/sightreading/types';
+import { calculateLedgerLines } from '../../../lib/utils';
 
 interface Props {
 	note: NoteName,
 	dotted: boolean,
 	xFraction: number,
-	children: (props: NoteCoordinates) => JSX.Element,
+	children: (props: NoteProps) => JSX.Element,
 	barWidth: number,
 };
 
@@ -15,13 +16,30 @@ const Note: FC<Props> = ({ note, xFraction, children, barWidth }) => {
 	const usableSpace = barWidth * 0.9;
 	const padding = barWidth / 12;
 
-	const props = {
-		x: xFraction * usableSpace + padding,
-		y,
-		stemDown: y < 30,
-	};
+	const stemDown = y < notes.B4;
+	const x = xFraction * usableSpace + padding;
 
-	return children(props);
+	const ledgerLinePosition = calculateLedgerLines(y);
+
+	const ledgerLines = ledgerLinePosition.map(position => (
+		<line
+			x1={ x - 10 }
+			y1={ y + position }
+			x2={ x + 10 }
+			y2={ y + position }
+			stroke='#000'
+			strokeWidth='1'
+			strokeLinecap='round'
+		/>
+	));
+
+	const props = { x, y, stemDown, ledgerLines };
+
+	return (
+		<>
+			{ children(props) }
+		</>
+	);
 };
 
 export default Note;

@@ -4,22 +4,31 @@ export interface NoteCoordinates {
 };
 
 export type NoteProps = NoteCoordinates & {
-	barNumber: number,
+	barNumber?: number,
+	stemDown?: boolean,
+	ledgerLines?: JSX.Element[],
 };
 
 export const notes = {
-	'C4': 60,
-	'D4': 55,
-	'E4': 50,
-	'F4': 45,
-	'G4': 40,
-	'A4': 35,
-	'B4': 30,
-	'C5': 25,
-	'D5': 20,
-	'E5': 15,
-	'F5': 10,
-	'G5': 5,
+	'G3': 95,
+	'A3': 90,
+	'B3': 85,
+	'C4': 80,
+	'D4': 75,
+	'E4': 70,
+	'F4': 65,
+	'G4': 60,
+	'A4': 55,
+	'B4': 50,
+	'C5': 45,
+	'D5': 40,
+	'E5': 35,
+	'F5': 30,
+	'G5': 25,
+	'A5': 20,
+	'B5': 15,
+	'C6': 10,
+	'D6': 5,
 } as const;
 
 export const durations = {
