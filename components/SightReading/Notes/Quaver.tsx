@@ -22,8 +22,10 @@ const Quaver: FC<NoteProps & { stemDown?: boolean }> = ({ x, y, stemDown = false
 
 	const tail = stemDown ? downTail : upTail;
 
+	const translation = stemDown ? '5, 0' : '0, 0';
+
 	return (
-		<g>
+		<g transform={ `translate(${translation})` }>
 			<line
 				x1={ lineRight }
 				y1={ lineTop }

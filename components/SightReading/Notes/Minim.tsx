@@ -1,18 +1,21 @@
 import { FC } from 'react';
 import { NoteProps } from '../../../lib/slices/sightreading/types';
 
-const Minim: FC<NoteProps> = ({ x, y, barNumber }) => {
-	const lineRight = x + 6.5;
-	const lineTop = y - 40;
+const Minim: FC<NoteProps & { stemDown?: boolean }> = ({ x, y, barNumber, stemDown }) => {
+	const lineRight = x + (stemDown ? -6.5 : 6.5);
+	const lineTop = y - (stemDown ? - 40 : 40);
+	const lineBottom = y + (stemDown ? 2 : -2);
 	const id = `counter${ x }${ y }${ barNumber }`;
 
+	const translation = stemDown ? '5, 0' : '0, 0';
+
 	return (
-		<g>
+		<g transform={ `translate(${ translation })` }>
 			<line
 				x1={ lineRight }
 				y1={ lineTop }
 				x2={ lineRight }
-				y2={ y - 2 }
+				y2={ lineBottom }
 				stroke='#000'
 				strokeWidth={ 2 }
 				strokeLinecap='round'
