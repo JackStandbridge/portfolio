@@ -1,15 +1,11 @@
 import { State } from '../initial';
 import { Duration } from '../types';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: Duration,
-}
-
-const setDurations = (state: State, action: Action) => {
+const setDurations = (state: State, action: PayloadAction<Duration>): void => {
 	if (state.durations.length === 1 && state.durations[0] === action.payload) {
 		return;
 	}
-
 
 	if (!state.durations.includes(action.payload)) {
 		state.durations.push(action.payload);

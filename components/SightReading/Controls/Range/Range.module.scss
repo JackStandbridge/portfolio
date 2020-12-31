@@ -1,0 +1,40 @@
+.row {
+	display: flex;
+	justify-content: center;
+	gap: 0.2rem;
+}
+
+.svg {
+	height: 5rem;
+}
+
+.controlGroup {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.2rem;
+}
+
+%button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 1rem;
+	height: 1rem;
+
+	background: white;
+	border: 1px solid grey;
+	border-radius: 0.2rem;
+
+	overflow: hidden;
+}
+
+.buttonUp {
+	@extend %button;
+	transform: rotate(180deg);
+}
+
+.buttonDown {
+	@extend %button;
+}

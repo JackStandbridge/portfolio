@@ -7,6 +7,8 @@ const sightreading = createSlice({
 	initialState,
 	reducers: {
 		setDuration: reducers.setDurations,
+		updateInterval: reducers.updateInterval,
+		updateRange: reducers.updateRange,
 	}
 });
 
@@ -14,4 +16,6 @@ export default sightreading.reducer;
 
 export const {
 	setDuration,
+	updateInterval,
+	updateRange,
 } = sightreading.actions;

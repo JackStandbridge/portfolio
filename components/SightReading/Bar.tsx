@@ -22,11 +22,12 @@ const components = {
 interface Props {
 	voices: NoteDefinition[][],
 	barNumber: number,
+	barWidth: number,
 };
 
-const Bar: FC<Props> = ({ voices, barNumber }) => {
+const Bar: FC<Props> = ({ voices, barNumber, barWidth }) => {
 	return (
-		<svg className={ styles.bar } viewBox='0 0 300 150'>
+		<svg className={ styles.bar } viewBox={`0 0 ${ barWidth } 150`}>
 			<g transform='translate(0, 45)'>
 				<Stave />
 
@@ -50,6 +51,7 @@ const Bar: FC<Props> = ({ voices, barNumber }) => {
 
 						const note = (
 							<Note
+								barWidth={ 300 }
 								key={ i }
 								xFraction={ noteXCoordinate }
 								dotted={ false }

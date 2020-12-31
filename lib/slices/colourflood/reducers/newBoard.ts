@@ -1,11 +1,8 @@
 import { State } from '../initial';
 import { updateBoard } from './';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: number[][],
-};
-
-const newBoard = (state: State, { payload }: Action): void => {
+const newBoard = (state: State, { payload }: PayloadAction<number[][]>): void => {
 	state.board = payload;
 	updateBoard(state);
 };

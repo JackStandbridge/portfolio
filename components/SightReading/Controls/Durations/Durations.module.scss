@@ -1,0 +1,36 @@
+.durations {
+	display: flex;
+	gap: 1rem;
+}
+
+.durationsContainer {
+	padding: 1rem;
+}
+
+%button {
+	border: 1px solid grey;
+	border-radius: 5px;
+	display: block;
+	padding: 0.2rem 0;
+	background: white;
+	line,
+	ellipse,
+	path {
+		transition: 1s;
+	}
+}
+
+.active {
+	@extend %button;
+}
+
+.inactive {
+	@extend %button;
+	.svg {
+		opacity: 0.4;
+	}
+}
+
+.svg {
+	display: block;
+}

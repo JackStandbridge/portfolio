@@ -1,11 +1,8 @@
 import { State } from '../initial';
 import { updateBoard } from './';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface Action {
-	payload: number
-}
-
-const setColour = (state: State, { payload }: Action): void => {
+const setColour = (state: State, { payload }: PayloadAction<number>): void => {
 	if (payload < state.difficulty) {
 		state.colour = payload;
 	}

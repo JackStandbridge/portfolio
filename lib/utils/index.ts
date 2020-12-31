@@ -1,4 +1,5 @@
 export { default as clamp } from './clamp';
+export { default as bounceWithinBounds } from './bounceWithinBounds';
 export { default as generateBoard } from './generateBoard';
 export { default as capitalize } from './capitalize';
 export { default as validateGuess } from './validateGuess';

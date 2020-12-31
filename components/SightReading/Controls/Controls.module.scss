@@ -1,26 +1,67 @@
-.controls {
-	display: flex;
-	gap: 1rem;
-}
-
-%button {
+%expander {
 	border: 1px solid grey;
-	border-radius: 5px;
-	display: block;
-	padding: 0.2rem 0;
+	border-bottom-left-radius: 5px;
+	border-top: none;
+
+	overflow: hidden;
+
+	transform: translateY(-1px);
+	transition: 0.2s linear;
 }
 
-.active {
-	@extend %button;
+.expanderShown {
+	@extend %expander;
+	max-height: 10rem;
+}
+
+.expanderHidden {
+	@extend %expander;
+	max-height: 0;
+	visibility: hidden;
+}
+
+.container {
+	display: flex;
+}
+
+.toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 3rem;
+	height: 0.8rem;
+	margin-left: auto;
+
 	background: white;
+	border: 1px solid grey;
+	border-top: none;
+	border-radius: 0 0 5px 5px;
+	transform: translateY(-2px);
+
+	overflow: hidden;
+	outline: none;
+
+	&:focus, &:hover {
+		background: linear-gradient(#fff, #eee);
+	}
+
 }
 
-.inactive {
-	@extend %button;
-	background: #ddd;
-	opacity: 0.5;
+.iconReversed {
+	transform: rotate(180deg);
 }
 
-.svg {
-	display: block;
+.controlsSection {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	border-right: 1px solid grey;
+}
+
+.controlAlignment {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
 }
