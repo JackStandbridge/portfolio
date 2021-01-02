@@ -6,8 +6,8 @@ import styles from './PlaceholderIpsum.module.scss';
 interface Props {
 	handleSentences: (e: React.ChangeEvent<HTMLInputElement>) => void,
 	handleParagraphs: (e: React.ChangeEvent<HTMLInputElement>) => void,
-	numberOfSentences: number,
-	numberOfParagraphs: number,
+	numberOfSentences: number|'',
+	numberOfParagraphs: number|'',
 	output: string[][],
 	handleCopy: () => void,
 	buttonText: string,

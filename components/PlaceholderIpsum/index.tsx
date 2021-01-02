@@ -4,15 +4,25 @@ import sentences from '../../lib/data/sentences.json';
 import { clamp } from '../../lib/utils';
 
 const ConnectedPlaceholderIpsum: FC = () => {
-	const [numberOfSentences, setNumberOfSentences] = useState<number>(8);
-	const [numberOfParagraphs, setNumberOfParagraphs] = useState<number>(3);
+	const [numberOfSentences, setNumberOfSentences] = useState<number|''>(8);
+	const [numberOfParagraphs, setNumberOfParagraphs] = useState<number|''>(3);
 
 	const handleParagraphs = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setNumberOfParagraphs(clamp(1, 50, +e.currentTarget.value));
+		if (e.currentTarget.value === '') {
+			// allow empty input field
+			setNumberOfParagraphs('');
+		} else {
+			setNumberOfParagraphs(clamp(1, 50, +e.currentTarget.value));
+		}
 	};
 
 	const handleSentences = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setNumberOfSentences(clamp(1, 50, +e.currentTarget.value));
+		if (e.currentTarget.value === '') {
+			// allow empty input field
+			setNumberOfSentences('');
+		} else {
+			setNumberOfSentences(clamp(1, 50, +e.currentTarget.value));
+		}
 	};
 
 	const [output, setOutput] = useState<string[][]>([]);
