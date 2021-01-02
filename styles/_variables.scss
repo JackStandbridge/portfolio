@@ -55,6 +55,18 @@ $colours: (
 		dark: rgb(204, 0, 204),
 		darker: rgb(105, 0, 105),
 	),
+
+	homeOrange: (
+		mid: rgb(252, 144, 70),
+	),
+	homeRed: (
+		mid: rgb(250, 74, 70),
+	),
+	homeBlue: (
+		light: rgb(104, 170, 250),
+		mid: rgb(74, 144, 250),
+		dark: rgb(44, 94, 190),
+	)
 );
 
 $cfDimensions: 6.5vmin;

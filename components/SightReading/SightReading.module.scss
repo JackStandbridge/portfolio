@@ -6,7 +6,7 @@
 		grid-template: auto / repeat(2, 1fr);
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 768px) {
 		grid-template: auto / repeat(3, 1fr);
 	}
 

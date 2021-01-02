@@ -1,3 +1,5 @@
+@import '../../styles/index.module.scss';
+
 .grid {
 	display: grid;
 
@@ -13,4 +15,7 @@
 
 .title {
 	margin: 2rem 0;
+	font-size: 2rem;
+	width: fit-content;
+	@extend %title;
 }

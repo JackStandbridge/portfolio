@@ -1,0 +1,54 @@
+import { FC } from 'react';
+
+import Projects from './Projects';
+
+const ConnectedProjects: FC = () => {
+	const projects = [
+		{
+			link: '/games/wordwheel',
+			imgUrl: '/assets/images/wordwheel2.png',
+			title: 'Word Wheel',
+			blurb: [
+				'Challenge yourself to come up with as many words as you can using the letters provided. Make sure to use the middle (yellow) letter in every word.'
+			]
+		},
+		{
+			link: 'https://jackstandbridge.github.io/css-playground/#flex',
+			imgUrl: '/assets/images/css-playground.png',
+			title: 'CSS Playground',
+			blurb: [
+				'An interactive playground to teach students of CSS how to use the many properties of flex and grid.'
+			]
+		},
+		{
+			link: '/placeholder-ipsum',
+			imgUrl: '/assets/images/placeholder-ipsum2.png',
+			title: 'Placeholder Ipsum',
+			blurb: [
+				'A simple Lorem Ipsum generator that explains that the content is just placeholder text. No need to worry about explaining to a client that the content of their site in progress isn\'t in place yet as this placeholder text will explain it for you.'
+			]
+		},
+		{
+			link: '/games/colourflood',
+			imgUrl: '/assets/images/colourflood3.png',
+			title: 'Colour Flood',
+			blurb: [
+				'Turn all the squares one colour by clicking on them, or use keyboard number keys to control the colour change.'
+			]
+		},
+		{
+			link: '/sightreading',
+			imgUrl: '/assets/images/sightreading3.png',
+			title: 'Sightreading Trainer',
+			blurb: [
+				'Randomly generated sheet music to help you practice your sight reading.'
+			]
+		},
+	];
+
+	return (
+		<Projects projects={ projects } />
+	);
+};
+
+export default ConnectedProjects;

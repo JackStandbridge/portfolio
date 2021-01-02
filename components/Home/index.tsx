@@ -1,21 +1,25 @@
 import { FC } from 'react';
-import Games from '../Games';
+import Projects from '../Projects';
 
 import styles from './Home.module.scss';
 
 const Home: FC = () => {
 	return (
-		<div className='site-width'>
-			<header className={ styles.header }>
-				<h1 className={ styles.h1 }>Jack Standbridge</h1>
-			</header>
-			<main className={ styles.main }>
-				<article>
-					<h2 className={ styles.h2 }>Welcome to my site</h2>
-					<p>There's not much here yet, and that's because I haven't finished making the thing yet. In the mean time, here are a couple of games I created.</p>
-					<Games />
-				</article>
-			</main>
+		<div className={ styles.background }>
+			<div className='site-width'>
+				<div className={ styles.top }>
+					<header className={ styles.header }>
+						<h1 className={ styles.h1 }>Hello,<br/>I'm Jack<br />Standbridge</h1>
+						<p className={ styles.blurb }>I'm a web developer with a passion for learning and creating fun side projects. Take a look at some that I've created so far.</p>
+					</header>
+				</div>
+
+				<main className={ styles.main }>
+					<article>
+						<Projects />
+					</article>
+				</main>
+			</div>
 		</div>
 	);
 };

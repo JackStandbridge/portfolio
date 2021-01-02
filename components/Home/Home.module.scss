@@ -1,7 +1,59 @@
-.h1 {
-	margin: 2rem 0;
+@import '../../styles/functions';
+@import '../../styles/index.module.scss';
+
+.background {
+	background-color: #111;
+	color: white;
+	font-size: 1.2rem;
+
+	background-size: 100% 100%;
+	position: relative;
+
+	background-image: linear-gradient(
+		200deg,
+		darken(map-deep-get($colours, 'homeBlue', 'mid'), 5%),
+		map-deep-get($colours, 'homeBlue', 'mid') 55vmin,
+		transparent calc(55vmin + 1px)
+	),
+	linear-gradient(
+		160deg,
+		darken(map-deep-get($colours, 'homeBlue', 'dark'), 5%),
+		map-deep-get($colours, 'homeBlue', 'dark') calc(30vmin + 5vw),
+		transparent calc(30vmin + 1px + 5vw)
+	);
 }
 
-.h2 {
-	margin: 1rem 0;
+.top {
+	width: 100%;
+	min-height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 15% 0;
+
+	@media (min-width: 855px) {
+		width: 60%;
+	}
+}
+
+.h1 {
+	margin-bottom: 2rem;
+	font-size: 3rem;
+	text-align: center;
+
+	@media (min-width: 768px) {
+		font-size: 4rem;
+		text-align: left;
+	}
+
+	@extend %title;
+}
+
+.blurb {
+	font-size: 1.4rem;
+	text-align: center;
+	@media (min-width: 768px) {
+		text-align: left;
+	}
 }

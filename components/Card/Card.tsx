@@ -3,25 +3,40 @@ import Link from 'next/link';
 import styles from './Card.module.scss';
 
 interface Props {
-	title: string
-	img: string
-	link: string
+	title: string,
+	imgUrl: string,
+	link: string,
+	blurb: string[],
+	index: number,
 }
 
-const Card: FC<Props> = ({ title, img, link }) => {
+const Card: FC<Props> = ({ title, imgUrl, link, blurb }) => {
 	return (
-		<Link href={ link }>
-			<a className={ styles.link }>
-				<article className={ styles.card }>
-					<h2>{ title }</h2>
+		<article className={ styles.card }>
+
+			<div className={ styles.info }>
+				<h2>
+					<Link scroll={ false } href={ link }>
+						<a className={ styles.title }>
+							{ title }
+						</a>
+					</Link>
+				</h2>
+				{ blurb.map((p, i) => (
+					<p key={ i }>{ p }</p>
+				)) }
+			</div>
+
+			<Link href={ link }>
+				<a className={ styles.link }>
 					<img
-						src={ img }
+						src={ imgUrl }
 						alt={ `preview of ${ title }` }
 						className={ styles.image }
 					/>
-				</article>
-			</a>
-		</Link>
+				</a>
+			</Link>
+		</article>
 	);
 };
 

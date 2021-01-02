@@ -1,1 +1,1 @@
-export { default } from '../../components/Games/ColourFlood';
+export { default } from '../../components/Projects/ColourFlood';

@@ -17,7 +17,7 @@ export interface State {
 }
 
 const initial: State = {
-	difficulty: 6,
+	difficulty: 4,
 	height: 10,
 	width: 10,
 	colour: 0,
