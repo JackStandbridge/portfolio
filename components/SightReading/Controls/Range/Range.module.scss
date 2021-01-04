@@ -9,10 +9,18 @@
 }
 
 .controlGroup {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	gap: 0.2rem;
+
+}
+
+.noteName {
+	position: absolute;
+	top: 0rem;
 }
 
 %button {

@@ -1,1 +1,1 @@
-export { default } from '../../components/Projects/Wordwheel';
+export { default } from '../../components/Wordwheel';

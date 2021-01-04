@@ -32,6 +32,7 @@ const Range: FC<Props> = ({
 			<div className={ controlStyles.controlAlignment }>
 				<div className={ styles.row }>
 					<div className={ styles.controlGroup }>
+						<span className={ styles.noteName }>{ bottom }</span>
 						<button className={ styles.buttonUp } onClick={ handleIncrementBottom }>&#9662;</button>
 						<button className={ styles.buttonDown } onClick={ handleDecrementBottom }>&#9662;</button>
 					</div>
@@ -65,6 +66,7 @@ const Range: FC<Props> = ({
 					</svg>
 
 					<div className={ styles.controlGroup }>
+						<span className={ styles.noteName }>{ top }</span>
 						<button className={ styles.buttonUp } onClick={ handleIncrementTop }>&#9662;</button>
 						<button className={ styles.buttonDown } onClick={ handleDecrementTop }>&#9662;</button>
 					</div>
