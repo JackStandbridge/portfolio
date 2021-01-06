@@ -21,3 +21,5 @@ export type Thunk<ReturnType = void> = ThunkAction<
 >
 
 export default store;
+
+export type StoreType = typeof store;

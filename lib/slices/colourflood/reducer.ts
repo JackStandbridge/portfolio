@@ -8,6 +8,7 @@ const colourflood = createSlice({
 	reducers: {
 		newBoard: reducers.newBoard,
 		setColour: reducers.setColour,
+		rehydrateFromCache: reducers.rehydrateFromCache,
 	}
 });
 
@@ -16,4 +17,5 @@ export default colourflood.reducer;
 export const {
 	newBoard,
 	setColour,
+	rehydrateFromCache,
 } = colourflood.actions;

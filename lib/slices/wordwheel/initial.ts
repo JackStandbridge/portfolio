@@ -39,6 +39,7 @@ export interface State extends Game {
 	playing: boolean,
 	showAnswers: boolean,
 	altActive: boolean,
+	firstVisit: boolean,
 };
 
 const initial: State = {
@@ -83,6 +84,7 @@ const initial: State = {
 	playing: false,
 	showAnswers: false,
 	altActive: false,
+	firstVisit: false,
 };
 
 export default initial;

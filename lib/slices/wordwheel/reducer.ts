@@ -19,10 +19,12 @@ const wordwheel = createSlice({
 		deleteGuess: reducers.deleteGuess,
 		startPlaying: reducers.startPlaying,
 		toggleLetter: reducers.toggleLetter,
+		setFirstVisit: reducers.setFirstVisit,
 		toggleAnswers: reducers.toggleAnswers,
 		setShowAnswers: reducers.setShowAnswers,
 		deselectLetter: reducers.deselectLetter,
 		resequenceLetters: reducers.resequenceLetters,
+		rehydrateFromCache: reducers.rehydrateFromCache,
 	}
 });
 
@@ -42,8 +44,10 @@ export const {
 	deleteGuess,
 	startPlaying,
 	toggleLetter,
+	setFirstVisit,
 	toggleAnswers,
 	setShowAnswers,
 	deselectLetter,
 	resequenceLetters,
+	rehydrateFromCache,
 } = wordwheel.actions;

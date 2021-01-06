@@ -27,3 +27,5 @@ export const definitionsSelector = (word: string) => ({ wordwheel }: State) => w
 export const playingSelector = ({ wordwheel }: State) => wordwheel.playing;
 
 export const altKeySelector = ({ wordwheel }: State) => wordwheel.altActive;
+
+export const firstVisitSelector = ({ wordwheel }: State) => wordwheel.firstVisit;
