@@ -5,7 +5,6 @@ import Define from './Define';
 import Guess from './Guess';
 import NewGame from './NewGame';
 import Randomise from './Randomise';
-import Undo from './Undo';
 import Instructions from './Instructions';
 
 import styles from './Controls.module.scss';
@@ -16,7 +15,6 @@ const Controls: FC = () => {
 			<NewGame />
 			<Randomise />
 			<Define />
-			<Undo />
 			<Guess />
 			<ShowAnswers />
 			<Instructions />
