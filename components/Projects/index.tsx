@@ -34,8 +34,8 @@ const ConnectedProjects: FC = () => {
 			imgUrl: '/assets/images/colourflood3.png',
 			title: 'Colour Flood (WIP)',
 			blurb: [
-				'Turn all the squares one colour by clicking on them, or use keyboard number keys to control the colour change.',
-				'NB: Work in progress. Game controls not yet implemented'
+				'Turn all the squares one colour by clicking on them or the numbers at the bottom.',
+				'NB: Work in progress. Game controls & highscores not yet implemented.'
 			]
 		},
 		{
@@ -44,7 +44,7 @@ const ConnectedProjects: FC = () => {
 			title: 'Sightreading Trainer (WIP)',
 			blurb: [
 				'Randomly generated sheet music to help you practice your sight reading.',
-				'NB: Work in progress. Soon to come: beams, accidentals, key signatures, bass clef, multiple voices.'
+				'NB: Work in progress. Soon to come: beams, accidentals, key & time signatures, bass clef, multiple voices.'
 			]
 		},
 	];
