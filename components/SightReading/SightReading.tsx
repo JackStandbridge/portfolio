@@ -4,6 +4,7 @@ import Controls from './Controls';
 import Bar from './Bar';
 import Durations from './Controls/Durations';
 import Interval from './Controls/Interval';
+import Refresh from './Controls/Refresh';
 import Range from './Controls/Range';
 
 import styles from './SightReading.module.scss';
@@ -25,7 +26,7 @@ const SightReading: FC<Props> = ({ bars, generateBars }) => {
 					<Durations />
 					<Interval />
 					<Range />
-					<button onClick={ generateBars }>Refresh</button>
+					<Refresh generateBars={ generateBars }/>
 				</Controls>
 				<div className={ styles.container }>
 					{ bars.map((bar, i) => {

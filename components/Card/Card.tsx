@@ -23,7 +23,7 @@ const Card: FC<Props> = ({ title, imgUrl, link, blurb }) => {
 					</Link>
 				</h2>
 				{ blurb.map((p, i) => (
-					<p key={ i }>{ p }</p>
+					<p className={ styles.p } key={ i }>{ p }</p>
 				)) }
 			</div>
 

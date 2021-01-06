@@ -7,9 +7,10 @@ const ConnectedProjects: FC = () => {
 		{
 			link: '/games/wordwheel',
 			imgUrl: '/assets/images/wordwheel2.png',
-			title: 'Word Wheel',
+			title: 'Word Wheel (WIP)',
 			blurb: [
-				'Challenge yourself to come up with as many words as you can using the letters provided. Make sure to use the middle (yellow) letter in every word.'
+				'Challenge yourself to come up with as many words as you can using the letters provided. Make sure to use the middle (yellow) letter in every word.',
+				'NB: Work in progress. Mobile responsivity not yet implemented.'
 			]
 		},
 		{
@@ -31,17 +32,19 @@ const ConnectedProjects: FC = () => {
 		{
 			link: '/games/colourflood',
 			imgUrl: '/assets/images/colourflood3.png',
-			title: 'Colour Flood',
+			title: 'Colour Flood (WIP)',
 			blurb: [
-				'Turn all the squares one colour by clicking on them, or use keyboard number keys to control the colour change.'
+				'Turn all the squares one colour by clicking on them, or use keyboard number keys to control the colour change.',
+				'NB: Work in progress. Game controls not yet implemented'
 			]
 		},
 		{
 			link: '/sightreading',
 			imgUrl: '/assets/images/sightreading3.png',
-			title: 'Sightreading Trainer',
+			title: 'Sightreading Trainer (WIP)',
 			blurb: [
-				'Randomly generated sheet music to help you practice your sight reading.'
+				'Randomly generated sheet music to help you practice your sight reading.',
+				'NB: Work in progress. Soon to come: beams, accidentals, key signatures, bass clef, multiple voices.'
 			]
 		},
 	];

@@ -18,7 +18,7 @@ const Interval: FC<Props> = ({ handleChange, value }) => {
 					value={ value }
 					className={ styles.interval }
 					type='number'
-				/> step{ value !== 1 ? 's' : '' }
+				/>&nbsp;step{ value !== 1 && 's' }
 			</div>
 		</label>
 	);

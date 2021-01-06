@@ -14,7 +14,7 @@ const buttonSize = 45;
 
 const Durations: FC<Props> = ({ notes, handleClick, durations }) => {
 	return (
-		<div className={ controlStyles.controlsSection }>
+		<div className={ controlStyles.controlsSection + ' ' + styles.wrapper }>
 			<p>Choose durations</p>
 
 			<div className={ controlStyles.controlAlignment }>
