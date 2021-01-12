@@ -1,0 +1,18 @@
+.button {
+	display: block;
+	background: none;
+	border: 1px solid grey;
+	border-radius: 5px;
+
+	height: 55px;
+	width: 32px;
+
+	overflow: hidden;
+}
+
+.inactiveButton {
+	@extend .button;
+	svg {
+		opacity: 0.7;
+	}
+}

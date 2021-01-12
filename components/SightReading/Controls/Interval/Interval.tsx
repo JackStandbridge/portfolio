@@ -5,7 +5,7 @@ import controlStyles from '../Controls.module.scss';
 
 interface Props {
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-	value: number,
+	value: number | '',
 }
 
 const Interval: FC<Props> = ({ handleChange, value }) => {
@@ -14,11 +14,12 @@ const Interval: FC<Props> = ({ handleChange, value }) => {
 			<p>Max Interval</p>
 			<div className={ controlStyles.controlAlignment }>
 				<input
+					inputMode='numeric'
 					onChange={ handleChange }
 					value={ value }
 					className={ styles.interval }
 					type='number'
-				/>&nbsp;step{ value !== 1 && 's' }
+				/>&nbsp;step<span className={ value !== 1 ? '' : styles.invisible }>s</span>
 			</div>
 		</label>
 	);

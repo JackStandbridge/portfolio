@@ -12,5 +12,10 @@
 	max-height: 100vh;
 	padding: 0;
 	margin: auto;
+}
 
+.noCursor {
+	&, * {
+		cursor: none;
+	}
 }

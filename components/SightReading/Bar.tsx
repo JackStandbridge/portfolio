@@ -2,22 +2,8 @@ import { FC } from 'react';
 import Stave from './Stave';
 import Note from './Notes/Note';
 
-import SemiBreve from './Notes/SemiBreve';
-import Minim from './Notes/Minim';
-import Crotchet from './Notes/Crotchet';
-import Quaver from './Notes/Quaver';
-import SemiQuaver from './Notes/SemiQuaver';
-
-import { NoteDefinition, NoteProps } from '../../lib/slices/sightreading/types';
+import { NoteDefinition } from '../../lib/slices/sightreading/types';
 import styles from './SightReading.module.scss';
-
-const components = {
-	1: SemiBreve,
-	2: Minim,
-	4: Crotchet,
-	8: Quaver,
-	16: SemiQuaver,
-} as { [key: number]: FC<NoteProps> };
 
 interface Props {
 	voices: NoteDefinition[][],
@@ -27,7 +13,7 @@ interface Props {
 
 const Bar: FC<Props> = ({ voices, barNumber, barWidth }) => {
 	return (
-		<svg className={ styles.bar } viewBox={ `0 0 ${ barWidth } 150` }>
+		<svg className={ styles.bar } viewBox={ `0 0 ${ barWidth } 110` }>
 			<Stave />
 
 			{ voices.map(voice => {
@@ -46,8 +32,6 @@ const Bar: FC<Props> = ({ voices, barNumber, barWidth }) => {
 
 				return voice.map(([name, value], i) => {
 
-					const Component = components[value];
-
 					const note = (
 						<Note
 							barWidth={ 300 }
@@ -55,11 +39,9 @@ const Bar: FC<Props> = ({ voices, barNumber, barWidth }) => {
 							xFraction={ noteXCoordinate }
 							dotted={ false }
 							note={ name }
-						>
-							{ (props: NoteProps) => (
-								<Component { ...props } barNumber={ barNumber } />
-							) }
-						</Note>
+							value={ value }
+							barNumber={ barNumber }
+						/>
 					);
 
 					noteXCoordinate += 1 / value;

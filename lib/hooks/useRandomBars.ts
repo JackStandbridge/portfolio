@@ -1,6 +1,7 @@
 import { useSelector, shallowEqual } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { NoteDefinition, NoteName, Duration, notes } from '../slices/sightreading/types';
+import { NoteDefinition, NoteName, Duration } from '../slices/sightreading/types';
+import notes from '../slices/sightreading/notes';
 import { randomEntry, bounceWithinBounds } from '../utils';
 import { durationSelector, maxIntervalSelector, rangeSelector } from '../slices/sightreading/selectors';
 
@@ -99,7 +100,7 @@ const useRandomBars = ({
 }: BarsConfig): RandomBars => {
 
 	const durations = useSelector(durationSelector, shallowEqual);
-	const maxInterval = useSelector(maxIntervalSelector);
+	const maxInterval = useSelector(maxIntervalSelector) || 1;
 	const noteRange = useSelector(rangeSelector, shallowEqual);
 
 	const [bars, setBars] = useState<Bar[]>([]);

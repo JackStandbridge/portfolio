@@ -9,6 +9,7 @@ const sightreading = createSlice({
 		setDuration: reducers.setDurations,
 		updateRange: reducers.updateRange,
 		updateInterval: reducers.updateInterval,
+		toggleNoteNames: reducers.toggleNoteNames,
 		rehydrateFromCache: reducers.rehydrateFromCache,
 	}
 });
@@ -19,5 +20,6 @@ export const {
 	setDuration,
 	updateRange,
 	updateInterval,
+	toggleNoteNames,
 	rehydrateFromCache,
 } = sightreading.actions;

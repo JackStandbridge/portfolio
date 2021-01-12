@@ -10,7 +10,8 @@ const ConnectedInterval: FC = () => {
 	const dispatch = useDispatch();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		dispatch(updateInterval(+e.currentTarget.value));
+		const { value } = e.currentTarget;
+		dispatch(updateInterval(value === '' ? '' : +value));
 	};
 
 	const value = useSelector(maxIntervalSelector)

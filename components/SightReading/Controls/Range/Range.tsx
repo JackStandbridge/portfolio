@@ -47,22 +47,20 @@ const Range: FC<Props> = ({
 							xFraction={ 0.25 }
 							dotted={ false }
 							note={ bottom }
-						>
-							{ (props: NoteProps) => (
-								<SemiBreve { ...props } barNumber={ -2 } />
-							) }
-						</Note>
+							value={ 1 }
+							enableNoteNames={ false }
+							barNumber={ -2 }
+						/>
 
 						<Note
 							barWidth={ 50 }
 							xFraction={ 0.75 }
 							dotted={ false }
 							note={ top }
-						>
-							{ (props: NoteProps) => (
-								<SemiBreve { ...props } barNumber={ -2 } />
-							) }
-						</Note>
+							value={ 1 }
+							enableNoteNames={ false }
+							barNumber={ -2 }
+						/>
 					</svg>
 
 					<div className={ styles.controlGroup }>
@@ -72,7 +70,7 @@ const Range: FC<Props> = ({
 					</div>
 				</div>
 			</div>
-		</section >
+		</section>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { notes } from '../slices/sightreading/types';
+import notes from '../slices/sightreading/notes';
 
 const calculateLedgerLines = (y: number): number[] => {
 

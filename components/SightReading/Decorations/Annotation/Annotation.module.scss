@@ -1,0 +1,41 @@
+%hidden {
+	opacity: 0;
+}
+
+%shown {
+	opacity: 1;
+}
+
+%rect {
+	fill: #fff;
+	transform: translate(-6px, -13px);
+	width: 12px;
+	height: 14px;
+}
+
+%text {
+	font-weight: bold;
+	fill: #33c;
+	text-anchor: middle;
+	transition: 0.1s;
+}
+
+.rectShown {
+	@extend %rect;
+	@extend %shown;
+}
+
+.rectHidden {
+	@extend %rect;
+	@extend %hidden;
+}
+
+.textShown {
+	@extend %text;
+	@extend %shown;
+}
+
+.textHidden {
+	@extend %text;
+	@extend %hidden;
+}

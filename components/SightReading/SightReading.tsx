@@ -6,6 +6,7 @@ import Durations from './Controls/Durations';
 import Interval from './Controls/Interval';
 import Refresh from './Controls/Refresh';
 import Range from './Controls/Range';
+import ToggleNoteNames from './Controls/ToggleNoteNames';
 
 import styles from './SightReading.module.scss';
 import { Bar as iBar } from '../../lib/hooks/useRandomBars';
@@ -21,24 +22,25 @@ const SightReading: FC<Props> = ({ bars, generateBars }) => {
 			<Head>
 				<title>JS | Sight Reading</title>
 			</Head>
+
 			<main className='site-width'>
 				<Controls>
 					<Durations />
 					<Interval />
 					<Range />
-					<Refresh generateBars={ generateBars }/>
+					<ToggleNoteNames />
+					<Refresh generateBars={ generateBars } />
 				</Controls>
+
 				<div className={ styles.container }>
-					{ bars.map((bar, i) => {
-						return (
-							<Bar
-								barWidth={ 300 }
-								barNumber={ i }
-								key={ i }
-								voices={ bar.voices }
-							/>
-						)
-					}) }
+					{ bars.map((bar, i) => (
+						<Bar
+							barWidth={ 300 }
+							barNumber={ i }
+							key={ i }
+							voices={ bar.voices }
+						/>
+					)) }
 				</div>
 			</main>
 		</>

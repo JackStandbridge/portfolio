@@ -6,10 +6,9 @@ const Crotchet: FC<NoteProps> = ({ x, y, stemDown = false, ledgerLines = [] }) =
 	const lineTop = y - (stemDown ? - 40 : 40);
 	const lineBottom = y + (stemDown ? 2 : -2);
 
-	const translation = stemDown ? '5, 0' : '0, 0';
 
 	return (
-		<g transform={ `translate(${ translation })` }>
+		<g>
 			{ ledgerLines }
 			<line
 				x1={ lineRight }

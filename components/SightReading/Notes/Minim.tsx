@@ -7,10 +7,8 @@ const Minim: FC<NoteProps> = ({ x, y, barNumber, stemDown = false, ledgerLines =
 	const lineBottom = y + (stemDown ? 2 : -2);
 	const id = `counter${ x }${ y }${ barNumber }`;
 
-	const translation = stemDown ? '5, 0' : '0, 0';
-
 	return (
-		<g transform={ `translate(${ translation })` }>
+		<g>
 			{ ledgerLines }
 			<line
 				x1={ lineRight }

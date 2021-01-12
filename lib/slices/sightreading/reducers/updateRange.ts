@@ -1,6 +1,7 @@
 import { State } from '../initial';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { notes, NoteName } from '../types';
+import { NoteName } from '../types';
+import notes from '../notes';
 
 interface Action {
 	bound: 'top'|'bottom',

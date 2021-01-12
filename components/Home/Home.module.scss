@@ -10,17 +10,32 @@
 	position: relative;
 
 	background-image: linear-gradient(
-		200deg,
-		darken(map-deep-get($colours, 'homeBlue', 'mid'), 5%),
-		map-deep-get($colours, 'homeBlue', 'mid') 55vmin,
-		transparent calc(55vmin + 1px)
-	),
-	linear-gradient(
-		160deg,
-		darken(map-deep-get($colours, 'homeBlue', 'dark'), 5%),
-		map-deep-get($colours, 'homeBlue', 'dark') calc(30vmin + 5vw),
-		transparent calc(30vmin + 1px + 5vw)
-	);
+			200deg,
+			darken(map-deep-get($colours, 'homeBlue', 'mid'), 5%),
+			map-deep-get($colours, 'homeBlue', 'mid') 40vmin,
+			transparent calc(40vmin + 1px)
+		),
+		linear-gradient(
+			160deg,
+			darken(map-deep-get($colours, 'homeBlue', 'dark'), 5%),
+			map-deep-get($colours, 'homeBlue', 'dark') calc(30vmin + 5vw),
+			transparent calc(30vmin + 1px + 5vw)
+		);
+
+	@media (min-width: 500px) {
+		background-image: linear-gradient(
+				200deg,
+				darken(map-deep-get($colours, 'homeBlue', 'mid'), 5%),
+				map-deep-get($colours, 'homeBlue', 'mid') 55vmin,
+				transparent calc(55vmin + 1px)
+			),
+			linear-gradient(
+				160deg,
+				darken(map-deep-get($colours, 'homeBlue', 'dark'), 5%),
+				map-deep-get($colours, 'homeBlue', 'dark') calc(30vmin + 5vw),
+				transparent calc(30vmin + 1px + 5vw)
+			);
+	}
 }
 
 .top {

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Game from './Game';
@@ -9,6 +9,8 @@ import { playingSelector } from '../../../lib/slices/wordwheel/selectors';
 
 const ConnectedGame = () => {
 	const dispatch = useDispatch();
+
+	const [showCursor, setShowCursor] = useState(true);
 
 	useEffect(() => {
 		dispatch(getInitialGame());
@@ -25,6 +27,7 @@ const ConnectedGame = () => {
 
 			if (userIsTyping || (movingLetters && buttonIsFocused)) {
 				(document.activeElement as HTMLElement).blur();
+				setShowCursor(false);
 			}
 
 			if (!e.shiftKey && !e.metaKey && !e.altKey) {
@@ -39,9 +42,16 @@ const ConnectedGame = () => {
 		return (): void => {
 			document.removeEventListener('keydown', keyDownListener);
 		}
-	}, [dispatch, playing]);
+	}, [dispatch, playing, setShowCursor]);
 
-	return <Game />;
+	useEffect(() => {
+		const mouseMoveListener = () => {
+			setShowCursor(true);
+		};
+		document.addEventListener('mousemove', mouseMoveListener);
+	}, [setShowCursor]);
+
+	return <Game showCursor={ showCursor } />;
 };
 
 export default ConnectedGame;

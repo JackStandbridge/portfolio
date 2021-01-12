@@ -33,7 +33,7 @@ const Refresh: FC<Props> = ({ generateBars }) => {
 									c 0,0 0,0 -8,1
 								"
 								transform='translate(5,5)'
-								stroke-width="4"
+								strokeWidth="4"
 								stroke="#222"
 								fill="#fff"
 							/>

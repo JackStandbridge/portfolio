@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
 import Head from 'next/head';
 
 import Header from '../Header';
@@ -8,9 +8,19 @@ import Line from '../Line';
 
 import styles from './Game.module.scss';
 
-const Game: FunctionComponent = () => {
+interface Props {
+	showCursor: boolean,
+}
+
+const Game: FC<Props> = ({ showCursor }) => {
+	const mainClassNames = `
+		${ styles.main }
+		${ !showCursor ? styles.noCursor : '' }
+		site-width
+	`;
+
 	return (
-		<main className={ styles.main + ' site-width' }>
+		<main className={ mainClassNames }>
 			<Head>
 				<title>JS | Wordwheel</title>
 			</Head>
