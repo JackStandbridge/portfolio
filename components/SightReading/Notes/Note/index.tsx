@@ -40,13 +40,10 @@ const ConnectedNote: FC<Props> = ({
 
 	const coords = { x, y };
 
-	const textX = x + (
-		!stemDown || value === 1 ? 0 : 5
-	);
 	const textY = y + (stemDown ? -10 : 20);
 
 	const textProps = {
-		x: textX,
+		x,
 		y: textY,
 	};
 

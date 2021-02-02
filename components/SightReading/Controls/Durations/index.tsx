@@ -12,7 +12,7 @@ import { setDuration } from '../../../../lib/slices/sightreading/reducer';
 import { Duration, NoteProps } from '../../../../lib/slices/sightreading/types';
 import { durationSelector } from '../../../../lib/slices/sightreading/selectors';
 
-const ConnectedDurations = () => {
+const ConnectedDurations: FC = () => {
 
 	const dispatch = useDispatch();
 

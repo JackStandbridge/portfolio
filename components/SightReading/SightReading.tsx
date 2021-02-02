@@ -14,9 +14,11 @@ import { Bar as iBar } from '../../lib/hooks/useRandomBars';
 interface Props {
 	bars: iBar[],
 	generateBars: () => void,
+	containerRef: React.Ref<HTMLDivElement>,
+	barWidth: number,
 };
 
-const SightReading: FC<Props> = ({ bars, generateBars }) => {
+const SightReading: FC<Props> = ({ containerRef, bars, generateBars, barWidth }) => {
 	return (
 		<>
 			<Head>
@@ -32,10 +34,10 @@ const SightReading: FC<Props> = ({ bars, generateBars }) => {
 					<Refresh generateBars={ generateBars } />
 				</Controls>
 
-				<div className={ styles.container }>
+				<div ref={ containerRef } className={ styles.container }>
 					{ bars.map((bar, i) => (
 						<Bar
-							barWidth={ 300 }
+							barWidth={ barWidth }
 							barNumber={ i }
 							key={ i }
 							voices={ bar.voices }

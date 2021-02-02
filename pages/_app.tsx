@@ -8,7 +8,7 @@ import store from '../lib/store';
 
 import '../styles/global.scss';
 
-const Entry = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
 	useScrollRestoration();
 
 	return (
@@ -31,4 +31,4 @@ const Entry = ({ Component, pageProps }: AppProps) => {
 	)
 };
 
-export default Entry;
+export default App;

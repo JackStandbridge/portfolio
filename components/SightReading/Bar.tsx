@@ -34,7 +34,7 @@ const Bar: FC<Props> = ({ voices, barNumber, barWidth }) => {
 
 					const note = (
 						<Note
-							barWidth={ 300 }
+							barWidth={ barWidth }
 							key={ i }
 							xFraction={ noteXCoordinate }
 							dotted={ false }

@@ -114,7 +114,7 @@ const useRandomBars = ({
 		setBars(newBars);
 	};
 
-	useEffect(generateBars, [durations, maxInterval, noteRange]);
+	useEffect(generateBars, [durations.join(''), maxInterval, noteRange.join('')]);
 
 	return { bars, generateBars };
 };
