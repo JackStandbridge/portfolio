@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Range from './Range';
@@ -11,28 +11,28 @@ const ConnectedRange: FC = () => {
 
 	const [bottom, top] = useSelector(rangeSelector);
 
-	const handleIncrementTop = () => {
+	const handleIncrementTop: MouseEventHandler = () => {
 		dispatch(updateRange({
 			bound: 'top',
 			increase: 1
 		}));
 	};
 
-	const handleIncrementBottom = () => {
+	const handleIncrementBottom: MouseEventHandler = () => {
 		dispatch(updateRange({
 			bound: 'bottom',
 			increase: 1
 		}));
 	};
 
-	const handleDecrementTop = () => {
+	const handleDecrementTop: MouseEventHandler = () => {
 		dispatch(updateRange({
 			bound: 'top',
 			increase: -1
 		}));
 	};
 
-	const handleDecrementBottom = () => {
+	const handleDecrementBottom: MouseEventHandler = () => {
 		dispatch(updateRange({
 			bound: 'bottom',
 			increase: -1

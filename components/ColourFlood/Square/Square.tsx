@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import styles from './Square.module.scss';
 
 interface Props {
-	handleClick: () => void,
+	handleClick: MouseEventHandler,
 	className: string,
 	disabled: boolean,
 };

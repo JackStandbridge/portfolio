@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Square from './Square';
@@ -19,7 +19,7 @@ const ConnectedSquare: FC<Props> = ({ coords }) => {
 
 	const { colour, disabled } = useSelector(squareSelector(coords));
 
-	const handleClick = () => {
+	const handleClick: MouseEventHandler = () => {
 		dispatch(setColour(colour));
 	};
 

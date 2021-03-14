@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import Head from 'next/head'
 
 import styles from './PlaceholderIpsum.module.scss';
@@ -9,7 +9,7 @@ interface Props {
 	numberOfSentences: number|'',
 	numberOfParagraphs: number|'',
 	output: string[][],
-	handleCopy: () => void,
+	handleCopy: MouseEventHandler,
 	buttonText: string,
 }
 

@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import styles from './Refresh.module.scss';
 import controlStyles from '../Controls.module.scss';
 
 interface Props {
-	generateBars: () => void
+	generateBars: MouseEventHandler,
 }
 
 const Refresh: FC<Props> = ({ generateBars }) => {

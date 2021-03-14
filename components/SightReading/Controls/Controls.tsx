@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 
 import styles from './Controls.module.scss';
 
 interface Props {
-	handleToggle: () => void,
+	handleToggle: MouseEventHandler,
 	show: boolean,
 }
 

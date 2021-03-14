@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ChangeEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Interval from './Interval';
@@ -9,7 +9,7 @@ import { maxIntervalSelector } from '../../../../lib/slices/sightreading/selecto
 const ConnectedInterval: FC = () => {
 	const dispatch = useDispatch();
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
 		const { value } = e.currentTarget;
 		dispatch(updateInterval(value === '' ? '' : +value));
 	};

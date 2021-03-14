@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, ChangeEventHandler } from 'react';
 
 import styles from './Interval.module.scss';
 import controlStyles from '../Controls.module.scss';
 
 interface Props {
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+	handleChange: ChangeEventHandler,
 	value: number | '',
 }
 

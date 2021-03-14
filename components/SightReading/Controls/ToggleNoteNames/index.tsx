@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ToggleNoteNames from './ToggleNoteNames';
 import { toggleNoteNames } from '../../../../lib/slices/sightreading/reducer';
@@ -7,7 +7,7 @@ import { showNoteNameSelector } from '../../../../lib/slices/sightreading/select
 const ConnectedToggleNoteNames: FC = () => {
 	const dispatch = useDispatch();
 
-	const handleToggle = () => {
+	const handleToggle: MouseEventHandler = () => {
 		dispatch(toggleNoteNames());
 	};
 

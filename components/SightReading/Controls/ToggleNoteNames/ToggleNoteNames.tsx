@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 
 import Minim from '../../Notes/Minim';
 
@@ -6,7 +6,7 @@ import controlStyles from '../Controls.module.scss';
 import styles from './ToggleNoteNames.module.scss';
 
 interface Props {
-	handleToggle: () => void,
+	handleToggle: MouseEventHandler,
 	active: boolean,
 }
 

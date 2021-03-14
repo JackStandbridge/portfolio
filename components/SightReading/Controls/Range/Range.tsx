@@ -1,20 +1,19 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 
 import Stave from '../../Stave';
 import Note from '../../Notes/Note';
-import SemiBreve from '../../Notes/SemiBreve';
 
 import styles from './Range.module.scss';
 import controlStyles from '../Controls.module.scss';
-import { NoteName, NoteProps } from '../../../../lib/slices/sightreading/types';
+import { NoteName } from '../../../../lib/slices/sightreading/types';
 
 interface Props {
 	top: NoteName,
 	bottom: NoteName,
-	handleIncrementTop: () => void,
-	handleDecrementTop: () => void,
-	handleIncrementBottom: () => void,
-	handleDecrementBottom: () => void,
+	handleIncrementTop: MouseEventHandler,
+	handleDecrementTop: MouseEventHandler,
+	handleIncrementBottom: MouseEventHandler,
+	handleDecrementBottom: MouseEventHandler,
 }
 
 const Range: FC<Props> = ({

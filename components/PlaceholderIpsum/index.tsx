@@ -1,4 +1,4 @@
-import { FC, useState, useCallback, useEffect } from 'react';
+import { FC, useState, useCallback, useEffect, MouseEventHandler } from 'react';
 import PlaceholderIpsum from './PlaceholderIpsum';
 import sentences from '../../lib/data/sentences.json';
 import { clamp } from '../../lib/utils';
@@ -43,7 +43,7 @@ const ConnectedPlaceholderIpsum: FC = () => {
 
 	const [buttonText, setButtonText] = useState('Copy');
 
-	const handleCopy = useCallback(async () => {
+	const handleCopy: MouseEventHandler = useCallback(async () => {
 		let html = '';
 		html += output.map(paragraph => {
 			return paragraph.join(' ');
