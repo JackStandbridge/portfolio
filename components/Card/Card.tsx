@@ -15,16 +15,18 @@ const Card: FC<Props> = ({ title, imgUrl, link, blurb }) => {
 		<article className={ styles.card }>
 
 			<div className={ styles.info }>
-				<h2>
-					<Link scroll={ false } href={ link }>
-						<a className={ styles.title }>
-							{ title }
-						</a>
-					</Link>
-				</h2>
-				{ blurb.map((p, i) => (
-					<p className={ styles.p } key={ i }>{ p }</p>
-				)) }
+				<>
+					<h2>
+						<Link scroll={ false } href={ link }>
+							<a className={ styles.title }>
+								{ title }
+							</a>
+						</Link>
+					</h2>
+					{ blurb.map((p, i) => (
+						<p className={ styles.p } key={ i }>{ p }</p>
+					)) }
+				</>
 			</div>
 
 			<Link href={ link }>

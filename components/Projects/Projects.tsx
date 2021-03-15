@@ -17,13 +17,15 @@ const Projects: FC<Props> = ({ projects }) => {
 	return (
 		<main className={ styles.main }>
 			<h1 className={ styles.title }>Projects</h1>
-			{ projects.map((game, i) => (
-				<Card
-					key={ i }
-					index={ i }
-					{ ...game }
-				/>
-			)) }
+			<>
+				{ projects.map((game, i) => (
+					<Card
+						key={ i }
+						index={ i }
+						{ ...game }
+					/>
+				)) }
+			</>
 		</main>
 	);
 };

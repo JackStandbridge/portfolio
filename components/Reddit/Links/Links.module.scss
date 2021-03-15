@@ -1,0 +1,36 @@
+.list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.item {
+	margin-bottom: 1rem;
+
+	border: 1px solid lightgrey;
+
+	border-radius: 5px;
+	padding: 0.5rem;
+}
+
+.title {
+	display: block;
+}
+
+.commentLink {
+	color: darkslategrey;
+	display: block;
+	max-width: min-content;
+
+	margin-left: auto;
+	padding: 1rem 0.5rem;
+
+	background: aliceblue;
+	border-radius: 5px;
+	border: 1px solid lightblue;
+
+	white-space: nowrap;
+}

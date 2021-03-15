@@ -8,7 +8,7 @@ import styles from './Definition.module.scss';
 interface Props {
 	top: number
 	left: number
-	definitions: DefinitionListing[]|null
+	definitions: DefinitionListing[] | null
 }
 
 const Definition: FunctionComponent<Props> = ({
@@ -45,16 +45,17 @@ const Definition: FunctionComponent<Props> = ({
 								{ Object.entries(meaning).map(([type, entries]) => (
 									<li key={ type }>
 										<h3>{ type }</h3>
+										<>
+											{ entries.map(entry => (
+												<Fragment key={ entry.definition }>
+													<hr />
 
-										{ entries.map(entry => (
-											<Fragment key={ entry.definition }>
-												<hr />
-
-												<p className={ styles.p }>
-													{ entry.definition }
-												</p>
-											</Fragment>
-										)) }
+													<p className={ styles.p }>
+														{ entry.definition }
+													</p>
+												</Fragment>
+											)) }
+										</>
 									</li>
 								)) }
 							</ul>
