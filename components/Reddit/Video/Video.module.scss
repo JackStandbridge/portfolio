@@ -1,0 +1,8 @@
+.video {
+	outline: none;
+	width: 100%;
+
+	&::-webkit-media-controls-volume-control-container {
+		display: none;
+	}
+}

@@ -1,4 +1,28 @@
+import { FC } from 'react';
 import { GetServerSideProps } from 'next';
+
+import CommentPage from '../../../../../../../components/Reddit/CommentPage';
+
+import HostContext from '../../../../../../../components/Reddit/context';
+import { SubredditListing, Comment } from '../../../../../../../components/Reddit/interfaces';
+
+interface Props {
+	self: SubredditListing,
+	comments: {
+		children: Comment[]
+	}
+	host: string,
+};
+
+const Page: FC<Props> = props => {
+	return (
+		<HostContext.Provider value={ props.host }>
+			<CommentPage { ...props } />
+		</HostContext.Provider>
+	);
+};
+
+export default Page;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
@@ -17,5 +41,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	return { props: { self, comments, host } };
 };
-
-export { default } from '../../../../../../../components/Reddit/CommentPage';

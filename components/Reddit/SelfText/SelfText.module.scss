@@ -1,0 +1,32 @@
+.container {
+	margin-top: 0.5rem;
+}
+
+.toggledContainer {
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	border: 1px solid lightgrey;
+	border-top: 0;
+
+	button {
+		transform: translate(calc(-0.5rem - 1px), -0.5rem);
+	}
+
+	p {
+		margin-bottom: 0.5rem;
+	}
+}
+
+.button {
+	font-weight: bold;
+	color: #555;
+
+	display: block;
+	height: 2rem;
+	width: 2rem;
+
+	background: #ddd;
+	border-radius: 0.2rem;
+	border: none;
+
+}

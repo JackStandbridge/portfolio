@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Marked } from '@ts-stack/markdown';
+
+import Html from '../Html';
 
 import { Comment } from '../interfaces';
 import styles from './CommentChain.module.scss';
@@ -11,18 +12,10 @@ interface Props {
 
 const CommentChain: FC<Props> = ({ comment, host }) => {
 	const { body = '', replies } = comment.data;
-	console.log(body);
 
-	const base = host + '/reddit';
-
-	const urlSwappedBody = body
-		.replace(/https?:\/\/w?w?w?\.?reddit\.com/g, base);
-
-	const markDownProccessedBody = Marked.parse(urlSwappedBody);
-
-	return (
+	return !body ? null : (
 		<div className={ styles.comment }>
-			<div dangerouslySetInnerHTML={ { __html: markDownProccessedBody } } />
+			<Html text={ body } />
 			<>
 				{
 					replies?.data?.children.map((child, i) => (

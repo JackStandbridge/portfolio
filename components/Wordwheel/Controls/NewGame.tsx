@@ -16,7 +16,7 @@ const NewGame: FC = () => {
 		const keyListener = (e: KeyboardEvent) => {
 
 			if (e.altKey && e.code === 'KeyN') {
-				console.log('go');
+
 			}
 		};
 

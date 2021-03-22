@@ -1,6 +1,7 @@
 {
 	"name": "games-portfolio",
 	"version": "0.1.0",
+	"main": "pages/_app.tsx",
 	"private": true,
 	"scripts": {
 		"build": "next build",

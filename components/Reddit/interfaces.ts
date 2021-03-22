@@ -1,4 +1,4 @@
-export interface ListingItem {
+export type ListingItem = {
 	title: string,
 	url: string,
 	id: string,
@@ -6,9 +6,16 @@ export interface ListingItem {
 	permalink: string,
 	selftext: string,
 	num_comments: number,
+	thumbnail: string,
+	gallery_data?: {
+		items: {
+			media_id: string,
+			id: number,
+		}[]
+	}
 };
 
-export interface Comment {
+export type Comment = {
 	data: {
 		body: string,
 		replies: {
@@ -19,7 +26,7 @@ export interface Comment {
 	}
 };
 
-export interface SubredditListing {
+export type SubredditListing = {
 	children: {
 		data: ListingItem,
 	}[],

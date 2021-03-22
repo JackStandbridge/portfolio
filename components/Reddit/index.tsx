@@ -14,7 +14,7 @@ interface Props {
 const Reddit: FC<Props> = ({ sub, data }) => {
 	return (
 		<main className={ styles.main }>
-			<Title>{ sub }</Title>
+			<Title text={ sub } />
 			<Links links={ data.children }/>
 		</main>
 	);
