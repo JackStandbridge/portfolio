@@ -1,6 +1,7 @@
 import {
 	FC,
 	useRef,
+	useEffect,
 	ReactEventHandler,
 } from 'react';
 
@@ -9,16 +10,29 @@ import styles from './Video.module.scss';
 
 interface Props {
 	video: string,
-	audio: string
+	audio?: string,
 	className: string,
+	isExpanded?: boolean,
 };
 
-const Video: FC<Props> = ({ video, audio, className }) => {
+const Video: FC<Props> = ({ video, audio, className, isExpanded }) => {
 
 	const audioRef = useRef<HTMLAudioElement>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const handleDirectInteraction: ReactEventHandler<HTMLVideoElement | HTMLAudioElement> = throttle(e => {
+	const stopMedia = () => {
+		if (videoRef.current) {
+			videoRef.current.currentTime = 0;
+			videoRef.current.pause();
+		}
+
+		if (audioRef.current) {
+			audioRef.current.currentTime = 0;
+			audioRef.current.pause();
+		}
+	}
+
+	const handleMedia: ReactEventHandler<HTMLVideoElement | HTMLAudioElement> = throttle(e => {
 		try {
 			if (audioRef.current && videoRef.current) {
 				audioRef.current.currentTime = e.currentTarget.currentTime;
@@ -34,29 +48,40 @@ const Video: FC<Props> = ({ video, audio, className }) => {
 				}
 			}
 		} catch { }
+
+		if (!isExpanded) {
+			stopMedia();
+		}
+
 	});
+
+	useEffect(() => {
+		stopMedia();
+	}, [isExpanded])
 
 	return (
 		<div className={ className }>
 			<video
 				className={ [className, styles.video].join(' ') }
 				ref={ videoRef }
-				onPlay={ handleDirectInteraction }
-				onPause={ handleDirectInteraction }
-				onSeeking={ handleDirectInteraction }
+				onPlay={ handleMedia }
+				onPause={ handleMedia }
+				onSeeking={ handleMedia }
 				src={ video }
 				controls
 				disablePictureInPicture
 				controlsList="nodownload"
 			/>
 
-			<audio
-				onPlay={ handleDirectInteraction }
-				onPause={ handleDirectInteraction }
-				onSeeking={ handleDirectInteraction }
-				ref={ audioRef }
-				src={ audio }
-			/>
+			{ audio &&
+				<audio
+					onPlay={ handleMedia }
+					onPause={ handleMedia }
+					onSeeking={ handleMedia }
+					ref={ audioRef }
+					src={ audio }
+				/>
+			}
 		</div>
 	);
 };

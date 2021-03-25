@@ -1,0 +1,24 @@
+.commentLink {
+	position: absolute;
+	right: 0;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 2.5rem;
+
+	margin-left: 0.5rem;
+	padding: 0.5rem 0;
+
+	color: darkslategrey;
+	background: aliceblue;
+	border-radius: 5px;
+	border: 1px solid lightblue;
+
+	text-decoration: none;
+}
+
+.icon {
+	width: 20px;
+	filter: invert(0.7);
+}

@@ -1,11 +1,15 @@
 import { FC, useState } from 'react';
 
 import Video from '../Video';
+import Gallery from '../Gallery';
 
 import styles from './Preview.module.scss';
 
 interface Props {
-	url: string,
+	urls: {
+		url: string,
+		hasAudio?: boolean,
+	}[],
 };
 
 enum PreviewState {
@@ -15,7 +19,7 @@ enum PreviewState {
 };
 
 
-const Preview: FC<Props> = ({ url }) => {
+const Preview: FC<Props> = ({ urls }) => {
 	const [previewState, setPreviewState] = useState<PreviewState>(PreviewState.unloaded);
 
 	const handleClick = () => {
@@ -27,24 +31,36 @@ const Preview: FC<Props> = ({ url }) => {
 		);
 	};
 
-	const isVideo = /v\.redd\.it/.test(url);
-
 	return (
 		<div className={ styles.container }>
 			<button onClick={ handleClick } className={ styles.button } />
-			{ previewState !== PreviewState.unloaded &&
-				isVideo ?
-					<Video
-						className={ previewState === PreviewState.shown ? styles.media : styles.hiddenMedia }
-						video={ url + '/DASH_480.mp4' }
-						audio={ url + '/DASH_audio.mp4' }
-					/>
-				:
-				<img
-					className={ previewState === PreviewState.shown ? styles.media : styles.hiddenMedia }
-					src={ url }
-				/>
-			}
+
+			<Gallery shown={ previewState === PreviewState.shown }>
+				{ urls.map(({ url, hasAudio }, i) => {
+
+					const isVideo = /v\.redd\.it/.test(url);
+
+					if (previewState === PreviewState.unloaded) {
+						return null;
+					}
+
+					return isVideo ? (
+						<Video
+							isExpanded={ previewState === PreviewState.shown }
+							key={ i }
+							className={ previewState === PreviewState.shown ? styles.media : styles.hiddenMedia }
+							video={ url + '/DASH_480.mp4' }
+							audio={ hasAudio ? url + '/DASH_audio.mp4' : '' }
+						/>
+					) : (
+						<img
+							key={ i }
+							className={ previewState === PreviewState.shown ? styles.media : styles.hiddenMedia }
+							src={ url }
+						/>
+					)
+				}) }
+			</Gallery>
 		</div>
 	);
 };

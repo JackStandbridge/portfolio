@@ -11,10 +11,14 @@ interface Props {
 };
 
 const CommentChain: FC<Props> = ({ comment, host }) => {
-	const { body = '', replies } = comment.data;
+	const { body = '', replies, score, author } = comment.data;
 
-	return !body ? null : (
+	return !body || score < -2 ? null : (
 		<div className={ styles.comment }>
+			<span className={ styles.user }>{ author }</span>
+			{ ' ' }&bull;{ ' ' }
+			<span className={ styles.points }>{ score } point{ score !== 1 ? 's' : '' }</span>
+
 			<Html text={ body } />
 			<>
 				{

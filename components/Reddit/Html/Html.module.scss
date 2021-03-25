@@ -6,8 +6,25 @@
 		border-left: 2px solid darkslateblue;
 		background: aliceblue;
 	}
+
+	p:not(:last-of-type) {
+		margin-bottom: 0.5rem;
+	}
+
 	ul,
 	ol {
 		padding-left: 1rem;
+	}
+
+	h6, h5, h4, h3 {
+		font-size: 14px;
+	}
+
+	h2 {
+		font-size: 15px;
+	}
+
+	h1 {
+		font-size: 16px;
 	}
 }

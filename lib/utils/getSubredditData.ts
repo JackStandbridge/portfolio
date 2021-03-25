@@ -1,51 +1,62 @@
 import { SubredditListing } from '../../components/Reddit/interfaces';
 import { GetServerSideProps } from 'next';
+import attachGalleryImages from './attachGalleryImages';
+import attachImgurImage from './attachImgurImage';
 
 const extensions = [
-	'webp',
-	'png',
 	'jpg',
 	'jpeg',
+	'png',
 	'gif',
+	'webp',
 	'tif',
 	'tiff',
 	'bmp'
 ];
 
 const getSubredditData: GetServerSideProps = async (context) => {
-
-	const request = await fetch(`https://reddit.com/r/${ context.query.sub }.json`);
-
 	const { sub } = context.query;
-	const response = await request.json();
-	const data = response.data as SubredditListing;
+	try {
 
-	// Would like to transform plain imgur links into a link to the image itself
-	// so map over all the links and check if this is necessary or possible
-	data.children = await Promise.all(data.children.map(async child => {
-		const url = child.data.url
-		// Check if it's an imgur url with no preview so we know if there's work to do
-		const isImgur = /imgur/i.test(url);
-		const noPreview = !/(\.(gif|jpe?g|tiff?|png|webp|bmp)$)/i.test(url);
+		const request = await fetch(`https://reddit.com/r/${ sub }.json`);
 
-		if (isImgur && noPreview) {
-			// There is work to do, so try adding all the extensions to the url
-			// and send a request to each new url to see if it comes back with a 200 code
-			const promises = await Promise.all(
-				extensions.map(ext => fetch(`${ url }.${ ext }`))
-			);
+		const response = await request.json();
+		const data = response.data as SubredditListing;
 
-			// Just get the first match. Imgur often has multiple versions available
-			const accessibleImage = promises.find(promise => promise.status < 300);
+		data.children = await Promise.all(data.children.map(async child => {
+			const url = child.data.url
 
-			// Overwrite the current url if possible
-			child.data.url = accessibleImage?.url ?? child.data.url;
-		}
+			const isImgur = /imgur/i.test(url);
+			const noPreview = !/(\.(gif|jpe?g|tiff?|png|webp|bmp)$)/i.test(url);
+			if (isImgur && noPreview) {
+				child.data = await attachImgurImage(child.data);
+			}
+			const isGallery = child.data.is_gallery;
 
-		return child;
-	}));
+			if (isGallery) {
+				child.data = await attachGalleryImages(child.data);
+			}
 
-	return { props: { sub, data } };
+			const isVideo = child.data.is_video;
+			if (isVideo) {
+				try {
+					const response = await fetch(child.data.url + '/DASH_audio.mp4');
+					const hasAudio = response.status < 300;
+
+					child.data.has_audio = hasAudio;
+				} catch {
+					child.data.has_audio = false;
+				}
+			}
+
+			return child;
+		}));
+
+		return { props: { sub, data } };
+
+	} catch {
+		return { props: { sub, data: {} } };
+	}
 };
 
 export default getSubredditData;

@@ -11,10 +11,6 @@
 	button {
 		transform: translate(calc(-0.5rem - 1px), -0.5rem);
 	}
-
-	p {
-		margin-bottom: 0.5rem;
-	}
 }
 
 .button {
@@ -29,4 +25,8 @@
 	border-radius: 0.2rem;
 	border: none;
 
+	&:disabled {
+		color: #999;
+		cursor: not-allowed;
+	}
 }

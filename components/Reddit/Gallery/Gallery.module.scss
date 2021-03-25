@@ -1,0 +1,66 @@
+.viewport {
+	overflow: hidden;
+}
+
+.contents {
+	display: flex;
+	align-items: center;
+	position: relative;
+	transition: transform 0.2s;
+
+	& > * {
+		min-width: 100%;
+		max-width: 100%;
+		object-fit: cover;
+		margin-right: 0.5rem;
+	}
+}
+
+.buttons {
+	margin-top: 0.5rem;
+	display: grid;
+	grid-template: auto / 1fr min-content;
+	justify-items: end;
+	grid-gap: 0.5rem;
+}
+
+.button {
+	display: block;
+	height: 2rem;
+	width: 2rem;
+
+	position: relative;
+
+	background: #ddd;
+	border-radius: 0.2rem;
+	border: none;
+
+	&::after {
+		content: '';
+		display: block;
+		height: 0;
+		width: 0;
+		border: 0.5rem solid transparent;
+		position: absolute;
+		top: 50%;
+		transform: translate(-0.4rem, -0.5rem);
+	}
+
+	&:first-of-type {
+		left: 0;
+		&::after {
+			left: 0;
+			border-right: 0.9rem solid white;
+			transform: translateY(-0.5rem);
+		}
+	}
+
+	&:last-of-type {
+		right: 0;
+		&::after {
+			right: 0;
+			border-left: 0.9rem solid white;
+			transform: translateY(-0.5rem);
+		}
+	}
+}
