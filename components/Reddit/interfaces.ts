@@ -1,5 +1,6 @@
 export type ListingItem = {
 	title: string,
+	subreddit: string,
 	is_self: boolean,
 	is_video: boolean,
 	is_gallery: boolean,

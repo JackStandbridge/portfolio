@@ -20,9 +20,14 @@
 }
 
 .title {
-	display: block;
+	display: inline-block;
 	color: #333;
 	margin-right: 3rem;
+}
+
+.sub {
+	font-size: 0.8rem;
+	color: #555;
 }
 
 .left {

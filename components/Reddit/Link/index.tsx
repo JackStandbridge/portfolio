@@ -7,6 +7,7 @@ import CommentLink from '../CommentLink';
 
 import { ListingItem } from '../interfaces';
 import styles from './Link.module.scss';
+import HostContext from '../context';
 
 interface Props {
 	data: ListingItem
@@ -15,6 +16,7 @@ interface Props {
 const Link: FC<Props> = ({ data }) => {
 	const {
 		title,
+		subreddit,
 		url,
 		permalink,
 		num_comments,
@@ -40,6 +42,17 @@ const Link: FC<Props> = ({ data }) => {
 				>
 					<Html text={ title } />
 				</a>
+				<HostContext.Consumer>
+					{ value => (
+						<a
+							className={ styles.sub }
+							href={ `${ value }/reddit/r/${ subreddit }` }
+						>
+							<Html text={ `/r/${subreddit}` } />
+						</a>
+					) }
+				</HostContext.Consumer>
+
 				{
 					is_self &&
 					<SelfText text={ selftext } />

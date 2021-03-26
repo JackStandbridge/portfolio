@@ -26,6 +26,10 @@ const Html: FC<Props> = ({ text }) => {
 						(_, content) => {
 							return `<p><blockquote>${ content }</blockquote></p>`;
 						}
+					)
+					.replace(
+						'&amp;',
+						'&'
 					);
 
 				return (

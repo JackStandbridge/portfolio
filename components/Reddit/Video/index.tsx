@@ -9,13 +9,13 @@ import throttle from '../../../lib/utils/throttle';
 import styles from './Video.module.scss';
 
 interface Props {
-	video: string,
+	videoSources: string[],
 	audio?: string,
 	className: string,
 	isExpanded?: boolean,
 };
 
-const Video: FC<Props> = ({ video, audio, className, isExpanded }) => {
+const Video: FC<Props> = ({ videoSources, audio, className, isExpanded }) => {
 
 	const audioRef = useRef<HTMLAudioElement>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
@@ -62,16 +62,17 @@ const Video: FC<Props> = ({ video, audio, className, isExpanded }) => {
 	return (
 		<div className={ className }>
 			<video
-				className={ [className, styles.video].join(' ') }
+				className={ styles.video }
 				ref={ videoRef }
 				onPlay={ handleMedia }
 				onPause={ handleMedia }
 				onSeeking={ handleMedia }
-				src={ video }
 				controls
 				disablePictureInPicture
 				controlsList="nodownload"
-			/>
+			>
+				{ videoSources.map(source => <source key={ source } src={ source } />) }
+			</video>
 
 			{ audio &&
 				<audio

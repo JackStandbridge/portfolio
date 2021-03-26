@@ -1,6 +1,7 @@
 .video {
 	outline: none;
-	width: 100%;
+	max-width: 100%;
+	margin: auto;
 
 	&::-webkit-media-controls-volume-control-container {
 		display: none;

@@ -49,7 +49,7 @@ const Preview: FC<Props> = ({ urls }) => {
 							isExpanded={ previewState === PreviewState.shown }
 							key={ i }
 							className={ previewState === PreviewState.shown ? styles.media : styles.hiddenMedia }
-							video={ url + '/DASH_480.mp4' }
+							videoSources={ [480, 360, 240].map(size => `${ url }/DASH_${ size }.mp4` ) }
 							audio={ hasAudio ? url + '/DASH_audio.mp4' : '' }
 						/>
 					) : (
