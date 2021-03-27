@@ -23,13 +23,14 @@ export type ListingItem = {
 export type Comment = {
 	data: {
 		body: string,
-		replies: {
-			data: {
+		replies?: {
+			data?: {
 				children: Comment[],
 			},
 		},
 		score: number,
 		author: string,
+		created: number,
 	}
 };
 

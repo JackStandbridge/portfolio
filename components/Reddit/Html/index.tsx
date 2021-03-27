@@ -17,10 +17,7 @@ const Html: FC<Props> = ({ text }) => {
 
 				const base = host + '/reddit';
 
-				const urlSwappedBody = text
-					.replace(/https?:\/\/w?w?w?\.?reddit\.com/g, base);
-
-				const __html = Marked.parse(urlSwappedBody)
+				const __html = Marked.parse(text)
 					.replace(
 						/<p>&gt;(.*)?<\/p>/ig,
 						(_, content) => {
@@ -30,7 +27,8 @@ const Html: FC<Props> = ({ text }) => {
 					.replace(
 						'&amp;',
 						'&'
-					);
+					)
+					.replace(/https?:\/\/w?w?w?\.?reddit\.com/g, base);
 
 				return (
 					<div className={ styles.parsedContent } dangerouslySetInnerHTML={ { __html } } />

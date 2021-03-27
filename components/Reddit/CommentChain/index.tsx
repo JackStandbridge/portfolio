@@ -8,10 +8,12 @@ import styles from './CommentChain.module.scss';
 interface Props {
 	comment: Comment,
 	host: string,
+	sortingFn: (a: Comment, b: Comment) => number
 };
 
-const CommentChain: FC<Props> = ({ comment, host }) => {
+const CommentChain: FC<Props> = ({ comment, host, sortingFn }) => {
 	const { body = '', replies, score, author } = comment.data;
+	const children = [...(replies?.data?.children ?? [])].sort(sortingFn);
 
 	const ref = useRef<HTMLDivElement>(null);
 
@@ -47,8 +49,13 @@ const CommentChain: FC<Props> = ({ comment, host }) => {
 			{ !expanded ? null : (
 				<>
 					<Html text={ body } />
-					{ replies?.data?.children.map((child, i) => (
-						<CommentChain key={ i } comment={ child } host={ host } />
+					{ children.map((child, i) => (
+						<CommentChain
+							key={ i }
+							comment={ child }
+							host={ host }
+							sortingFn={ sortingFn }
+						/>
 					)) }
 				</>
 			) }
