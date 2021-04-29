@@ -17,11 +17,23 @@ const Html: FC<Props> = ({ text }) => {
 
 				const base = host + '/reddit';
 
-				const __html = Marked.parse(text)
+				let __html = Marked.parse(text)
+
+				__html = __html
 					.replace(
-						/<p>&gt;(.*)?<\/p>/ig,
+						/<p>&gt;(.*)?<\/p>/igs,
 						(_, content) => {
-							return `<p><blockquote>${ content }</blockquote></p>`;
+							return `<p><blockquote>${ content.replace('<p>&gt;', '<p>') }</blockquote></p>`;
+						}
+					)
+					.replace(
+						/(&gt;(.*)?<\/p>)/igs,
+						(_, content) => {
+							if (content) {
+								return `<p><blockquote>${ content.replace(/&gt;\s?/g, '') }</blockquote></p>`;
+							} else {
+								return '';
+							}
 						}
 					)
 					.replace(

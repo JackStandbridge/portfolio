@@ -7,7 +7,7 @@ import styles from './CommentPage.module.scss';
 
 import { SubredditListing, Comment } from '../interfaces';
 
-interface Props {
+type Props = {
 	self: SubredditListing,
 	comments: {
 		children: Comment[]
@@ -58,8 +58,8 @@ const CommentPage: FC<Props> = ({ self, comments, host }) => {
 			<label className={ styles.sorting }>
 				Sorty by:&nbsp;
 				<select onChange={ handleSort }>
-					{ fnNames.map((fnName: SortingFn) => (
-						<option value={ fnName }>{ fnName[0].toUpperCase() + fnName.slice(1,) }</option>
+					{ fnNames.map((fnName: SortingFn, i) => (
+						<option key={ i } value={ fnName }>{ fnName[0].toUpperCase() + fnName.slice(1,) }</option>
 					)) }
 				</select>
 			</label>

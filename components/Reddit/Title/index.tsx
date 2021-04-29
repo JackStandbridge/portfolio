@@ -1,19 +1,48 @@
-import { FC } from 'react';
+import {
+	useState,
+	ChangeEventHandler,
+	FocusEventHandler,
+	KeyboardEventHandler
+} from 'react';
+import { useRouter } from 'next/router';
 
-import Html from '../Html';
-
-import styles from './Title.module.scss';
+import Title from './Title';
 
 interface Props {
 	text: string,
 };
 
-const Title: FC<Props> = ({ text }) => {
+const ConnectedTitle = ({ text }: Props): JSX.Element => {
+	const [input, setInput] = useState(text);
+
+	const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+		setInput(e.currentTarget.value);
+	};
+
+	const router = useRouter();
+
+	const handleNavigate = () => {
+		router.push(input);
+	};
+
+	const handleBlur: FocusEventHandler = () => {
+		handleNavigate();
+	};
+
+	const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = e => {
+		if (e.key === 'Enter') {
+			handleNavigate();
+		}
+	};
+
 	return (
-		<h1 className={ styles.title }>
-			<Html text={ text } />
-		</h1>
+		<Title
+			handleKeyDown={ handleKeyDown }
+			handleBlur={ handleBlur }
+			handleChange={ handleChange }
+			text={ input }
+		/>
 	);
 };
 
-export default Title;
+export default ConnectedTitle;

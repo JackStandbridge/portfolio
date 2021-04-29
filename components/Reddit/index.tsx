@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import styles from './Reddit.module.scss';
+import Head from 'next/head';
 
 import Links from './Links';
 import Title from './Title';
 
 import { SubredditListing } from './interfaces';
+import styles from './Reddit.module.scss';
 
 interface Props {
 	sub: string,
@@ -13,10 +14,15 @@ interface Props {
 
 const Reddit: FC<Props> = ({ sub, data }) => {
 	return (
-		<main className={ styles.main }>
-			<Title text={ sub } />
-			<Links links={ data.children }/>
-		</main>
+		<>
+			<Head>
+				<title>{ sub }</title>
+			</Head>
+			<main className={ styles.main }>
+				<Title text={ sub } />
+				<Links links={ data.children } />
+			</main>
+		</>
 	);
 }
 

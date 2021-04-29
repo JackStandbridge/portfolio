@@ -3,17 +3,6 @@ import { GetServerSideProps } from 'next';
 import attachGalleryImages from './attachGalleryImages';
 import attachImgurImage from './attachImgurImage';
 
-const extensions = [
-	'jpg',
-	'jpeg',
-	'png',
-	'gif',
-	'webp',
-	'tif',
-	'tiff',
-	'bmp'
-];
-
 const getSubredditData: GetServerSideProps = async (context) => {
 	const { sub } = context.query;
 	try {
