@@ -21,7 +21,7 @@ const Html: FC<Props> = ({ text }) => {
 
 				__html = __html
 					.replace(
-						/<p>&gt;(.*)?<\/p>/igs,
+						/<p>&gt;(.*)?<\/p>/ig,
 						(_, content) => {
 							return `<p><blockquote>${ content.replace('<p>&gt;', '<p>') }</blockquote></p>`;
 						}
@@ -35,6 +35,10 @@ const Html: FC<Props> = ({ text }) => {
 								return '';
 							}
 						}
+					)
+					.replace(
+						/<\/blockquote><\/p>[\n\s]+<p><blockquote>/igs,
+						''
 					)
 					.replace(
 						'&amp;',
