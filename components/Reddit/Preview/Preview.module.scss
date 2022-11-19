@@ -23,6 +23,11 @@
 	position: relative;
 
 	background: #ddd;
+
+	@media screen and (prefers-color-scheme: dark) {
+		background: #aaa;
+	}
+
 	border-radius: 0.2rem;
 	border: none;
 
