@@ -10,7 +10,7 @@ const useDrag = (
 	startingPosition: number
 ): [
 	(e: React.DragEvent<HTMLButtonElement>) => void,
-	string|null,
+	string | null,
 	boolean
 ] => {
 	const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const useDrag = (
 		positionRef.current = position;
 	}, [position]);
 
-	const [originalX, setOriginalX] = useState<string|null>(null);
+	const [originalX, setOriginalX] = useState<string | null>(null);
 
 	const handleDragStart = (e: React.DragEvent<HTMLButtonElement>) => {
 		const target = e.currentTarget;
@@ -44,12 +44,15 @@ const useDrag = (
 		target.style.zIndex = '10';
 		target.style.transform = 'translateY(-15px) rotate(2deg)';
 
-		const moveListener = (e: MouseEvent|React.DragEvent<HTMLButtonElement>) => {
+		const moveListener = (
+			e: MouseEvent | React.DragEvent<HTMLButtonElement>
+		) => {
 			const distance = e.clientX - startingPlace;
-			target.style.transform = `translateX(${ distance }px) translateY(-15px) rotate(2deg)`;
+			target.style.transform = `translateX(${distance}px) translateY(-15px) rotate(2deg)`;
 
 			const offsetByHalves = Math.trunc(distance / reorderThreshold);
-			const newPosition = Math.sign(offsetByHalves) * Math.ceil(Math.abs(offsetByHalves / 2));
+			const newPosition =
+				Math.sign(offsetByHalves) * Math.ceil(Math.abs(offsetByHalves / 2));
 
 			setPosition(newPosition);
 		};

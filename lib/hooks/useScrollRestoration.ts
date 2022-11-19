@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Router from 'next/router';
 
 const useScrollRestoration = () => {
-
 	const [, setScrollPos] = useState<number[]>([]);
 
 	useEffect(() => {
@@ -11,27 +10,25 @@ const useScrollRestoration = () => {
 		// next doesn't restore scroll position on clicking
 		// browser's back button.
 
-		Router.events.on("routeChangeStart", target => {
+		Router.events.on('routeChangeStart', (target) => {
 			if (target !== '/') {
-				setScrollPos(scrollPos => [...scrollPos, window.pageYOffset || 0]);
+				setScrollPos((scrollPos) => [...scrollPos, window.pageYOffset || 0]);
 			}
 		});
 
 		Router.beforePopState(() => {
 			setTimeout(() => {
-
-				setScrollPos(scrollPos => {
+				setScrollPos((scrollPos) => {
 					const newScrollPos = [...scrollPos];
 					const y = newScrollPos.pop() as number;
 					window.scrollTo(0, y);
 
 					return newScrollPos;
 				});
-			}, 100)
+			}, 100);
 
 			return true;
 		});
-
 	}, [setScrollPos]);
 };
 

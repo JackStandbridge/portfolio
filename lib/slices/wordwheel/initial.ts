@@ -1,46 +1,46 @@
 export type Letter = {
-	id: number,
-	letter: string,
-	selected: boolean
+	id: number;
+	letter: string;
+	selected: boolean;
 };
 
 export type Entities = {
-	[key: string]: Letter,
-}
-
-export type Letters = {
-	entities: Entities,
-	ids: number[],
-	raisedOrder: number[],
-	baseOrder: number[],
-}
-
-interface Game {
-	answers: string[],
-	letters: Letters,
+	[key: string]: Letter;
 };
 
+export type Letters = {
+	entities: Entities;
+	ids: number[];
+	raisedOrder: number[];
+	baseOrder: number[];
+};
+
+interface Game {
+	answers: string[];
+	letters: Letters;
+}
+
 export interface DefinitionListing {
-	word: string
+	word: string;
 	meaning: {
 		[key: string]: {
-			definition: string,
-		}[],
-	},
+			definition: string;
+		}[];
+	};
 	phonetics: {
-		text: string,
-	}[],
+		text: string;
+	}[];
 }
 
 export interface State extends Game {
-	guesses: string[],
-	nextGame: Game,
-	fetchedInfo: { [key: string]: DefinitionListing[]|null },
-	playing: boolean,
-	showAnswers: boolean,
-	altActive: boolean,
-	firstVisit: boolean,
-};
+	guesses: string[];
+	nextGame: Game;
+	fetchedInfo: { [key: string]: DefinitionListing[] | null };
+	playing: boolean;
+	showAnswers: boolean;
+	altActive: boolean;
+	firstVisit: boolean;
+}
 
 const initial: State = {
 	guesses: [],

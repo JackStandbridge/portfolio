@@ -28,8 +28,9 @@ const userTyped = (state: State, { payload }: PayloadAction<string>): void => {
 		return;
 	}
 
-	const otherLetters = state.letters.ids
-		.map(id => state.letters.entities[id]);
+	const otherLetters = state.letters.ids.map(
+		(id) => state.letters.entities[id]
+	);
 
 	for (let i = 0; i < otherLetters.length; i++) {
 		const { letter, id, selected } = otherLetters[i];
@@ -38,7 +39,6 @@ const userTyped = (state: State, { payload }: PayloadAction<string>): void => {
 			return;
 		}
 	}
-
 };
 
 export default userTyped;

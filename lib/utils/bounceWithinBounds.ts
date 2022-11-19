@@ -1,5 +1,8 @@
-const bounceWithinBounds = (min: number, max: number, newNum: number): number => {
-
+const bounceWithinBounds = (
+	min: number,
+	max: number,
+	newNum: number
+): number => {
 	let result = newNum;
 
 	while (result > max || result < min) {
@@ -10,7 +13,6 @@ const bounceWithinBounds = (min: number, max: number, newNum: number): number =>
 		}
 	}
 	return result;
-
 };
 
 export default bounceWithinBounds;

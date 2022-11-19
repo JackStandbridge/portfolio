@@ -1,14 +1,14 @@
 import notes from './notes';
 
 export interface NoteCoordinates {
-	x: number,
-	y: number,
-};
+	x: number;
+	y: number;
+}
 
 export type NoteProps = NoteCoordinates & {
-	barNumber?: number,
-	stemDown?: boolean,
-	ledgerLines?: JSX.Element[],
+	barNumber?: number;
+	stemDown?: boolean;
+	ledgerLines?: JSX.Element[];
 };
 
 export const durations = {
@@ -29,4 +29,4 @@ export enum NoteVariant {
 	sharp = 'sharp',
 	flat = 'flat',
 	natural = 'natural',
-};
+}

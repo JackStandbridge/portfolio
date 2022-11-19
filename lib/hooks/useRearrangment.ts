@@ -12,11 +12,11 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 	const baseOrder = useSelector(baseOrderSelector);
 
 	const movements = {
-		'left': -1,
-		'right': 1
+		left: -1,
+		right: 1,
 	};
 
-	const handleSelect = (e: KeyboardEvent, direction: 'left'|'right') => {
+	const handleSelect = (e: KeyboardEvent, direction: 'left' | 'right') => {
 		const position = baseOrder.indexOf(focused);
 
 		if (position !== -1) {
@@ -28,7 +28,6 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 
 			setFocused(baseOrder[newIndex]);
 			setPrevPosition(baseOrder[newIndex]);
-
 		} else {
 			setFocused(prevPosition);
 		}
@@ -36,7 +35,7 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 
 	const dispatch = useDispatch();
 
-	const handleMove = (direction: 'left'|'right') => {
+	const handleMove = (direction: 'left' | 'right') => {
 		const id = focused;
 
 		const currentPosition = baseOrder.indexOf(id);
@@ -45,16 +44,16 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 			const toPosition = clamp(0, 8, currentPosition + movements[direction]);
 
 			dispatch(moveLetter({ id, toPosition }));
-
 		} else {
 			setFocused(prevPosition);
 		}
-
-	}
+	};
 
 	const handleKeyDown = (e: KeyboardEvent) => {
 		if (e.key.match(/Arrow(Left|Right)/)) {
-			const direction = e.key.replace(/Arrow(\w)/, '$1').toLowerCase() as 'left'|'right';
+			const direction = e.key.replace(/Arrow(\w)/, '$1').toLowerCase() as
+				| 'left'
+				| 'right';
 			if (e.shiftKey || e.altKey) {
 				handleMove(direction);
 			} else {
@@ -67,10 +66,7 @@ const useRearrangment = (): [number, (e: KeyboardEvent) => void] => {
 
 	useDebugValue(baseOrder);
 
-	return [
-		focused,
-		handleKeyDown,
-	];
+	return [focused, handleKeyDown];
 };
 
 export default useRearrangment;

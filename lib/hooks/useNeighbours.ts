@@ -1,6 +1,9 @@
 import { Board } from '../slices/colourflood/initial';
 
-const useNeighbours = ({ x, y }: { x: number, y: number }, board: Board): [boolean, boolean] => {
+const useNeighbours = (
+	{ x, y }: { x: number; y: number },
+	board: Board
+): [boolean, boolean] => {
 	const squareValue = board[y][x];
 	const squareBelow = board[y + 1]?.[x];
 	const squareRight = board[y]?.[x + 1];

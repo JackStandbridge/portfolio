@@ -1,19 +1,19 @@
 export type Board = number[][];
 
 export interface State {
-	difficulty: number,
-	height: number,
-	width: number,
-	colour: number,
-	moves: number,
-	history: {}[],
+	difficulty: number;
+	height: number;
+	width: number;
+	colour: number;
+	moves: number;
+	history: {}[];
 	bestScore: {
-		4: number,
-		5: number,
-		6: number,
-	},
-	opponentMoving: false,
-	board: Board,
+		4: number;
+		5: number;
+		6: number;
+	};
+	opponentMoving: false;
+	board: Board;
 }
 
 const initial: State = {

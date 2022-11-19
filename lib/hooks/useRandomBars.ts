@@ -1,19 +1,27 @@
 import { useSelector, shallowEqual } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { NoteDefinition, NoteName, Duration } from '../slices/sightreading/types';
+import {
+	NoteDefinition,
+	NoteName,
+	Duration,
+} from '../slices/sightreading/types';
 import notes from '../slices/sightreading/notes';
 import { randomEntry, bounceWithinBounds } from '../utils';
-import { durationSelector, maxIntervalSelector, rangeSelector } from '../slices/sightreading/selectors';
+import {
+	durationSelector,
+	maxIntervalSelector,
+	rangeSelector,
+} from '../slices/sightreading/selectors';
 
 export interface Bar {
-	voices: NoteDefinition[][],
-};
+	voices: NoteDefinition[][];
+}
 
 interface ConfigurationOptions {
-	durations: Duration[],
-	maxInterval: number,
-	noteRange: [NoteName, NoteName],
-};
+	durations: Duration[];
+	maxInterval: number;
+	noteRange: [NoteName, NoteName];
+}
 
 const durationFrequency = {
 	1: 0.15,
@@ -25,19 +33,26 @@ const durationFrequency = {
 
 let previousNoteIndex: number = -1;
 
-const getNote = ({ durations, maxInterval, noteRange }: ConfigurationOptions): NoteDefinition[] => {
+const getNote = ({
+	durations,
+	maxInterval,
+	noteRange,
+}: ConfigurationOptions): NoteDefinition[] => {
 	const randomNumber = Math.random();
 	const frequency = durationFrequency[durations[0]];
 	const shouldSplit = randomNumber > frequency && durations.length > 1;
 	const notesArray = (Object.keys(notes) as NoteName[]).slice();
 	const [lowestNote, highestNote] = noteRange;
-	const permittedNotes = notesArray.slice(notesArray.indexOf(lowestNote), notesArray.indexOf(highestNote) + 1);
+	const permittedNotes = notesArray.slice(
+		notesArray.indexOf(lowestNote),
+		notesArray.indexOf(highestNote) + 1
+	);
 
 	if (shouldSplit) {
 		const newDurations = [...durations];
 		const largestDuration = newDurations.shift();
 		const nextLargestDuration = newDurations[0];
-		const remainingIterations = nextLargestDuration / (<number>largestDuration);
+		const remainingIterations = nextLargestDuration / <number>largestDuration;
 
 		const options = { durations: newDurations, maxInterval, noteRange };
 
@@ -48,7 +63,6 @@ const getNote = ({ durations, maxInterval, noteRange }: ConfigurationOptions): N
 		}
 
 		return result;
-
 	} else if (previousNoteIndex === -1) {
 		const selectedDuration = durations[0];
 		const note = randomEntry(permittedNotes);
@@ -56,20 +70,24 @@ const getNote = ({ durations, maxInterval, noteRange }: ConfigurationOptions): N
 		previousNoteIndex = permittedNotes.indexOf(note);
 
 		return [[note, selectedDuration]];
-
 	} else {
 		const selectedDuration = durations[0];
 
-		const deviation = Math.floor((Math.random() * (maxInterval * 2 + 1)) - maxInterval);
+		const deviation = Math.floor(
+			Math.random() * (maxInterval * 2 + 1) - maxInterval
+		);
 
-		const newIndex = bounceWithinBounds(0, permittedNotes.length - 1, previousNoteIndex + deviation);
+		const newIndex = bounceWithinBounds(
+			0,
+			permittedNotes.length - 1,
+			previousNoteIndex + deviation
+		);
 
 		previousNoteIndex = newIndex;
 
 		return [[permittedNotes[newIndex], selectedDuration]];
 	}
 };
-
 
 const generateBar = (options: ConfigurationOptions): Bar => {
 	const voice = [];
@@ -82,23 +100,21 @@ const generateBar = (options: ConfigurationOptions): Bar => {
 	}
 
 	return {
-		voices: [voice]
+		voices: [voice],
 	};
-}
+};
 
 interface BarsConfig {
-	timesignature: [number, number],
+	timesignature: [number, number];
 }
 
 interface RandomBars {
-	bars: Bar[],
-	generateBars: () => void,
-};
+	bars: Bar[];
+	generateBars: () => void;
+}
 
-const useRandomBars = ({
-	// timesignature,
-}: BarsConfig): RandomBars => {
-
+const useRandomBars = ({}: // timesignature,
+BarsConfig): RandomBars => {
 	const durations = useSelector(durationSelector, shallowEqual);
 	const maxInterval = useSelector(maxIntervalSelector) || 1;
 	const noteRange = useSelector(rangeSelector, shallowEqual);
@@ -114,7 +130,11 @@ const useRandomBars = ({
 		setBars(newBars);
 	};
 
-	useEffect(generateBars, [durations.join(''), maxInterval, noteRange.join('')]);
+	useEffect(generateBars, [
+		durations.join(''),
+		maxInterval,
+		noteRange.join(''),
+	]);
 
 	return { bars, generateBars };
 };

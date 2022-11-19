@@ -11,14 +11,14 @@ const store = configureStore({
 	},
 });
 
-export type State = ReturnType<typeof store.getState>
+export type State = ReturnType<typeof store.getState>;
 
 export type Thunk<ReturnType = void> = ThunkAction<
 	ReturnType,
 	State,
 	unknown,
 	Action<string>
->
+>;
 
 export default store;
 

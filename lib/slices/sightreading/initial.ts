@@ -1,11 +1,11 @@
 import { Duration, NoteName } from './types';
 
 export interface State {
-	durations: Duration[],
-	maxInterval: number|'',
-	range: [NoteName, NoteName],
-	showNoteNames: boolean,
-};
+	durations: Duration[];
+	maxInterval: number | '';
+	range: [NoteName, NoteName];
+	showNoteNames: boolean;
+}
 
 const initial: State = {
 	durations: [2, 4],

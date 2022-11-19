@@ -9,7 +9,7 @@ const formatWord = (word: string): Letters => {
 				letters[id] = {
 					id,
 					letter,
-					selected: false
+					selected: false,
 				};
 
 				return letters;

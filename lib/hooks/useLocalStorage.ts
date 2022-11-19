@@ -1,6 +1,9 @@
 import { useEffect, useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { rehydrateFromCache as rehydrateWW, setFirstVisit } from '../slices/wordwheel/reducer';
+import {
+	rehydrateFromCache as rehydrateWW,
+	setFirstVisit,
+} from '../slices/wordwheel/reducer';
 import { rehydrateFromCache as rehydrateCF } from '../slices/colourflood/reducer';
 import { rehydrateFromCache as rehydrateSR } from '../slices/sightreading/reducer';
 import initialWW from '../slices/wordwheel/initial';
@@ -21,7 +24,9 @@ const useLocalStorage = () => {
 		if (!cache) {
 			dispatch(setFirstVisit(true));
 		} else {
-			const { wordwheel, colourflood, sightreading } = JSON.parse(cache || 'null') || {
+			const { wordwheel, colourflood, sightreading } = JSON.parse(
+				cache || 'null'
+			) || {
 				wordwheel: initialWW,
 				colourflood: initialCF,
 				sightreading: initialSR,
@@ -35,7 +40,6 @@ const useLocalStorage = () => {
 			localStorage.setItem('store', JSON.stringify(store.getState()));
 		});
 	}, [dispatch]);
-
 };
 
 export default useLocalStorage;

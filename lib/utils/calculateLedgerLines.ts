@@ -1,7 +1,6 @@
 import notes from '../slices/sightreading/notes';
 
 const calculateLedgerLines = (y: number): number[] => {
-
 	const firstHighLedger = notes.A5;
 	const firstLowLedger = notes.C4;
 
@@ -17,7 +16,6 @@ const calculateLedgerLines = (y: number): number[] => {
 			}
 			needsLine = !needsLine;
 		}
-
 	} else if (y >= firstLowLedger) {
 		const distanceFromFirstLine = firstLowLedger - y;
 		let needsLine = distanceFromFirstLine % 10 === 0;

@@ -1,26 +1,34 @@
 import { State, Board } from '../initial';
 
-const hasMatchingNeighbour = (board: Board, { x, y }: { x: number, y: number }, colour: number): boolean => {
-	return board[y - 1]?.[x] === colour
-		|| board[y + 1]?.[x] === colour
-		|| board[y][x - 1] === colour
-		|| board[y][x + 1] === colour
-}
+const hasMatchingNeighbour = (
+	board: Board,
+	{ x, y }: { x: number; y: number },
+	colour: number
+): boolean => {
+	return (
+		board[y - 1]?.[x] === colour ||
+		board[y + 1]?.[x] === colour ||
+		board[y][x - 1] === colour ||
+		board[y][x + 1] === colour
+	);
+};
 
-const updateNeighbours = (board: Board, { x, y }: { x: number, y: number }, colour: number): void => {
+const updateNeighbours = (
+	board: Board,
+	{ x, y }: { x: number; y: number },
+	colour: number
+): void => {
 	const toUpdate = [
 		{ y: y - 1, x: x },
 		{ y: y + 1, x: x },
 		{ y: y, x: x - 1 },
 		{ y: y, x: x + 1 },
-	]
-		.filter(({ x, y }) => board[y]?.[x] === colour);
+	].filter(({ x, y }) => board[y]?.[x] === colour);
 
 	toUpdate.forEach(({ x, y }) => {
 		board[y][x] = -1;
 		updateNeighbours(board, { x, y }, colour);
 	});
-
 };
 
 const updateBoard = (state: State): void => {
@@ -40,12 +48,11 @@ const updateBoard = (state: State): void => {
 		});
 
 		return perimeter;
-	}, [] as { x: number, y: number }[]);
+	}, [] as { x: number; y: number }[]);
 
-	perimeter.forEach(coords => {
+	perimeter.forEach((coords) => {
 		updateNeighbours(board, coords, colour);
 	});
-
 };
 
 export default updateBoard;

@@ -25,7 +25,7 @@ const wordwheel = createSlice({
 		deselectLetter: reducers.deselectLetter,
 		resequenceLetters: reducers.resequenceLetters,
 		rehydrateFromCache: reducers.rehydrateFromCache,
-	}
+	},
 });
 
 export default wordwheel.reducer;

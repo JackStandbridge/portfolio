@@ -10,10 +10,12 @@ const setDurations = (state: State, action: PayloadAction<Duration>): void => {
 	if (!state.durations.includes(action.payload)) {
 		state.durations.push(action.payload);
 	} else {
-		state.durations = state.durations.filter(duration => duration !== action.payload);
+		state.durations = state.durations.filter(
+			(duration) => duration !== action.payload
+		);
 	}
 
-	state.durations.sort((a, b) => a > b ? 1 : -1);
+	state.durations.sort((a, b) => (a > b ? 1 : -1));
 };
 
 export default setDurations;
