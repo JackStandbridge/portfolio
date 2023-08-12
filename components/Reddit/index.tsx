@@ -8,22 +8,26 @@ import { SubredditListing } from './interfaces';
 import styles from './Reddit.module.scss';
 
 interface Props {
-	sub: string,
-	data: SubredditListing,
-};
+	sub: string;
+	data: SubredditListing;
+}
 
 const Reddit: FC<Props> = ({ sub, data }) => {
+	if (!data.children) {
+		console.log(data);
+		return <div>Error! {data.error}</div>;
+	}
 	return (
 		<>
 			<Head>
-				<title>{ sub }</title>
+				<title>{sub}</title>
 			</Head>
-			<main className={ styles.main }>
-				<Title text={ sub } />
-				<Links links={ data.children } />
+			<main className={styles.main}>
+				<Title text={sub} />
+				<Links links={data.children} />
 			</main>
 		</>
 	);
-}
+};
 
 export default Reddit;

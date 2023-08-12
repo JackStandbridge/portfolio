@@ -38,4 +38,5 @@ export type SubredditListing = {
 	children: {
 		data: ListingItem;
 	}[];
+	error?: string;
 };

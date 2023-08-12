@@ -6,9 +6,10 @@ import attachImgurImage from './attachImgurImage';
 const getSubredditData: GetServerSideProps = async (context) => {
 	const { sub } = context.query;
 	try {
-		const request = await fetch(`https://reddit.com/r/${sub}.json`);
+		const request = await fetch(`https://old.reddit.com/r/${sub}.json`);
 
 		const response = await request.json();
+
 		const data = response.data as SubredditListing;
 
 		data.children = await Promise.all(
@@ -43,8 +44,14 @@ const getSubredditData: GetServerSideProps = async (context) => {
 		);
 
 		return { props: { sub, data } };
-	} catch {
-		return { props: { sub, data: {} } };
+	} catch (e: unknown) {
+		let message = '';
+
+		if (e instanceof Error) {
+			message = e.message;
+		}
+
+		return { props: { sub, data: { error: message } } };
 	}
 };
 
