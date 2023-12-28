@@ -1,7 +1,11 @@
-import { FC, useState, MouseEventHandler } from 'react';
+import { FC, useState, MouseEventHandler, ReactNode } from 'react';
 import Controls from './Controls';
 
-const ConnectedControls: FC = ({ children }) => {
+type Props = {
+	children: ReactNode;
+};
+
+const ConnectedControls = ({ children }: Props) => {
 	const [show, setShow] = useState(true);
 
 	const handleToggle: MouseEventHandler = () => {
@@ -9,10 +13,9 @@ const ConnectedControls: FC = ({ children }) => {
 	};
 
 	return (
-		<Controls
-			handleToggle={ handleToggle }
-			show={ show }
-		>{ children }</Controls>
+		<Controls handleToggle={handleToggle} show={show}>
+			{children}
+		</Controls>
 	);
 };
 

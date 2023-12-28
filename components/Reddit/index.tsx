@@ -12,7 +12,7 @@ interface Props {
 	data: SubredditListing;
 }
 
-const Reddit: FC<Props> = ({ sub, data }) => {
+const Reddit = ({ sub, data }: Props) => {
 	if (!data.children) {
 		console.log(data);
 		return <div>Error! {data.error}</div>;

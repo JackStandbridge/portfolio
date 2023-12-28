@@ -6,12 +6,12 @@ import { Comment } from '../interfaces';
 import styles from './CommentChain.module.scss';
 
 interface Props {
-	comment: Comment,
-	host: string,
-	sortingFn: (a: Comment, b: Comment) => number
-};
+	comment: Comment;
+	host: string;
+	sortingFn: (a: Comment, b: Comment) => number;
+}
 
-const CommentChain: FC<Props> = ({ comment, host, sortingFn }) => {
+const CommentChain = ({ comment, host, sortingFn }: Props) => {
 	const { body = '', replies, score, author } = comment.data;
 	const children = [...(replies?.data?.children ?? [])].sort(sortingFn);
 
@@ -37,28 +37,28 @@ const CommentChain: FC<Props> = ({ comment, host, sortingFn }) => {
 
 	return !body ? null : (
 		<div
-			ref={ ref }
-			onDoubleClick={ handleClick }
-			onMouseDown={ handleMouseDown }
-			className={ styles.comment }
+			ref={ref}
+			onDoubleClick={handleClick}
+			onMouseDown={handleMouseDown}
+			className={styles.comment}
 		>
-			<span className={ styles.user }>{ author }</span>
-			{ ' ' }&bull;{ ' ' }
-			<span className={ styles.points }>{ score } point{ score !== 1 ? 's' : '' }</span>
-
-			{ !expanded ? null : (
+			<span className={styles.user}>{author}</span> &bull;{' '}
+			<span className={styles.points}>
+				{score} point{score !== 1 ? 's' : ''}
+			</span>
+			{!expanded ? null : (
 				<>
-					<Html text={ body } />
-					{ children.map((child, i) => (
+					<Html text={body} />
+					{children.map((child, i) => (
 						<CommentChain
-							key={ i }
-							comment={ child }
-							host={ host }
-							sortingFn={ sortingFn }
+							key={i}
+							comment={child}
+							host={host}
+							sortingFn={sortingFn}
 						/>
-					)) }
+					))}
 				</>
-			) }
+			)}
 		</div>
 	);
 };

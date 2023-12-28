@@ -1,22 +1,16 @@
-import {
-	FC,
-	useRef,
-	useEffect,
-	ReactEventHandler,
-} from 'react';
+import { FC, useRef, useEffect, ReactEventHandler } from 'react';
 
 import throttle from '../../../lib/utils/throttle';
 import styles from './Video.module.scss';
 
 interface Props {
-	videoSources: string[],
-	audio?: string,
-	className: string,
-	isExpanded?: boolean,
-};
+	videoSources: string[];
+	audio?: string;
+	className: string;
+	isExpanded?: boolean;
+}
 
-const Video: FC<Props> = ({ videoSources, audio, className, isExpanded }) => {
-
+const Video = ({ videoSources, audio, className, isExpanded }: Props) => {
 	const audioRef = useRef<HTMLAudioElement>(null);
 	const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -30,59 +24,62 @@ const Video: FC<Props> = ({ videoSources, audio, className, isExpanded }) => {
 			audioRef.current.currentTime = 0;
 			audioRef.current.pause();
 		}
-	}
+	};
 
-	const handleMedia: ReactEventHandler<HTMLVideoElement | HTMLAudioElement> = throttle(e => {
-		try {
-			if (audioRef.current && videoRef.current) {
-				audioRef.current.currentTime = e.currentTarget.currentTime;
+	const handleMedia: ReactEventHandler<HTMLVideoElement | HTMLAudioElement> =
+		throttle((e) => {
+			try {
+				if (audioRef.current && videoRef.current) {
+					audioRef.current.currentTime = e.currentTarget.currentTime;
 
-				const partner = e.currentTarget === audioRef.current
-					? videoRef.current
-					: audioRef.current;
+					const partner =
+						e.currentTarget === audioRef.current
+							? videoRef.current
+							: audioRef.current;
 
-				if (e.currentTarget.paused) {
-					partner.pause();
-				} else {
-					partner.play();
+					if (e.currentTarget.paused) {
+						partner.pause();
+					} else {
+						partner.play();
+					}
 				}
+			} catch {}
+
+			if (!isExpanded) {
+				stopMedia();
 			}
-		} catch { }
-
-		if (!isExpanded) {
-			stopMedia();
-		}
-
-	});
+		});
 
 	useEffect(() => {
 		stopMedia();
-	}, [isExpanded])
+	}, [isExpanded]);
 
 	return (
-		<div className={ className }>
+		<div className={className}>
 			<video
-				className={ styles.video }
-				ref={ videoRef }
-				onPlay={ handleMedia }
-				onPause={ handleMedia }
-				onSeeking={ handleMedia }
+				className={styles.video}
+				ref={videoRef}
+				onPlay={handleMedia}
+				onPause={handleMedia}
+				onSeeking={handleMedia}
 				controls
 				disablePictureInPicture
-				controlsList="nodownload"
+				controlsList='nodownload'
 			>
-				{ videoSources.map(source => <source key={ source } src={ source } />) }
+				{videoSources.map((source) => (
+					<source key={source} src={source} />
+				))}
 			</video>
 
-			{ audio &&
+			{audio && (
 				<audio
-					onPlay={ handleMedia }
-					onPause={ handleMedia }
-					onSeeking={ handleMedia }
-					ref={ audioRef }
-					src={ audio }
+					onPlay={handleMedia}
+					onPause={handleMedia}
+					onSeeking={handleMedia}
+					ref={audioRef}
+					src={audio}
 				/>
-			}
+			)}
 		</div>
 	);
 };

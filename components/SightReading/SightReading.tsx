@@ -12,13 +12,18 @@ import styles from './SightReading.module.scss';
 import { Bar as iBar } from '../../lib/hooks/useRandomBars';
 
 interface Props {
-	bars: iBar[],
-	generateBars: () => void,
-	containerRef: React.Ref<HTMLDivElement>,
-	barWidth: number,
-};
+	bars: iBar[];
+	generateBars: () => void;
+	containerRef: React.Ref<HTMLDivElement>;
+	barWidth: number;
+}
 
-const SightReading: FC<Props> = ({ containerRef, bars, generateBars, barWidth }) => {
+const SightReading = ({
+	containerRef,
+	bars,
+	generateBars,
+	barWidth,
+}: Props) => {
 	return (
 		<>
 			<Head>
@@ -31,18 +36,18 @@ const SightReading: FC<Props> = ({ containerRef, bars, generateBars, barWidth })
 					<Interval />
 					<Range />
 					<ToggleNoteNames />
-					<Refresh generateBars={ generateBars } />
+					<Refresh generateBars={generateBars} />
 				</Controls>
 
-				<div ref={ containerRef } className={ styles.container }>
-					{ bars.map((bar, i) => (
+				<div ref={containerRef} className={styles.container}>
+					{bars.map((bar, i) => (
 						<Bar
-							barWidth={ barWidth }
-							barNumber={ i }
-							key={ i }
-							voices={ bar.voices }
+							barWidth={barWidth}
+							barNumber={i}
+							key={i}
+							voices={bar.voices}
 						/>
-					)) }
+					))}
 				</div>
 			</main>
 		</>

@@ -1,14 +1,15 @@
-import { FC, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 
 import { clamp } from '../../../lib/utils';
 
 import styles from './Gallery.module.scss';
 
 interface Props {
-	shown: boolean,
-};
+	shown: boolean;
+	children: ReactNode;
+}
 
-const Gallery: FC<Props> = ({ children, shown }) => {
+const Gallery = ({ children, shown }: Props) => {
 	const [current, setCurrent] = useState(0);
 
 	const length = Array.isArray(children) ? children.length : 1;
@@ -22,22 +23,26 @@ const Gallery: FC<Props> = ({ children, shown }) => {
 	};
 
 	return (
-		<div className={ styles.gallery }>
-			<div className={ styles.viewport }>
+		<div className={styles.gallery}>
+			<div className={styles.viewport}>
 				<div
-					className={ styles.contents }
-					style={ { transform: `translateX(calc(-${ current * 100 }% - ${ current * 0.5}rem))` } }
+					className={styles.contents}
+					style={{
+						transform: `translateX(calc(-${current * 100}% - ${
+							current * 0.5
+						}rem))`,
+					}}
 				>
-					{ children }
+					{children}
 				</div>
 			</div>
 
-			{ shown && Array.isArray(children) && children.length > 1 &&
-				<footer className={ styles.buttons }>
-					<button className={ styles.button } onClick={ handleDecrement } />
-					<button className={ styles.button } onClick={ handleIncrement } />
+			{shown && Array.isArray(children) && children.length > 1 && (
+				<footer className={styles.buttons}>
+					<button className={styles.button} onClick={handleDecrement} />
+					<button className={styles.button} onClick={handleIncrement} />
 				</footer>
-			}
+			)}
 		</div>
 	);
 };

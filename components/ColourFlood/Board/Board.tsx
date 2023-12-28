@@ -4,22 +4,19 @@ import styles from './Board.module.scss';
 import { Board as BoardInterface } from '../../../lib/slices/colourflood/initial';
 
 interface Props {
-	board: BoardInterface,
-};
+	board: BoardInterface;
+}
 
-const Board: FC<Props> = ({ board }) => {
+const Board = ({ board }: Props) => {
 	return (
-		<section className={ styles.board }>
-			{ board.map((line, y) => (
-				<Fragment key={ y }>
-					{ line.map((_, x) => (
-						<Square
-							key={ x }
-							coords={{ x: x, y: y }}
-						/>
-					)) }
+		<section className={styles.board}>
+			{board.map((line, y) => (
+				<Fragment key={y}>
+					{line.map((_, x) => (
+						<Square key={x} coords={{ x: x, y: y }} />
+					))}
 				</Fragment>
-			)) }
+			))}
 		</section>
 	);
 };

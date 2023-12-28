@@ -12,10 +12,10 @@ import styles from './Link.module.scss';
 import HostContext from '../context';
 
 interface Props {
-	data: ListingItem,
-};
+	data: ListingItem;
+}
 
-const Link: FC<Props> = ({ data }) => {
+const Link = ({ data }: Props) => {
 	const {
 		title,
 		subreddit,
@@ -30,62 +30,48 @@ const Link: FC<Props> = ({ data }) => {
 	} = data;
 
 	const router = useRouter();
-	const sub = Array.isArray(router.query.sub) ? router.query.sub[0] : router.query.sub ?? '';
+	const sub = Array.isArray(router.query.sub)
+		? router.query.sub[0]
+		: router.query.sub ?? '';
 	const isCrossPost = subreddit.toLocaleLowerCase() !== sub.toLowerCase();
 
-	const hasPreview = /(\.(gif|jpe?g|tiff?|png|webp|bmp)$)|(i|v)\.redd\.it/i
-		.test(url);
+	const hasPreview =
+		/(\.(gif|jpe?g|tiff?|png|webp|bmp)$)|(i|v)\.redd\.it/i.test(url);
 
 	const internalUrl = '/reddit' + permalink;
 	const externalUrl = url;
 
 	return (
-		<li className={ styles.item }>
-			<div className={ styles.left }>
+		<li className={styles.item}>
+			<div className={styles.left}>
 				<NextLink
-					href={ is_self ? internalUrl : externalUrl }
+					className={styles.title}
+					href={is_self ? internalUrl : externalUrl}
 				>
-					<a
-						className={ styles.title }
-					>
-						<Html text={ title } />
-					</a>
+					<Html text={title} />
 				</NextLink>
 
-				{ isCrossPost &&
+				{isCrossPost && (
 					<HostContext.Consumer>
-						{ value => (
+						{(value) => (
 							<NextLink
-								href={ `${ value }/reddit/r/${ subreddit }` }
+								className={styles.sub}
+								href={`${value}/reddit/r/${subreddit}`}
 							>
-								<a
-									className={ styles.sub }
-								>
-									<Html text={ `/r/${ subreddit }` } />
-								</a>
+								<Html text={`/r/${subreddit}`} />
 							</NextLink>
-						) }
+						)}
 					</HostContext.Consumer>
-				}
+				)}
 
-				{
-					is_self &&
-					<SelfText text={ selftext } />
-				}
-				{
-					hasPreview &&
-					<Preview urls={ [{ url, hasAudio }] } />
-				}
-				{
-					is_gallery && gallery_data &&
-					<Preview
-						urls={ gallery_data.items.map(({ url }) => ({ url })) }
-					/>
-				}
+				{is_self && <SelfText text={selftext} />}
+				{hasPreview && <Preview urls={[{ url, hasAudio }]} />}
+				{is_gallery && gallery_data && (
+					<Preview urls={gallery_data.items.map(({ url }) => ({ url }))} />
+				)}
 			</div>
 
-			<CommentLink url={ internalUrl } numComments={ num_comments } />
-
+			<CommentLink url={internalUrl} numComments={num_comments} />
 		</li>
 	);
 };

@@ -1,12 +1,13 @@
-import { FC, useEffect } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import Modal from './Modal';
 
 interface Props {
-	show: boolean,
-	handleClose: () => void,
+	show: boolean;
+	handleClose: () => void;
+	children: ReactNode;
 }
 
-const ConnectedModal: FC<Props> = ({ children, handleClose, show }) => {
+const ConnectedModal = ({ children, handleClose, show }: Props) => {
 	useEffect(() => {
 		const keyListener = (e: KeyboardEvent): void => {
 			if (e.key === 'Escape') {
@@ -18,7 +19,7 @@ const ConnectedModal: FC<Props> = ({ children, handleClose, show }) => {
 
 		return (): void => {
 			document.removeEventListener('keydown', keyListener);
-		}
+		};
 	}, []);
 
 	const closeModal = (e: React.MouseEvent): void => {
@@ -28,11 +29,8 @@ const ConnectedModal: FC<Props> = ({ children, handleClose, show }) => {
 	};
 
 	return !show ? null : (
-		<Modal
-			show={ show }
-			handleClose={ closeModal }
-		>
-			{ children }
+		<Modal show={show} handleClose={closeModal}>
+			{children}
 		</Modal>
 	);
 };

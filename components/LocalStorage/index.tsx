@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { useLocalStorage } from '../../lib/hooks';
 
-const LocalStorage: FC = ({ children }) => {
+const LocalStorage = ({ children }: { children: ReactNode }) => {
 	useLocalStorage();
 
-	return <>{ children }</>;
+	return <>{children}</>;
 };
 
 export default LocalStorage;
