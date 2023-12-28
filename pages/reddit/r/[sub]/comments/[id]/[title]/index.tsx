@@ -5,25 +5,30 @@ import Head from 'next/head';
 import CommentPage from '../../../../../../../components/Reddit/CommentPage';
 import HostContext from '../../../../../../../components/Reddit/context';
 
-import { SubredditListing, Comment } from '../../../../../../../components/Reddit/interfaces';
+import {
+	SubredditListing,
+	Comment,
+} from '../../../../../../../components/Reddit/interfaces';
 
 interface Props {
-	self: SubredditListing,
+	self: SubredditListing;
 	comments: {
-		children: Comment[]
-	}
-	host: string,
-	sub: string,
-	title: string,
-};
+		children: Comment[];
+	};
+	host: string;
+	sub: string;
+	title: string;
+}
 
-const Page: FC<Props> = props => {
+const Page: FC<Props> = (props) => {
 	return (
-		<HostContext.Provider value={ props.host }>
+		<HostContext.Provider value={props.host}>
 			<Head>
-				<title>{ props.sub } | { props.self.children[0].data.title }</title>
+				<title>
+					{props.sub} | {props.self.children[0].data.title}
+				</title>
 			</Head>
-			<CommentPage { ...props } />
+			<CommentPage {...props} />
 		</HostContext.Provider>
 	);
 };
@@ -31,16 +36,13 @@ const Page: FC<Props> = props => {
 export default Page;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-
-	const {
-		id,
-		title,
-		sub
-	} = context.query;
+	const { id, title, sub } = context.query;
 
 	const { host } = context.req.headers;
 
-	const request = await fetch(`https://reddit.com/r/${ sub }/comments/${ id }/${ title }.json`);
+	const request = await fetch(
+		`https://old.reddit.com/r/${sub}/comments/${id}/${title}.json`
+	);
 
 	const response = await request.json();
 	const [{ data: self }, { data: comments }] = response;
