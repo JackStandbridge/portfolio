@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Controls from './Controls';
 import Bar from './Bar';
@@ -7,6 +7,7 @@ import Interval from './Controls/Interval';
 import Refresh from './Controls/Refresh';
 import Range from './Controls/Range';
 import ToggleNoteNames from './Controls/ToggleNoteNames';
+import { ScrollSpeed } from './ScrollSpeed';
 
 import styles from './SightReading.module.scss';
 import { Bar as iBar } from '../../lib/hooks/useRandomBars';
@@ -38,6 +39,8 @@ const SightReading = ({
 					<ToggleNoteNames />
 					<Refresh generateBars={generateBars} />
 				</Controls>
+
+				<ScrollSpeed />
 
 				<div ref={containerRef} className={styles.container}>
 					{bars.map((bar, i) => (

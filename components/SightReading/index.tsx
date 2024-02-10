@@ -42,10 +42,10 @@ const ConnectedSightReading: FC = () => {
 
 	return (
 		<SightReading
-			barWidth={ barWidth }
-			bars={ bars }
-			generateBars={ generateBars }
-			containerRef={ ref }
+			barWidth={barWidth}
+			bars={bars}
+			generateBars={generateBars}
+			containerRef={ref}
 		/>
 	);
 };

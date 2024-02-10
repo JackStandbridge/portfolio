@@ -124,7 +124,7 @@ BarsConfig): RandomBars => {
 	const generateBars = () => {
 		const newBars = <Bar[]>[];
 
-		for (let i = 0; i < 24; i++) {
+		for (let i = 0; i < 24 * 4; i++) {
 			newBars.push(generateBar({ durations, maxInterval, noteRange }));
 		}
 		setBars(newBars);
